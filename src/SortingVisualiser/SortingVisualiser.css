@@ -1,0 +1,17 @@
+html {
+  background-color: #ffed05;
+}
+
+.array-container {
+  position: absolute;
+  top: 100px;
+}
+
+.array-bar {
+  display: inline-block;
+  margin: 3px;
+  width: 8px;
+  border: 1px solid black;
+  /* I'm hard coding this value, and then also hard-coding it again in the Sorting Visualiser component */
+  background-color: rgba(187, 174, 0, 0.8);
+}

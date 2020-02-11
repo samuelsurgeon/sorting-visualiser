@@ -17,7 +17,7 @@ export default class SortingVisualiser extends React.Component {
   resetArray() {
     const array = [];
     for (let i = 0; i < 84; i++) {
-      array.push(randomIntFromInterval(100, 1000));
+      array.push(randomIntFromInterval(100, 800));
     }
     this.setState({ array });
   }
@@ -32,7 +32,7 @@ export default class SortingVisualiser extends React.Component {
             className="array-bar"
             key={idx}
             // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
-            style={{height: `${value}px`, backgroundColor: `rgba(187, 174, 0, ${value / 1000}`}}>
+            style={{height: `${value}px`, backgroundColor: `rgba(187, 174, 0, ${value / 800}`}}>
           </div>
         ))}
       </div>

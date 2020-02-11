@@ -1,0 +1,23 @@
+.speedSlider {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-size: 2em;
+}
+
+.slider {
+  margin-top: 10%;
+  height: 2px;
+  appearance: none;
+  outline: none;
+  background-color: black;
+}
+
+.slider::-webkit-slider-thumb {
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background-color: rgb(201, 187, 0);
+  border: 1.5px solid black;
+  border-radius: 75px;
+}

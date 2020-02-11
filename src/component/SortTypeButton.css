@@ -1,0 +1,10 @@
+.sort-type-button {
+  position: relative;
+  right: 3%;
+  margin: 0 2% 2% 0;
+  padding: 2% 6%;
+  width: fit-content;
+  border: 1.5px solid black;
+  border-radius: 75px;
+  text-align: center;
+}

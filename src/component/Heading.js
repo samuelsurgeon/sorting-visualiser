@@ -14,7 +14,7 @@ export default class Heading extends React.Component {
           Sorting Algorithm Visualiser
         </section>
         <section className="subtitle">
-          <br></br>Click <a href="http://www.github.com/">here</a> to see the code
+          <br></br>Click <a href="https://github.com/samuelsurgeon/sorting-visualiser" target="_blank">here</a> to see the code
         </section>
       </section>
     );

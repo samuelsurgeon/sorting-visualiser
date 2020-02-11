@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <section className="sidebar">
         <Heading></Heading>
-        <section className="siderbar-bottom">
+        <section className="sidebar-bottom">
           <SortType>
             <SortTypeButton type="Merge"></SortTypeButton>
             <SortTypeButton type="Insertion"></SortTypeButton>

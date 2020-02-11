@@ -1,0 +1,7 @@
+.sorting-visualiser-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 8.5%;
+  position: relative;
+  top: 2%;
+}

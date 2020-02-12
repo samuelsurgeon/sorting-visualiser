@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import getAlgorithm from '../algorithm/algorithm';
 import Heading from './Heading';
-import SortType from './SortType';
+import SortTypePanel from './SortTypePanel';
 import SortTypeButton from './SortTypeButton';
 import SpeedSlider from './SpeedSlider';
 import SortButton from './SortButton';
@@ -8,29 +10,36 @@ import SortingVisualiser from './SortingVisualiser';
 import Stickies from './Stickies';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <section className="sidebar">
-        <Heading></Heading>
-        <section className="sidebar-bottom">
-          <SortType>
-            <SortTypeButton type="Merge"></SortTypeButton>
-            <SortTypeButton type="Insertion"></SortTypeButton>
-            <SortTypeButton type="Bubble"></SortTypeButton>
-            <SortTypeButton type="Heap"></SortTypeButton>
-          </SortType>
-          <SpeedSlider></SpeedSlider>
-          <SortButton></SortButton>
-        </section>
-      </section>
-      <section className="visualiser">
-        <SortingVisualiser></SortingVisualiser>
-        {/* maybe might move these stickies out */}
-        <Stickies></Stickies>
-      </section>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  static propTypes = {
+    clickHandler: PropTypes.func
+  }
 
-export default App;
+  state = {
+    currentAlgorithm: null
+  };
+
+  handleClick = buttonName => {
+    this.setState(getAlgorithm(this.state, buttonName));
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <section className="sidebar">
+          <Heading></Heading>
+          <section className="sidebar-bottom">
+            <SortTypePanel clickHandler={this.handleClick}></SortTypePanel>
+            <SpeedSlider></SpeedSlider>
+            <SortButton></SortButton>
+          </section>
+        </section>
+        <section className="visualiser">
+          <SortingVisualiser></SortingVisualiser>
+          {/* maybe might move these stickies out */}
+          <Stickies></Stickies>
+        </section>
+      </div>
+    );
+  }
+}

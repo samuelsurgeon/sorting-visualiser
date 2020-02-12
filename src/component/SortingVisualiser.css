@@ -1,8 +1,15 @@
-.sorting-visualiser {
-  padding: 0;
+.sorting-visualiser-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: flex-end;
+}
+
+.sorting-visualiser {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
   border-left: 1.5px solid black;
@@ -10,12 +17,35 @@
 }
 
 .array-bar {
+  padding: 0;
   display: inline-block;
   margin: 3px;
   margin-bottom: 0;
   min-width: 8px;
   border: 1px solid black;
-  /* I'm hard coding this value, and then also hard-coding it again in the Sorting Visualiser component */
-  /* I don't think I actually need this css below here, because I am actually hard coding it, haha */
-  /* background-color: rgba(187, 174, 0, 0.8); */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 98.5%;
+}
+
+.new-array-button {
+  width: 40px;
+}
+
+.new-array-button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.info-button {
+  margin-left: 1.5%;
+  width: 40px;
+}
+
+.info-button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }

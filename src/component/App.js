@@ -5,9 +5,6 @@ import SortTypeButton from './SortTypeButton';
 import SpeedSlider from './SpeedSlider';
 import SortButton from './SortButton';
 import SortingVisualiser from './SortingVisualiser';
-import SortingVisualiserButtons from './SortingVisualiserButtons';
-import NewArrayButton from './NewArrayButton';
-import InfoButton from './InfoButton';
 import Stickies from './Stickies';
 import './App.css';
 
@@ -28,10 +25,6 @@ function App() {
         </section>
       </section>
       <section className="visualiser">
-        <SortingVisualiserButtons>
-          <NewArrayButton></NewArrayButton>
-          <InfoButton></InfoButton>
-        </SortingVisualiserButtons>
         <SortingVisualiser></SortingVisualiser>
         {/* maybe might move these stickies out */}
         <Stickies></Stickies>

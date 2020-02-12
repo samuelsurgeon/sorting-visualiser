@@ -31,7 +31,7 @@ export default class App extends React.Component {
           <section className="sidebar-bottom">
             <SortTypePanel clickHandler={this.handleClick}></SortTypePanel>
             <SpeedSlider></SpeedSlider>
-            <SortButton></SortButton>
+            <SortButton name="Sort"></SortButton>
           </section>
         </section>
         <section className="visualiser">

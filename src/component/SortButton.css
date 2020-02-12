@@ -1,13 +1,15 @@
-.sort-button {
-  width: 80%;
+.button {
+  width: 100%;
   text-align: center;
   border: 1.5px solid black;
   padding: 5%;
   font-size: 2em;
+  background-color: #ffed05;
+  outline: none;
 }
 
-.sort-button:hover {
-  background-color: rgba(0, 0, 0, 1);
+.button:hover {
+  background-color: black;
   cursor: pointer;
   transform: scale(1.05);
   color: #ffed05;

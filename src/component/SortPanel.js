@@ -4,12 +4,15 @@ import React from 'react';
 import './SortTypePanel.css';
 
 export default class SortTypePanel extends React.Component {
-  static propTypes = {
-    clickHandler: PropTypes.func
+  constructor(props) {
+    super(props);
+
+    this.state = { buttonName: null }
   }
 
   handleClick = buttonName => {
     console.log(buttonName);
+    this.setState({ buttonName: buttonName });
     this.props.clickHandler(buttonName);
   }
 
@@ -20,7 +23,7 @@ export default class SortTypePanel extends React.Component {
       <section className="sort-type">
         Sort type
         <section className="buttons-container">
-          <button name="Merge" clickHandler={this.handleClick}></button>
+    <button name="Merge" clickHandler={this.handleClick}>{this.state.buttonName}</button>
           <button name="Insertion"></button>
           <button name="Bubble"></button>
           <button name="Heap"></button>

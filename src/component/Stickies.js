@@ -4,7 +4,7 @@ import './Stickies.css';
 export default class Stickies extends React.Component {
   render() {
     return (
-      <section className="stickies">
+      <section className="component-stickies">
       </section>
     );
   }

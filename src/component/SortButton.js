@@ -13,8 +13,8 @@ export default class SortButton extends React.Component {
 
   render() {
     return (
-      <section className="sort-button">
-        <button className="button" onClick={this.handleClick}>{this.props.name}</button>
+      <section className="component-sort-button">
+        <button className="sort-button" onClick={this.handleClick}>Sort</button>
       </section>
     );
   }

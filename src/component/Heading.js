@@ -9,7 +9,7 @@ export default class Heading extends React.Component {
 
   render() {
     return (
-      <section className="heading">
+      <section className="component-heading">
         <section className="title">
           Sorting Algorithm Visualiser
         </section>

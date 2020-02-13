@@ -3,6 +3,8 @@ import newArrayIcon from '../image/newArrayButton.png';
 import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
+const NUMBER_OF_ARRAY_BARS = 65;
+
 export default class SortingVisualiser extends React.Component {
   constructor(props) {
     super(props);
@@ -18,26 +20,27 @@ export default class SortingVisualiser extends React.Component {
 
   resetArray() {
     const array = [];
-    for (let i = 0; i < 65; i++) {
+    // NUMBER_OF_ARRAY_BARS should be 65 :)
+    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(100, 800));
     }
     this.setState({ array });
+    this.props.updateArray(array);
   }
 
   render() {
     const { array } = this.state;
-
     return (
-      <div className="sorting-visualiser">
-        <div class="button-container">
+      <section className="component-sorting-visualiser">
+        <div className="button-container">
           <img
-            class="new-array-button"
+            className="new-array-button"
             onClick={() => this.resetArray()}
             alt="Generate New Array Button"
             src={newArrayIcon}>
           </img>
           <img
-            class="info-button"
+            className="info-button"
             alt="Information Button"
             src={infoIcon}>
           </img>
@@ -52,7 +55,7 @@ export default class SortingVisualiser extends React.Component {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     );
   }
 }

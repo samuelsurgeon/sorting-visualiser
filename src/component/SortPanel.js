@@ -1,32 +1,50 @@
-import SortTypeButton from './SortTypeButton';
-import PropTypes from 'prop-types';
 import React from 'react';
-import './SortTypePanel.css';
+import './SortPanel.css';
 
-export default class SortTypePanel extends React.Component {
+export default class SortPanel extends React.Component {
   constructor(props) {
     super(props);
 
+    // Don't know if I actually need this!
     this.state = { buttonName: null }
   }
 
   handleClick = buttonName => {
-    console.log(buttonName);
-    this.setState({ buttonName: buttonName });
-    this.props.clickHandler(buttonName);
+    this.props.currentAlgorithm(buttonName.target.name);
+    // console.log(buttonName);
+    // this.setState({ buttonName: buttonName });
+    // this.props.clickHandler(buttonName);
   }
-
-  // See below: We're calling the clickHandler, which will be in the parent ting. Make sure you put the corresponding code in the parent ting.
 
   render() {
     return (
-      <section className="sort-type">
+      <section className="component-sort-panel">
         Sort type
         <section className="buttons-container">
-    <button name="Merge" clickHandler={this.handleClick}>{this.state.buttonName}</button>
-          <button name="Insertion"></button>
-          <button name="Bubble"></button>
-          <button name="Heap"></button>
+          <button 
+            name="Merge"
+            className="type-button"
+            onClick={this.handleClick}>
+            Merge
+          </button>
+          <button
+            name="Insertion"
+            className="type-button"
+            onClick={this.handleClick}>
+            Insertion
+          </button>
+          <button
+            name="Bubble"
+            className="type-button"
+            onClick={this.handleClick}>
+            Bubble
+          </button>
+          <button
+            name="Heap"
+            className="type-button"
+            onClick={this.handleClick}>
+            Heap
+          </button>
         </section>
       </section>
     );

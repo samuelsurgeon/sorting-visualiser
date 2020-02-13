@@ -2,7 +2,7 @@ html {
   background-color: #ffed05;
 }
 
-.App {
+.component-app {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;

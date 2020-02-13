@@ -1,4 +1,4 @@
-.button {
+.sort-button {
   width: 100%;
   text-align: center;
   border: 1.5px solid black;
@@ -8,7 +8,7 @@
   outline: none;
 }
 
-.button:hover {
+.sort-button:hover {
   background-color: black;
   cursor: pointer;
   transform: scale(1.05);

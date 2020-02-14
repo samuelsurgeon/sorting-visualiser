@@ -13,8 +13,9 @@ import './App.css';
 const ANIMATION_SPEED_MS = 30;
 
 // Colour*
-const PRIMARY_COLOR = 'rgba(255, 255, 255, 0.2)';
-const SECONDARY_COLOR = 'rgba(255, 255, 255, 0.6)';
+let PRIMARY_COLOR = 'rgba(255, 255, 255, 0.2)';
+const SECONDARY_COLOR = 'white';
+// let arrayBars = document.getElementsByClassName('array-bar');
 
 export default class App extends React.Component {
   state = {
@@ -32,36 +33,35 @@ export default class App extends React.Component {
 
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
-    //console.log(animations);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
+      // console.log(arrayBars);
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
-        //console.log(animations[i]);
-        // const [getRidofThis, newHeight] = animations[i];
         const [barOneIdx, barTwoIdx] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
+        //console.log(barOneStyle);
         const barTwoStyle = arrayBars[barTwoIdx].style;
-        //const colour = i % 3 === 0 ? SECONDARY_COLOR : `rgba(187, 174, 0, ${newHeight / 800 })`;
-        setTimeout(() => {          
-          //barOneStyle.backgroundColor = colour;
-          //barOneStyle.transition = '0.5s';
-          //barTwoStyle.backgroundColor = colour;
+        const colour = i % 3 === 0 ? SECONDARY_COLOR : barTwoStyle.backgroundColor;
+        setTimeout(() => {
+          barOneStyle.transition = '0.5s';  
+          barTwoStyle.transition = '0.5s';
+
+          barOneStyle.backgroundColor = colour;
+          barTwoStyle.backgroundColor = colour;
         }, i * ANIMATION_SPEED_MS);
       } else {
         setTimeout(() => {
-          //const [barOneIdx, newHeight] = animations[i];
-          //const [barOneIdx, barTwoIdx] = animations[i];
-          //console.log(barOneIdx);
-          //const barOneStyle = arrayBars[barOneIdx].style;
-          //const barTwoStyle = arrayBars[barTwoIdx].style;
-          //barOneStyle.height = `${barTwoIdx}px`;
-          //barTwoStyle.height = `${barOneIdx}px`;
-          //barOneStyle.transition = '0.4s';
-          // barOneStyle.transitionTimingFunction = 'ease-out';
-          // barOneStyle.transform = 'skewY(50)';
-          //barOneStyle.transform = 'scale(1)';
-          //barOneStyle.height = `${newHeight}px`;
+          // Height changes happen here
+          const [barOneIdx, newHeight] = animations[i];
+          const [first, second] = animations[i - 1];
+          const barTwoStyle = arrayBars[second].style;
+          const barOneStyle = arrayBars[barOneIdx].style;
+          console.log(arrayBars[first].dataHeight);
+          barTwoStyle.height = `${arrayBars[first]}px`;
+          barOneStyle.transition = '0.5s';
+          barOneStyle.height = `${newHeight}px`;
+          barOneStyle.backgroundColor = `rgba(187, 174, 0, ${newHeight / 800 })`;
           // Just calculate this once at the top
           //barOneStyle.backgroundColor = `rgba(187, 174, 0, ${newHeight / 800 })`;
         }, i * ANIMATION_SPEED_MS);

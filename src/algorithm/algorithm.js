@@ -31,7 +31,7 @@ function doMerge(
   auxiliaryArray,
   animations,
 ) {
-  console.log(`main array: ${mainArray.length} startIdx: ${startIdx} middleIdx: ${middleIdx} endIdx: ${endIdx} auxiliary: ${auxiliaryArray} animations: ${animations.length}`);
+  //console.log(`main array: ${mainArray.length} startIdx: ${startIdx} middleIdx: ${middleIdx} endIdx: ${endIdx} auxiliary: ${auxiliaryArray.length} animations: ${animations.length}`);
   let k = startIdx;
   let i = startIdx;
   let j = middleIdx + 1;

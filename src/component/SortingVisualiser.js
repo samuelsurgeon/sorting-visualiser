@@ -3,6 +3,7 @@ import newArrayIcon from '../image/newArrayButton.png';
 import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
+// Remember this should be 65! That's what it originally was
 const NUMBER_OF_ARRAY_BARS = 65;
 
 export default class SortingVisualiser extends React.Component {
@@ -50,6 +51,8 @@ export default class SortingVisualiser extends React.Component {
             <div
               className="array-bar"
               key={idx}
+              data-height={`${value}px`}
+              data-colour={`rgba(187, 174, 0, ${value / 800}`}
               // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
               style={{height: `${value}px`, backgroundColor: `rgba(187, 174, 0, ${value / 800}`}}>
             </div>

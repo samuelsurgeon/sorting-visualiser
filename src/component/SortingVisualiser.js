@@ -4,7 +4,7 @@ import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
 // Remember this should be 65! That's what it originally was
-const NUMBER_OF_ARRAY_BARS = 65;
+const NUMBER_OF_ARRAY_BARS = 4;
 
 export default class SortingVisualiser extends React.Component {
   constructor(props) {

@@ -10,7 +10,7 @@ import Stickies from './Stickies';
 import './App.css';
 
 // Change this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-const ANIMATION_SPEED_MS = 30;
+const ANIMATION_SPEED_MS = 3000;
 
 // Colour*
 let PRIMARY_COLOR = 'rgba(255, 255, 255, 0.2)';
@@ -34,6 +34,7 @@ export default class App extends React.Component {
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
     for (let i = 0; i < animations.length; i++) {
+      // console.log(animations);
       const arrayBars = document.getElementsByClassName('array-bar');
       // console.log(arrayBars);
       const isColorChange = i % 3 !== 2;
@@ -53,17 +54,24 @@ export default class App extends React.Component {
       } else {
         setTimeout(() => {
           // Height changes happen here
-          const [barOneIdx, newHeight] = animations[i];
-          const [first, second] = animations[i - 1];
-          const barTwoStyle = arrayBars[second].style;
+          console.log(animations[i]);
+          const [barOneIdx, barOneHeight] = animations[i][0];
+          let [barTwoIdx, barTwoHeight] = animations[i][1];
+          // Need to fix this
+          barTwoIdx = barOneIdx + 1;
           const barOneStyle = arrayBars[barOneIdx].style;
-          console.log(arrayBars[first].dataHeight);
-          barTwoStyle.height = `${arrayBars[first]}px`;
-          barOneStyle.transition = '0.5s';
-          barOneStyle.height = `${newHeight}px`;
-          barOneStyle.backgroundColor = `rgba(187, 174, 0, ${newHeight / 800 })`;
-          // Just calculate this once at the top
-          //barOneStyle.backgroundColor = `rgba(187, 174, 0, ${newHeight / 800 })`;
+          if (arrayBars[barTwoIdx].style !== undefined) {
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            barTwoStyle.transition = '2.5s';
+            barTwoStyle.height = `${barTwoHeight}px`;
+            barTwoStyle.backgroundColor = `rgba(187, 174, 0, ${barOneHeight / 800 })`;
+          } else {
+            alert('HEYA');
+          }          
+          barOneStyle.transition = '2.5s';
+          barOneStyle.height = `${barOneHeight}px`;
+          barOneStyle.backgroundColor = `rgba(187, 174, 0, ${barOneHeight / 800 })`;
+          
         }, i * ANIMATION_SPEED_MS);
       }
     }

@@ -1,6 +1,3 @@
-// I think this is the wrapper function? We export this function to be used in the App.js file. So remember that all of this is actually run in App.js
-
-// So this function takes the App.js state array, generates an animations array, has a fail-safe for short-ass arrays, creates a copy of the state array, and then plugs in the state array, animations array, and auxiliary array into the mergeSortHelper function. 
 export function getMergeSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
@@ -31,7 +28,6 @@ function doMerge(
   auxiliaryArray,
   animations,
 ) {
-  //console.log(`main array: ${mainArray.length} startIdx: ${startIdx} middleIdx: ${middleIdx} endIdx: ${endIdx} auxiliary: ${auxiliaryArray.length} animations: ${animations.length}`);
   let k = startIdx;
   let i = startIdx;
   let j = middleIdx + 1;
@@ -42,16 +38,15 @@ function doMerge(
     // These are the values that we're comparing; we push them a second
     // time to revert their color.
     animations.push([i, j]);
-    // THIS IS WHERE WE'LL DO THE SWAPPING. JUST NEED TO ADD ONE MORE LAYER TO THE ARRAY SO THAT WE CAN DO TWO HEIGHT ADJUSTMENTS IN THE SETTIMEOUT METHOD
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
       // We overwrite the value at index k in the original array with the
       // value at index i in the auxiliary array.
-      animations.push([[k, auxiliaryArray[i]], [k, auxiliaryArray[j]]]);
+      animations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {
       // We overwrite the value at index k in the original array with the
       // value at index j in the auxiliary array.
-      animations.push([[k, auxiliaryArray[j]], [k, auxiliaryArray[i]]]);
+      animations.push([k, auxiliaryArray[j]]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
@@ -64,8 +59,7 @@ function doMerge(
     animations.push([i, i]);
     // We overwrite the value at index k in the original array with the
     // value at index i in the auxiliary array.
-    // animations.push([k, auxiliaryArray[i]]);
-    animations.push([[k, auxiliaryArray[i]], [k, auxiliaryArray[j]]]);
+    animations.push([k, auxiliaryArray[i]]);
     mainArray[k++] = auxiliaryArray[i++];
   }
   while (j <= endIdx) {
@@ -77,8 +71,7 @@ function doMerge(
     animations.push([j, j]);
     // We overwrite the value at index k in the original array with the
     // value at index j in the auxiliary array.
-    // animations.push([k, auxiliaryArray[j]]);
-    animations.push([[k, auxiliaryArray[j]], [k, auxiliaryArray[i]]]);
+    animations.push([k, auxiliaryArray[j]]);
     mainArray[k++] = auxiliaryArray[j++];
   }
 }

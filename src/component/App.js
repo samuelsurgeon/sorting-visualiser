@@ -10,10 +10,12 @@ import Stickies from './Stickies';
 import './App.css';
 
 // Change this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-const ANIMATION_SPEED_MS = 3000;
+const ANIMATION_SPEED_MS = 30;
+// This increases as the speed decreases
+const TRANSITION_SPEED = 0.2;
 
 // Colour*
-let PRIMARY_COLOR = 'rgba(255, 255, 255, 0.2)';
+let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
 const SECONDARY_COLOR = 'white';
 // let arrayBars = document.getElementsByClassName('array-bar');
 
@@ -34,44 +36,24 @@ export default class App extends React.Component {
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
     for (let i = 0; i < animations.length; i++) {
-      // console.log(animations);
       const arrayBars = document.getElementsByClassName('array-bar');
-      // console.log(arrayBars);
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
-        //console.log(barOneStyle);
         const barTwoStyle = arrayBars[barTwoIdx].style;
-        const colour = i % 3 === 0 ? SECONDARY_COLOR : barTwoStyle.backgroundColor;
+        const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
         setTimeout(() => {
-          barOneStyle.transition = '0.5s';  
-          barTwoStyle.transition = '0.5s';
-
-          barOneStyle.backgroundColor = colour;
-          barTwoStyle.backgroundColor = colour;
+          barOneStyle.transition = '0s';
+          barTwoStyle.transition = '0s';
+          barOneStyle.backgroundColor = color;
+          barTwoStyle.backgroundColor = color;
         }, i * ANIMATION_SPEED_MS);
       } else {
         setTimeout(() => {
-          // Height changes happen here
-          console.log(animations[i]);
-          const [barOneIdx, barOneHeight] = animations[i][0];
-          let [barTwoIdx, barTwoHeight] = animations[i][1];
-          // Need to fix this
-          barTwoIdx = barOneIdx + 1;
+          const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          if (arrayBars[barTwoIdx].style !== undefined) {
-            const barTwoStyle = arrayBars[barTwoIdx].style;
-            barTwoStyle.transition = '2.5s';
-            barTwoStyle.height = `${barTwoHeight}px`;
-            barTwoStyle.backgroundColor = `rgba(187, 174, 0, ${barOneHeight / 800 })`;
-          } else {
-            alert('HEYA');
-          }          
-          barOneStyle.transition = '2.5s';
-          barOneStyle.height = `${barOneHeight}px`;
-          barOneStyle.backgroundColor = `rgba(187, 174, 0, ${barOneHeight / 800 })`;
-          
+          barOneStyle.height = `${newHeight}px`;
         }, i * ANIMATION_SPEED_MS);
       }
     }

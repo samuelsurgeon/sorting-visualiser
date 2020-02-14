@@ -20,9 +20,9 @@
   padding: 0;
   display: inline-block;
   margin: 3px;
-  color: rgba(255, 129, 115, 0.4);
   margin-bottom: 0;
   min-width: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid black;
 }
 
@@ -39,6 +39,7 @@
 .new-array-button:hover {
   transform: scale(1.1);
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .info-button {
@@ -49,4 +50,5 @@
 .info-button:hover {
   transform: scale(1.1);
   transition: 0.5s;
+  cursor: pointer;
 }

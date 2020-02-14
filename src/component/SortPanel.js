@@ -5,11 +5,12 @@ export default class SortPanel extends React.Component {
   constructor(props) {
     super(props);
 
-    // Don't know if I actually need this!
-    this.state = { buttonName: null }
+    this.state = { className: null };
   }
 
   handleClick = buttonName => {
+    // const currentState = this.state.className;
+    this.setState({ className: 'type-button selected'});
     this.props.currentAlgorithm(buttonName.target.name);
     // console.log(buttonName);
     // this.setState({ buttonName: buttonName });
@@ -23,7 +24,7 @@ export default class SortPanel extends React.Component {
         <section className="buttons-container">
           <button 
             name="Merge"
-            className="type-button"
+            className={this.state.className ? this.state.className : 'type-button'}
             onClick={this.handleClick}>
             Merge
           </button>

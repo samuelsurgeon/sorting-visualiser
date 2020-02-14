@@ -1,3 +1,15 @@
+.type-button.selected {
+  color: #ffed05;
+  background-color: black;
+}
+
+/* I think there is a better way to implement this. I think you can just disable it instead of having to re-state everything */
+.type-button.selected:hover {
+  transform: scale(1);
+  background-color: black;
+  color: #ffed05;
+}
+
 .component-sort-panel {
   margin-top: 10%;
   font-size: 2em;

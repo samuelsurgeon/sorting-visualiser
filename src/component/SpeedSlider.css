@@ -23,3 +23,7 @@
   border: 1.5px solid black;
   border-radius: 75px;
 }
+
+.slider::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}

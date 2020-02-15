@@ -34,6 +34,7 @@ export default class App extends React.Component {
   }
 
   mergeSort() {
+    // I want to structure my program more like the Calculator app, so get everything working, and then restructure it so these methods call in the algorithms.js file
     const animations = getMergeSortAnimations(this.state.currentArray);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
@@ -60,7 +61,12 @@ export default class App extends React.Component {
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
-  handleClick = buttonName => {
+  sortPanelClick = buttonName => {
+    if (buttonName === 'suckmyass') {
+      const htmlStyle = document.documentElement;
+      htmlStyle.style.transition = '2s';
+      htmlStyle.style.backgroundColor = '#DB08FF';
+    }
     this.mergeSort();
     // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });
 
@@ -76,7 +82,7 @@ export default class App extends React.Component {
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">
-            <SortPanel currentAlgorithm={this.handleClick}></SortPanel>
+            <SortPanel selectAlgorithm={this.sortPanelClick}></SortPanel>
             <SpeedSlider></SpeedSlider>
             <SortButton></SortButton>
           </section>

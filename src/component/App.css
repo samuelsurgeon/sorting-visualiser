@@ -16,7 +16,6 @@ html {
   justify-content: space-between;
   width: 23vw;
   height: 92vh;
-  /* background-color: rgba(0, 0, 255, 0.5); */
 }
 
 .sidebar-bottom {
@@ -33,5 +32,4 @@ html {
   align-items: flex-end;
   width: 66vw;
   height: 90vh;
-  /* background-color: rgba(255, 0, 0, 0.1); */
 }

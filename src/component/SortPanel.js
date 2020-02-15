@@ -1,20 +1,33 @@
 import React from 'react';
 import './SortPanel.css';
 
+const DEFAULT_CLASS_NAME = 'type-button ';
+const SELECTED_CLASS_NAME = 'type-button selected ';
+
 export default class SortPanel extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { className: null };
+    this.state = { selectedButton: null };
   }
 
-  handleClick = buttonName => {
-    // const currentState = this.state.className;
-    this.setState({ className: 'type-button selected'});
-    this.props.currentAlgorithm(buttonName.target.name);
-    // console.log(buttonName);
-    // this.setState({ buttonName: buttonName });
-    // this.props.clickHandler(buttonName);
+  mergeClick = buttonName => {
+    //this.setState({ selectedButton: buttonName.target.name });
+  }
+
+  insertionClick = buttonName => {
+    this.setState({ selectedButton: buttonName.target.name });
+    
+    // change this to dataSet a bit later ?
+    this.props.selectAlgorithm(buttonName.target.name);
+  }
+
+  bubbleClick = buttonName => {
+    //this.setState({ selectedButton: buttonName.target.name });
+  }
+
+  heapClick = buttonName => {
+    //this.setState({ selectedButton: buttonName.target.name });
   }
 
   render() {
@@ -23,27 +36,28 @@ export default class SortPanel extends React.Component {
         Sort type
         <section className="buttons-container">
           <button 
-            name="Merge"
-            className={this.state.className ? this.state.className : 'type-button'}
-            onClick={this.handleClick}>
+            name="merge"
+            className={this.state.selectedButton === 'merge' ? SELECTED_CLASS_NAME : DEFAULT_CLASS_NAME }
+            data-background-colour="blue"
+            onClick={this.mergeClick}>
             Merge
           </button>
           <button
-            name="Insertion"
-            className="type-button"
-            onClick={this.handleClick}>
+            name="insertion"
+            className={this.state.selectedButton === 'insertion' ? SELECTED_CLASS_NAME + this.state.selectedButton : DEFAULT_CLASS_NAME }
+            onClick={this.insertionClick}>
             Insertion
           </button>
           <button
-            name="Bubble"
-            className="type-button"
-            onClick={this.handleClick}>
+            name="bubble"
+            className={this.state.selectedButton === 'bubble' ? SELECTED_CLASS_NAME : DEFAULT_CLASS_NAME }
+            onClick={this.bubbleClick}>
             Bubble
           </button>
           <button
-            name="Heap"
-            className="type-button"
-            onClick={this.handleClick}>
+            name="heap"
+            className={this.state.selectedButton === 'heap' ? SELECTED_CLASS_NAME : DEFAULT_CLASS_NAME }
+            onClick={this.heapClick}>
             Heap
           </button>
         </section>

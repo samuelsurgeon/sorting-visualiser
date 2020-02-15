@@ -71,23 +71,31 @@ export default class App extends React.Component {
   sortPanelClick = buttonName => {
     // Remember when using the DOM to add the .style prop to the end of the initial document. call. Saves you having to call it like a million times later
     const htmlStyle = document.documentElement.style;
-    const sliderStyler = document.querySelector('.slider::-webkit-slider-thumb').style;
+    const typeButtonStyle = document.querySelector('.type-button');
+    const sliderStyle = document.querySelector('.sliderYellow');
+    //const sliderStyler = document.querySelector('.slider::-webkit-slider-thumb').style;
     htmlStyle.transition = '2s';
 
 
     if (buttonName === 'merge') {
       htmlStyle.backgroundColor = ORANGE;
-      sliderStyler.className += 'orange';
+      alert(typeButtonStyle);
+      // typeButtonStyle.className = 'type-button-orange selected';
+      alert(typeButtonStyle.className);
+      sliderStyle.className = 'sliderOrange';
       this.mergeSort();
     }
     if (buttonName === 'insertion') {
       htmlStyle.backgroundColor = GREEN;
+      sliderStyle.className = 'sliderGreen';
     }
     if (buttonName === 'bubble') {
       htmlStyle.backgroundColor = TURQUOISE;
+      sliderStyle.className = 'sliderTurquoise';
     }
     if (buttonName === 'heap') {
       htmlStyle.backgroundColor = PINK;
+      sliderStyle.className = 'sliderPink';
     }
     // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });
 

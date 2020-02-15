@@ -1,6 +1,9 @@
 :root {
   --darkYellow: rgb(206, 192, 0);
-  --darkOrange: rbg(196, 147, 32);
+  --darkOrange: rgb(218, 163, 37);
+  --darkGreen: rgb(59, 192, 119);
+  --darkTurquoise: rgb(47, 186, 189);
+  --darkPink: rgb(206, 115, 160);
 }
 
 .component-speed-slider {
@@ -11,7 +14,7 @@
   font-size: 2em;
 }
 
-.slider {
+.sliderYellow {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -20,15 +23,108 @@
   background-color: black;
 }
 
-.slider::-webkit-slider-thumb {
+.sliderYellow::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
   background-color: var(--darkYellow);
+  transition: 2s;
   border: 1.5px solid black;
   border-radius: 75px;
 }
 
-.slider::-webkit-slider-thumb:hover {
+.sliderYellow::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+.sliderOrange {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 2px;
+  appearance: none;
+  outline: none;
+  background-color: black;
+}
+
+.sliderOrange::-webkit-slider-thumb {
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background-color: var(--darkOrange);
+  transition: 2s;
+  border: 1.5px solid black;
+  border-radius: 75px;
+}
+
+.sliderOrange::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+.sliderGreen {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 2px;
+  appearance: none;
+  outline: none;
+  background-color: black;
+}
+
+.sliderGreen::-webkit-slider-thumb {
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background-color: var(--darkGreen);
+  transition: 2s;
+  border: 1.5px solid black;
+  border-radius: 75px;
+}
+
+.sliderGreen::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+.sliderTurquoise {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 2px;
+  appearance: none;
+  outline: none;
+  background-color: black;
+}
+
+.sliderTurquoise::-webkit-slider-thumb {
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background-color: var(--darkTurquoise);
+  transition: 2s;
+  border: 1.5px solid black;
+  border-radius: 75px;
+}
+
+.sliderTurquoise::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+.sliderPink {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 2px;
+  appearance: none;
+  outline: none;
+  background-color: black;
+}
+
+.sliderPink::-webkit-slider-thumb {
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background-color: var(--darkPink);
+  transition: 2s;
+  border: 1.5px solid black;
+  border-radius: 75px;
+}
+
+.sliderPink::-webkit-slider-thumb:hover {
   cursor: pointer;
 }

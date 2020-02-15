@@ -6,7 +6,7 @@ export default class SpeedSlider extends React.Component {
     return (
       <section className="component-speed-slider">
         Speed
-        <input className="slider" type="range"></input>
+        <input className="sliderYellow" type="range"></input>
       </section>
     );
   }

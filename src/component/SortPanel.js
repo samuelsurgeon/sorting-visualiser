@@ -1,8 +1,8 @@
 import React from 'react';
 import './SortPanel.css';
 
-const DEFAULT_CLASS_NAME = 'type-button ';
-const SELECTED_CLASS_NAME = 'type-button selected ';
+const DEFAULT_CLASS_NAME = 'type-button-yellow';
+const SELECTED_CLASS_NAME = 'type-button selected';
 
 export default class SortPanel extends React.Component {
   constructor(props) {

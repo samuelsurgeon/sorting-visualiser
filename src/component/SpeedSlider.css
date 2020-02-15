@@ -14,7 +14,7 @@
   font-size: 2em;
 }
 
-.sliderYellow {
+.slider {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -23,7 +23,7 @@
   background-color: black;
 }
 
-.sliderYellow::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
@@ -33,11 +33,11 @@
   border-radius: 75px;
 }
 
-.sliderYellow::-webkit-slider-thumb:hover {
+.slider::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.sliderOrange {
+.slider-orange {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -46,7 +46,7 @@
   background-color: black;
 }
 
-.sliderOrange::-webkit-slider-thumb {
+.slider-orange::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
@@ -56,11 +56,11 @@
   border-radius: 75px;
 }
 
-.sliderOrange::-webkit-slider-thumb:hover {
+.slider-orange::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.sliderGreen {
+.slider-green {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -69,7 +69,7 @@
   background-color: black;
 }
 
-.sliderGreen::-webkit-slider-thumb {
+.slider-green::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
@@ -79,11 +79,11 @@
   border-radius: 75px;
 }
 
-.sliderGreen::-webkit-slider-thumb:hover {
+.slider-green::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.sliderTurquoise {
+.slider-turquoise {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -92,7 +92,7 @@
   background-color: black;
 }
 
-.sliderTurquoise::-webkit-slider-thumb {
+.slider-turquoise::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
@@ -102,11 +102,11 @@
   border-radius: 75px;
 }
 
-.sliderTurquoise::-webkit-slider-thumb:hover {
+.slider-turquoise::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.sliderPink {
+.slider-pink {
   margin-top: 10%;
   margin-bottom: 10%;
   height: 2px;
@@ -115,7 +115,7 @@
   background-color: black;
 }
 
-.sliderPink::-webkit-slider-thumb {
+.slider-pink::-webkit-slider-thumb {
   width: 35px;
   height: 35px;
   appearance: none;
@@ -125,6 +125,6 @@
   border-radius: 75px;
 }
 
-.sliderPink::-webkit-slider-thumb:hover {
+.slider-pink::-webkit-slider-thumb:hover {
   cursor: pointer;
 }

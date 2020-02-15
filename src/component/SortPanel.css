@@ -1,24 +1,13 @@
-.type-button.selected {
-  transition: 2s;
-  color: #FFBD08;
-  background-color: black;
+/* Colours */
+:root {
+  --yellow: #FFED05;
+  --orange: #FFBE29;
+  --green: #44E78E;
+  --turquoise: #3BF2F5;
+  --pink: #FE8DC5;
 }
 
-.type-button.selected.insertion:hover {
-  transform: scale(1);
-  background-color: black;
-  color: #FFBD08;
-}
-
-/* I think there is a better way to implement this. I think you can just disable it instead of having to re-state everything */
-/*
-.type-button.selected:hover {
-  transform: scale(1);
-  background-color: black;
-  color: transparent;
-}
-*/
-
+/* Structure */
 .component-sort-panel {
   margin-top: 10%;
   font-size: 2em;
@@ -44,12 +33,39 @@
   font-size: 1em;
 }
 
-/*
+/* Animations */
+.type-button.selected {
+  transition: 2s;
+  background-color: black;
+}
+
 .type-button:hover {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: black;
   cursor: pointer;
   transform: scale(1.05);
-  /* color: #ffed05;f
+  color: var(--yellow);
   transition: 0.5s;
 }
+
+.type-button.selected.merge {
+  color: var(--orange);
+}
+
+.type-button.selected.insertion {
+  color: var(--green);
+}
+
+.type-button.selected.insertion:hover {
+  transform: scale(1);
+  color: var(--green);
+}
+
+/* I think there is a better way to implement this. I think you can just disable it instead of having to re-state everything */
+/*
+.type-button.selected:hover {
+  transform: scale(1);
+  background-color: black;
+  color: transparent;
+}
 */
+

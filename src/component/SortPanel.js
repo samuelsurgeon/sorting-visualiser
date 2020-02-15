@@ -11,7 +11,11 @@ export default class SortPanel extends React.Component {
     this.state = { selectedButton: null };
   }
 
+  // TO-DO: In all these function calls, we're just doing the exact same thing. The code isn't DRY at al... Figure out a way to fix this.
+
   mergeClick = buttonName => {
+    this.setState({ selectedButton: buttonName.target.name });
+    this.props.selectAlgorithm(buttonName.target.name);
     //this.setState({ selectedButton: buttonName.target.name });
   }
 
@@ -23,11 +27,13 @@ export default class SortPanel extends React.Component {
   }
 
   bubbleClick = buttonName => {
-    //this.setState({ selectedButton: buttonName.target.name });
+    this.setState({ selectedButton: buttonName.target.name });
+    this.props.selectAlgorithm(buttonName.target.name);
   }
 
   heapClick = buttonName => {
-    //this.setState({ selectedButton: buttonName.target.name });
+    this.setState({ selectedButton: buttonName.target.name });
+    this.props.selectAlgorithm(buttonName.target.name);
   }
 
   render() {

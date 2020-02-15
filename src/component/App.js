@@ -9,6 +9,13 @@ import SortingVisualiser from './SortingVisualiser';
 import Stickies from './Stickies';
 import './App.css';
 
+// COLOURS
+const YELLOW = '#FFED05';
+const ORANGE = '#FFBE29';
+const GREEN = '#44E78E';
+const TURQUOISE = '#3BF2F5';
+const PINK = '#FE8DC5';
+
 // Change this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 const ANIMATION_SPEED_MS = 30;
 // This increases as the speed decreases
@@ -62,12 +69,26 @@ export default class App extends React.Component {
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
-    if (buttonName === 'suckmyass') {
-      const htmlStyle = document.documentElement;
-      htmlStyle.style.transition = '2s';
-      htmlStyle.style.backgroundColor = '#DB08FF';
+    // Remember when using the DOM to add the .style prop to the end of the initial document. call. Saves you having to call it like a million times later
+    const htmlStyle = document.documentElement.style;
+    const sliderStyler = document.querySelector('.slider::-webkit-slider-thumb').style;
+    htmlStyle.transition = '2s';
+
+
+    if (buttonName === 'merge') {
+      htmlStyle.backgroundColor = ORANGE;
+      sliderStyler.className += 'orange';
+      this.mergeSort();
     }
-    this.mergeSort();
+    if (buttonName === 'insertion') {
+      htmlStyle.backgroundColor = GREEN;
+    }
+    if (buttonName === 'bubble') {
+      htmlStyle.backgroundColor = TURQUOISE;
+    }
+    if (buttonName === 'heap') {
+      htmlStyle.backgroundColor = PINK;
+    }
     // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });
 
     // I THINK THIS SORT METHOD IS THE PROBLEM LOL :-)

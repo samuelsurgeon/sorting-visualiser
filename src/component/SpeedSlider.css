@@ -1,3 +1,8 @@
+:root {
+  --darkYellow: rgb(206, 192, 0);
+  --darkOrange: rbg(196, 147, 32);
+}
+
 .component-speed-slider {
   display: flex;
   flex-direction: column;
@@ -19,7 +24,7 @@
   width: 35px;
   height: 35px;
   appearance: none;
-  background-color: rgb(201, 187, 0);
+  background-color: var(--darkYellow);
   border: 1.5px solid black;
   border-radius: 75px;
 }

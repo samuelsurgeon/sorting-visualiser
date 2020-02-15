@@ -69,32 +69,40 @@ export default class App extends React.Component {
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
-    // Remember when using the DOM to add the .style prop to the end of the initial document. call. Saves you having to call it like a million times later
     const htmlStyle = document.documentElement.style;
-    const typeButtonStyle = document.querySelector('.type-button');
+    const typeButtonStyles = document.querySelectorAll('.type-button-yellow');
     const sliderStyle = document.querySelector('.sliderYellow');
     //const sliderStyler = document.querySelector('.slider::-webkit-slider-thumb').style;
     htmlStyle.transition = '2s';
 
-
     if (buttonName === 'merge') {
       htmlStyle.backgroundColor = ORANGE;
-      alert(typeButtonStyle);
-      // typeButtonStyle.className = 'type-button-orange selected';
-      alert(typeButtonStyle.className);
+      typeButtonStyles.forEach(element => {
+        // This code is garbage, figure out a better more succinct way to do this
+        element.getAttribute('name') === 'merge' ? element.className = 'type-button-orange selected': element.className = 'type-button-orange';
+      });
       sliderStyle.className = 'sliderOrange';
       this.mergeSort();
     }
     if (buttonName === 'insertion') {
       htmlStyle.backgroundColor = GREEN;
+      typeButtonStyles.forEach(element => {
+        element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
+      });
       sliderStyle.className = 'sliderGreen';
     }
     if (buttonName === 'bubble') {
       htmlStyle.backgroundColor = TURQUOISE;
+      typeButtonStyles.forEach(element => {
+        element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
+      });
       sliderStyle.className = 'sliderTurquoise';
     }
     if (buttonName === 'heap') {
       htmlStyle.backgroundColor = PINK;
+      typeButtonStyles.forEach(element => {
+        element.getAttribute('name') === 'heap' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
+      });
       sliderStyle.className = 'sliderPink';
     }
     // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });

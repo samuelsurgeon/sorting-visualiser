@@ -19,7 +19,7 @@
   margin-top: 4%;
 }
 
-.type-button-yellow {
+.type-button {
   position: relative;
   right: 3%;
   margin: 0 2% 2% 0;
@@ -33,13 +33,12 @@
   font-size: 1em;
 }
 
-/* Animations */
-.type-button-yellow.selected {
+.type-button.selected {
   transition: 2s;
   background-color: black;
 }
 
-.type-button-yellow:hover {
+.type-button:hover {
   background-color: black;
   cursor: pointer;
   transform: scale(1.05);
@@ -47,25 +46,131 @@
   transition: 0.5s;
 }
 
-.type-button-orange.selected {
-  color: var(--orange);
+/* We shouldn't be restating everything like this? Maybe we can just leave this almost blank instead of calling these orange etc, call them merge, insertion, etc */
+.type-button-orange {
+  position: relative;
+  right: 3%;
+  margin: 0 2% 2% 0;
+  padding: 2% 6%;
+  width: fit-content;
+  border: 1.5px solid black;
+  background-color: transparent;
+  border-radius: 75px;
+  outline: none;
+  text-align: center;
+  font-size: 1em;
 }
 
-.type-button.selected.insertion {
-  color: var(--green);
-}
-
-.type-button.selected.insertion:hover {
-  transform: scale(1);
-  color: var(--green);
-}
-
-/* I think there is a better way to implement this. I think you can just disable it instead of having to re-state everything */
-/*
-.type-button.selected:hover {
-  transform: scale(1);
+.type-button-orange:hover {
   background-color: black;
-  color: transparent;
+  cursor: pointer;
+  transform: scale(1.05);
+  color: var(--orange);
+  transition: 0.5s;
 }
-*/
 
+.type-button-orange.selected {
+  transition: 2s;
+  color: var(--orange);
+  background-color: black;
+}
+
+.type-button-orange.selected:hover {
+  transform: scale(1);  
+}
+
+.type-button-green {
+  position: relative;
+  right: 3%;
+  margin: 0 2% 2% 0;
+  padding: 2% 6%;
+  width: fit-content;
+  border: 1.5px solid black;
+  background-color: transparent;
+  border-radius: 75px;
+  outline: none;
+  text-align: center;
+  font-size: 1em;
+}
+
+.type-button-green:hover {
+  background-color: black;
+  cursor: pointer;
+  transform: scale(1.05);
+  color: var(--green);
+  transition: 0.5s;
+}
+
+.type-button-green.selected {
+  transition: 2s;
+  color: var(--green);
+  background-color: black;
+}
+
+.type-button-green.selected:hover {
+  transform: scale(1);  
+}
+
+.type-button-turquoise {
+  position: relative;
+  right: 3%;
+  margin: 0 2% 2% 0;
+  padding: 2% 6%;
+  width: fit-content;
+  border: 1.5px solid black;
+  background-color: transparent;
+  border-radius: 75px;
+  outline: none;
+  text-align: center;
+  font-size: 1em;
+}
+
+.type-button-turquoise:hover {
+  background-color: black;
+  cursor: pointer;
+  transform: scale(1.05);
+  color: var(--turquoise);
+  transition: 0.5s;
+}
+
+.type-button-turquoise.selected {
+  transition: 2s;
+  color: var(--turquoise);
+  background-color: black;
+}
+
+.type-button-turquoise.selected:hover {
+  transform: scale(1);  
+}
+
+.type-button-pink {
+  position: relative;
+  right: 3%;
+  margin: 0 2% 2% 0;
+  padding: 2% 6%;
+  width: fit-content;
+  border: 1.5px solid black;
+  background-color: transparent;
+  border-radius: 75px;
+  outline: none;
+  text-align: center;
+  font-size: 1em;
+}
+
+.type-button-pink:hover {
+  background-color: black;
+  cursor: pointer;
+  transform: scale(1.05);
+  color: var(--pink);
+  transition: 0.5s;
+}
+
+.type-button-pink.selected {
+  transition: 2s;
+  color: var(--pink);
+  background-color: black;
+}
+
+.type-button-pink.selected:hover {
+  transform: scale(1);  
+}

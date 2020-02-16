@@ -89,11 +89,11 @@ export default class App extends React.Component {
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
+    this.setState({ activeAlgorithm: buttonName });
     const htmlStyle = document.documentElement.style;
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
-    //const sliderStyler = document.querySelector('.slider::-webkit-slider-thumb').style;
     htmlStyle.transition = '2s';
 
     if (buttonName === 'merge') {
@@ -141,12 +141,15 @@ export default class App extends React.Component {
   sortButtonClick = () => {
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
 
-    if (!this.state.sortButtonClicked) {
-      buttonStyle.textContent = 'Stop';
+    if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        this.mergeSort();
+        if (this.state.activeAlgorithm === 'merge') {
+          this.mergeSort();
+          buttonStyle.textContent = 'Stop';
+        }
       });      
-    } else {
+    }
+    if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         while (setTimeoutIDs--) {
           window.clearTimeout(setTimeoutIDs);

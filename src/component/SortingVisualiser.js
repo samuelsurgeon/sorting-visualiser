@@ -19,6 +19,8 @@ export default class SortingVisualiser extends React.Component {
     this.resetArray();
   }
 
+  // If I'm using this resetArray method in the App.js file then I should declare that function in App.js and pass it down as a prop.
+  
   resetArray() {
     const array = [];
     // NUMBER_OF_ARRAY_BARS should be 65 :)
@@ -51,8 +53,6 @@ export default class SortingVisualiser extends React.Component {
             <div
               className="array-bar"
               key={idx}
-              data-height={`${value}px`}
-              data-colour={`rgba(187, 174, 0, ${value / 800}`}
               // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
               style={{height: `${value}px`}}>
             </div>
@@ -63,6 +63,7 @@ export default class SortingVisualiser extends React.Component {
   }
 }
 
+// Declaring this here? Ideally, we should pass this down from App.js or something like that :)
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);   
 }

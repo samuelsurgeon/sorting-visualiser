@@ -9,10 +9,18 @@ import SortingVisualiser from './SortingVisualiser';
 import Stickies from './Stickies';
 import './App.css';
 
+// Calling this here?
+const NUMBER_OF_ARRAY_BARS = 65;
+
+let shouldResetArray = false;
+
 // Just a hacc, figure it out later
 let setTimeoutIDs = 0;
+let timesRun = 1;
 
 // TO DO: to get the array-bar elements used getElementsByClassName, instead of querySelector. querySelector returns a nodeList (I think), but does get Elements actually return HTMLElements? Look into this
+
+// TO DO: Change the name of snapShot haha
 
 // COLOURS
 const YELLOW = '#FFED05';
@@ -49,7 +57,10 @@ export default class App extends React.Component {
   mergeSort() {
     // I want to structure my program more like the Calculator app, so get everything working, and then restructure it so these methods call in the algorithms.js file
     const animations = getMergeSortAnimations(this.state.currentArray);
-    setTimeoutIDs = animations.length;
+    // HOLY HACK!!
+    for (let i = 0; i < timesRun; i += 1) {
+      setTimeoutIDs += 1960; 
+    }
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.querySelectorAll('.array-bar');
       const isColorChange = i % 3 !== 2;
@@ -58,6 +69,7 @@ export default class App extends React.Component {
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+        console.log(setTimeout(() => {}));
         setTimeout(() => {
           barOneStyle.transition = '0s';
           barTwoStyle.transition = '0s';
@@ -72,6 +84,7 @@ export default class App extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
+    timesRun += 1;
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
@@ -126,10 +139,8 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
-    const snapShot = document.querySelectorAll('.array-bar');
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
-    
-    console.log(snapShot);
+
     if (!this.state.sortButtonClicked) {
       buttonStyle.textContent = 'Stop';
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
@@ -140,6 +151,13 @@ export default class App extends React.Component {
         while (setTimeoutIDs--) {
           window.clearTimeout(setTimeoutIDs);
         }
+        setTimeoutIDs = 0;
+      });
+      // Using this .click() method is the ultimate hack
+      document.querySelector('.new-array-button').click();
+      const arrayBars = document.querySelectorAll('.array-bar');
+      arrayBars.forEach(element => {
+        element.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
       });
       buttonStyle.textContent = 'Sort';
     }
@@ -152,13 +170,14 @@ export default class App extends React.Component {
           <Heading></Heading>
           <section className="sidebar-bottom">
             {/* selectAlgorithm and runAlgorithm? should rename these lads */}
+            {/* So I'm actually passing these lads down instead of up?? haha */}
             <SortPanel selectAlgorithm={this.sortPanelClick}></SortPanel>
             <SpeedSlider></SpeedSlider>
             <SortButton runAlgorithm={this.sortButtonClick}></SortButton>
           </section>
         </section>
         <section className="visualiser">
-          <SortingVisualiser updateArray={this.updateArray}></SortingVisualiser>
+          <SortingVisualiser resetArray={shouldResetArray} updateArray={this.updateArray}></SortingVisualiser>
           {/* maybe might move these stickies out */}
           <Stickies></Stickies>
         </section>
@@ -167,6 +186,7 @@ export default class App extends React.Component {
   }
 }
 
+// This can be used for testing...
 function arraysAreEqual(arrayOne, arrayTwo) {
   if (arrayOne.length !== arrayTwo.length) return false;
   for (let i = 0; i < arrayOne.length; i++) {

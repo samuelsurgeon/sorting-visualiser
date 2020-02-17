@@ -23,7 +23,6 @@ export default class SortingVisualiser extends React.Component {
   
   resetArray() {
     const array = [];
-    // NUMBER_OF_ARRAY_BARS should be 65 :)
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(100, 800));
     }

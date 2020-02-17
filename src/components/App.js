@@ -99,11 +99,14 @@ export default class App extends React.Component {
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
+        const heightOneStyle = arrayHeights[barOneIndex].style;
+        const heightTwoStyle = arrayHeights[barTwoIndex].style;
         const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
-
+        // heightOneStyle.color = colour;
+        // heightTwoStyle.color = colour;
         }, i * ANIMATION_SPEED_MS);
         alternate = !alternate;
       } else {
@@ -115,14 +118,10 @@ export default class App extends React.Component {
           barOneStyle.height = `${barOneHeight}px`;
           barTwoStyle.height = `${barTwoHeight}px`;
 
-          // THIS IS WHERE I'M UP TO
-          const heightOneStyle = arrayHeights[barOneIndex].style;
-          const heightTwoStyle = arrayHeights[barTwoIndex].style;
-          console.log(heightOneStyle.textContent);
-          heightOneStyle.textContent = `${barOneHeight}`;
-          heightTwoStyle.textContent = `${barTwoHeight}`;
-          heightOneStyle.textContent = 'Hi';
-          heightTwoStyle.textContent = 'Hi';
+          const heightOneElement = arrayHeights[barOneIndex];
+          const heightTwoElement = arrayHeights[barTwoIndex];
+          heightOneElement.textContent = `${barOneHeight}`;
+          heightTwoElement.textContent = `${barTwoHeight}`;
         }, i * ANIMATION_SPEED_MS);
       }
     }

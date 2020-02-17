@@ -22,7 +22,7 @@
   margin: 8px;
   margin-bottom: 0;
   min-width: 60px;
-  transition: 0.5s;
+  transition: 0.7s;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1.4px solid black;
 }
@@ -32,6 +32,9 @@
   bottom: 40px;
   font-size: 0.8em;
   text-align: center;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .button-container {

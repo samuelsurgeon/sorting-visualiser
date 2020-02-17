@@ -4,7 +4,7 @@ import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
 // Remember this should be 65! That's what it originally was
-const NUMBER_OF_ARRAY_BARS = 65;
+const NUMBER_OF_ARRAY_BARS = 12;
 
 export default class SortingVisualiser extends React.Component {
   constructor(props) {
@@ -55,6 +55,7 @@ export default class SortingVisualiser extends React.Component {
               key={idx}
               // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
               style={{height: `${value}px`}}>
+                <h1 className="bar-height">{`${value}`}</h1>
             </div>
           ))}
         </div>

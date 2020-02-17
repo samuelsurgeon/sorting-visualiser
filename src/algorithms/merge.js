@@ -20,6 +20,7 @@ function mergeSortHelper(
   doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
 }
 
+// Refactor this function, and rename it to match with how insertion sort works
 function doMerge(
   mainArray,
   startIdx,

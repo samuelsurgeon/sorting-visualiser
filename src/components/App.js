@@ -1,6 +1,7 @@
 import React from 'react';
 // Use default export ?
-import { getMergeSortAnimations } from '../algorithm/algorithm';
+import { getMergeSortAnimations } from '../algorithms/merge';
+import { getInsertionSortAnimations } from '../algorithms/insertion';
 import Heading from './Heading';
 import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
@@ -8,9 +9,6 @@ import SortButton from './SortButton';
 import SortingVisualiser from './SortingVisualiser';
 import Stickies from './Stickies';
 import './App.css';
-
-// Calling this here?
-const NUMBER_OF_ARRAY_BARS = 65;
 
 let shouldResetArray = false;
 
@@ -29,8 +27,9 @@ const GREEN = '#44E78E';
 const TURQUOISE = '#3BF2F5';
 const PINK = '#FE8DC5';
 
-// Change this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-const ANIMATION_SPEED_MS = 30;
+// TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
+// 100 MS SHOULD BE THE MAX SPEED.
+const ANIMATION_SPEED_MS = 300;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
@@ -61,7 +60,7 @@ export default class App extends React.Component {
     for (let i = 0; i < timesRun; i += 1) {
       setTimeoutIDs += 1960; 
     }
-    for (let i = 0; i < animations.length; i++) {
+    for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -69,7 +68,6 @@ export default class App extends React.Component {
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-        console.log(setTimeout(() => {}));
         setTimeout(() => {
           barOneStyle.transition = '0s';
           barTwoStyle.transition = '0s';
@@ -85,6 +83,49 @@ export default class App extends React.Component {
       }
     }
     timesRun += 1;
+  }
+
+  insertionSort() {
+    // let testArray = [3, 2, 1];
+    const animations = getInsertionSortAnimations(this.state.currentArray);
+    // This is a hack. Fix this.
+    let alternate = true;
+
+    for (let i = 0; i < animations.length; i += 1) {
+      const arrayBars = document.querySelectorAll('.array-bar');
+      const arrayHeights = document.querySelectorAll('.bar-height');
+      const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
+      if (shouldAnimateSwap) {
+        const [barOneIndex, barTwoIndex] = animations[i];
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
+        setTimeout(() => {
+        barOneStyle.backgroundColor = colour;
+        barTwoStyle.backgroundColor = colour;
+
+        }, i * ANIMATION_SPEED_MS);
+        alternate = !alternate;
+      } else {
+        setTimeout(() => {
+          const [barOneIndex, barOneHeight] = animations[i][0];
+          const [barTwoIndex, barTwoHeight] = animations[i][1];
+          const barOneStyle = arrayBars[barOneIndex].style;
+          const barTwoStyle = arrayBars[barTwoIndex].style;
+          barOneStyle.height = `${barOneHeight}px`;
+          barTwoStyle.height = `${barTwoHeight}px`;
+
+          // THIS IS WHERE I'M UP TO
+          const heightOneStyle = arrayHeights[barOneIndex].style;
+          const heightTwoStyle = arrayHeights[barTwoIndex].style;
+          console.log(heightOneStyle.textContent);
+          heightOneStyle.textContent = `${barOneHeight}`;
+          heightTwoStyle.textContent = `${barTwoHeight}`;
+          heightOneStyle.textContent = 'Hi';
+          heightTwoStyle.textContent = 'Hi';
+        }, i * ANIMATION_SPEED_MS);
+      }
+    }
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
@@ -145,6 +186,11 @@ export default class App extends React.Component {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         if (this.state.activeAlgorithm === 'merge') {
           this.mergeSort();
+          // Replace the string literal with a const; because we type it out in each one
+          buttonStyle.textContent = 'Stop';
+        }
+        if (this.state.activeAlgorithm === 'insertion') {
+          this.insertionSort();
           buttonStyle.textContent = 'Stop';
         }
       });      

@@ -37,10 +37,10 @@ export default class SortPanel extends React.Component {
             Bubble
           </button>
           <button
-            name="heap"
+            name="selection"
             className="type-button"
             onClick={this.handleClick}>
-            Heap
+            Selection
           </button>
         </section>
       </section>

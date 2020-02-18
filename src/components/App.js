@@ -2,6 +2,7 @@ import React from 'react';
 // Use default export ?
 import { getMergeSortAnimations } from '../algorithms/merge';
 import { getInsertionSortAnimations } from '../algorithms/insertion';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
 import Heading from './Heading';
 import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
@@ -53,6 +54,7 @@ export default class App extends React.Component {
     }
   }
 
+  // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it
   mergeSort() {
     // I want to structure my program more like the Calculator app, so get everything working, and then restructure it so these methods call in the algorithms.js file
     const animations = getMergeSortAnimations(this.state.currentArray);
@@ -97,16 +99,52 @@ export default class App extends React.Component {
       const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
       if (shouldAnimateSwap) {
         const [barOneIndex, barTwoIndex] = animations[i];
+        console.log(animations[i]);
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
-        const heightOneStyle = arrayHeights[barOneIndex].style;
-        const heightTwoStyle = arrayHeights[barTwoIndex].style;
         const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
-        // heightOneStyle.color = colour;
-        // heightTwoStyle.color = colour;
+        }, i * ANIMATION_SPEED_MS);
+        alternate = !alternate;
+      } else {
+        setTimeout(() => {
+          const [barOneIndex, barOneHeight] = animations[i][0];
+          const [barTwoIndex, barTwoHeight] = animations[i][1];
+          const barOneStyle = arrayBars[barOneIndex].style;
+          const barTwoStyle = arrayBars[barTwoIndex].style;
+          barOneStyle.height = `${barOneHeight}px`;
+          barTwoStyle.height = `${barTwoHeight}px`;
+
+          const heightOneElement = arrayHeights[barOneIndex];
+          const heightTwoElement = arrayHeights[barTwoIndex];
+          heightOneElement.textContent = `${barOneHeight}`;
+          heightTwoElement.textContent = `${barTwoHeight}`;
+        }, i * ANIMATION_SPEED_MS);
+      }
+    }
+  }
+
+  bubbleSort() {
+    // let testArray = [3, 2, 1];
+    const animations = getBubbleSortAnimations(this.state.currentArray);
+    // This is a hack. Fix this.
+    let alternate = true;
+
+    for (let i = 0; i < animations.length; i += 1) {
+      const arrayBars = document.querySelectorAll('.array-bar');
+      const arrayHeights = document.querySelectorAll('.bar-height');
+      const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
+
+      if (shouldAnimateSwap) {
+        const [barOneIndex, barTwoIndex] = animations[i];
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
+        setTimeout(() => {
+        barOneStyle.backgroundColor = colour;
+        barTwoStyle.backgroundColor = colour;
         }, i * ANIMATION_SPEED_MS);
         alternate = !alternate;
       } else {
@@ -162,10 +200,10 @@ export default class App extends React.Component {
       sliderStyle.className = 'slider-turquoise';
       sortButtonStyle.className = 'sort-button-turquoise';
     }
-    if (buttonName === 'heap') {
+    if (buttonName === 'selection') {
       htmlStyle.backgroundColor = PINK;
       typeButtonStyles.forEach(element => {
-        element.getAttribute('name') === 'heap' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
+        element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
       });
       sliderStyle.className = 'slider-pink';
       sortButtonStyle.className = 'sort-button-pink';
@@ -183,14 +221,16 @@ export default class App extends React.Component {
 
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
+        buttonStyle.textContent = 'Stop';
         if (this.state.activeAlgorithm === 'merge') {
           this.mergeSort();
           // Replace the string literal with a const; because we type it out in each one
-          buttonStyle.textContent = 'Stop';
         }
         if (this.state.activeAlgorithm === 'insertion') {
           this.insertionSort();
-          buttonStyle.textContent = 'Stop';
+        }
+        if (this.state.activeAlgorithm === 'bubble') {
+          this.bubbleSort();
         }
       });      
     }

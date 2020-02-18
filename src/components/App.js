@@ -170,6 +170,7 @@ export default class App extends React.Component {
   }
 
   selectionSort() {
+    
     // let testArray = [3, 2, 1];
     const animations = getSelectionSortAnimations(this.state.currentArray);
     // This is a hack. Fix this.
@@ -182,6 +183,7 @@ export default class App extends React.Component {
       const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
 
       if (shouldAnimateSwap) {
+        //console.log(animations);
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -193,7 +195,7 @@ export default class App extends React.Component {
         alternate = !alternate;
       } else {
         setTimeout(() => {
-          console.log('YES BITCH: ' + animations[i]);
+          //console.log('YES BITCH: ' + animations[i]);
           const [barOneIndex, barOneHeight] = animations[i][0];
           const [barTwoIndex, barTwoHeight] = animations[i][1];
           const barOneStyle = arrayBars[barOneIndex].style;

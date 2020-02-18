@@ -3,6 +3,7 @@ import React from 'react';
 import { getMergeSortAnimations } from '../algorithms/merge';
 import { getInsertionSortAnimations } from '../algorithms/insertion';
 import { getBubbleSortAnimations } from '../algorithms/bubble';
+import { getSelectionSortAnimations } from '../algorithms/selection';
 import Heading from './Heading';
 import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
@@ -30,7 +31,7 @@ const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 // 100 MS SHOULD BE THE MAX SPEED.
-const ANIMATION_SPEED_MS = 300;
+const ANIMATION_SPEED_MS = 250;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
@@ -54,7 +55,7 @@ export default class App extends React.Component {
     }
   }
 
-  // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it
+  // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   mergeSort() {
     // I want to structure my program more like the Calculator app, so get everything working, and then restructure it so these methods call in the algorithms.js file
     const animations = getMergeSortAnimations(this.state.currentArray);
@@ -97,6 +98,8 @@ export default class App extends React.Component {
       const arrayBars = document.querySelectorAll('.array-bar');
       const arrayHeights = document.querySelectorAll('.bar-height');
       const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
+      
+      // Logic backwards?
       if (shouldAnimateSwap) {
         const [barOneIndex, barTwoIndex] = animations[i];
         console.log(animations[i]);
@@ -137,6 +140,7 @@ export default class App extends React.Component {
       const arrayHeights = document.querySelectorAll('.bar-height');
       const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
 
+      // Logic backwards?
       if (shouldAnimateSwap) {
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
@@ -149,6 +153,47 @@ export default class App extends React.Component {
         alternate = !alternate;
       } else {
         setTimeout(() => {
+          const [barOneIndex, barOneHeight] = animations[i][0];
+          const [barTwoIndex, barTwoHeight] = animations[i][1];
+          const barOneStyle = arrayBars[barOneIndex].style;
+          const barTwoStyle = arrayBars[barTwoIndex].style;
+          barOneStyle.height = `${barOneHeight}px`;
+          barTwoStyle.height = `${barTwoHeight}px`;
+
+          const heightOneElement = arrayHeights[barOneIndex];
+          const heightTwoElement = arrayHeights[barTwoIndex];
+          heightOneElement.textContent = `${barOneHeight}`;
+          heightTwoElement.textContent = `${barTwoHeight}`;
+        }, i * ANIMATION_SPEED_MS);
+      }
+    }
+  }
+
+  selectionSort() {
+    // let testArray = [3, 2, 1];
+    const animations = getSelectionSortAnimations(this.state.currentArray);
+    // This is a hack. Fix this.
+    let alternate = true;
+
+    for (let i = 0; i < animations.length; i += 1) {
+      const arrayBars = document.querySelectorAll('.array-bar');
+      const arrayHeights = document.querySelectorAll('.bar-height');
+      // The name of this is confusing? It should be shouldntAnimateSwap lol, rework the entire code piece
+      const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
+
+      if (shouldAnimateSwap) {
+        const [barOneIndex, barTwoIndex] = animations[i];
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
+        setTimeout(() => {
+        barOneStyle.backgroundColor = colour;
+        barTwoStyle.backgroundColor = colour;
+        }, i * ANIMATION_SPEED_MS);
+        alternate = !alternate;
+      } else {
+        setTimeout(() => {
+          console.log('YES BITCH: ' + animations[i]);
           const [barOneIndex, barOneHeight] = animations[i][0];
           const [barTwoIndex, barTwoHeight] = animations[i][1];
           const barOneStyle = arrayBars[barOneIndex].style;
@@ -222,16 +267,11 @@ export default class App extends React.Component {
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         buttonStyle.textContent = 'Stop';
-        if (this.state.activeAlgorithm === 'merge') {
-          this.mergeSort();
-          // Replace the string literal with a const; because we type it out in each one
-        }
-        if (this.state.activeAlgorithm === 'insertion') {
-          this.insertionSort();
-        }
-        if (this.state.activeAlgorithm === 'bubble') {
-          this.bubbleSort();
-        }
+        // Replace the string literal with a const; because we type it out in each one
+        if (this.state.activeAlgorithm === 'merge') this.mergeSort();
+        if (this.state.activeAlgorithm === 'insertion') this.insertionSort();
+        if (this.state.activeAlgorithm === 'bubble') this.bubbleSort();
+        if (this.state.activeAlgorithm === 'selection') this.selectionSort();
       });      
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {

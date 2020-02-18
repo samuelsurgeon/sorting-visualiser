@@ -2,7 +2,7 @@ export function getSelectionSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
   selectionSort(array, animations);
-  return animations;
+  return array;
 }
 
 function selectionSort(array, animations) {
@@ -10,12 +10,16 @@ function selectionSort(array, animations) {
   while (currentIndex < array.length - 1) {
     let smallestIndex = currentIndex;
     for (let i = currentIndex + 1; i < array.length; i += 1) {
+      console.log(`smallest: ${smallestIndex}, curr: ${i}`);
+      //animate(smallestIndex, currentIndex, array, animations);
       if (array[smallestIndex] > array[i]) {
         smallestIndex = i;
       }
     }
+    // console.log(`to swap: curr: ${currentIndex}, smallest: ${smallestIndex}`);
     swap(currentIndex, smallestIndex, array);
     currentIndex += 1;
+    animateSwap(currentIndex, smallestIndex, array, animations);
   }
   // return array;
 }
@@ -26,8 +30,11 @@ function swap(i, j, array) {
   array[j] = hold;
 }
 
-function animate(i, j, array, animations) {
+function animateHighlight(i, j, array, animations) {
   animations.push([i, j]);
+  animations.push([i, j]);
+}
+
+function animateSwap(i, j, array, animations) {
   animations.push([[i, array[i]], [j, array[j]]]);
-  animations.push([i, j]);
 }

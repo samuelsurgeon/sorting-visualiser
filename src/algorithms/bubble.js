@@ -31,6 +31,7 @@ function swap(i, j, array) {
   array[j] = hold;
 }
 
+// This should be split up into two different methods. SRP. Maybe?
 function animate(i, j, array, animations) {
   animations.push([i, j]);
   animations.push([[i, array[i]], [j, array[j]]]);

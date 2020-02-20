@@ -30,8 +30,8 @@ const TURQUOISE = '#3BF2F5';
 const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-// 100 MS SHOULD BE THE MAX SPEED.
-const ANIMATION_SPEED_MS = 250;
+// 250 was the last set speed here.
+const ANIMATION_SPEED_MS = 10000;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
@@ -57,8 +57,8 @@ export default class App extends React.Component {
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   mergeSort() {
-    // I want to structure my program more like the Calculator app, so get everything working, and then restructure it so these methods call in the algorithms.js file
     const animations = getMergeSortAnimations(this.state.currentArray);
+    console.log(animations);
     // HOLY HACK!!
     for (let i = 0; i < timesRun; i += 1) {
       setTimeoutIDs += 1960; 
@@ -102,7 +102,6 @@ export default class App extends React.Component {
       // Logic backwards?
       if (shouldAnimateSwap) {
         const [barOneIndex, barTwoIndex] = animations[i];
-        console.log(animations[i]);
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
         const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;

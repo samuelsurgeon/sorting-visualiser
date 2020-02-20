@@ -32,47 +32,53 @@ function doMerge(
   let k = startIdx;
   let i = startIdx;
   let j = middleIdx + 1;
+  console.log(animations);
   while (i <= middleIdx && j <= endIdx) {
-    // These are the values that we're comparing; we push them once
-    // to change their color.
+    animations.push([i, j]);    
     animations.push([i, j]);
-    // These are the values that we're comparing; we push them a second
-    // time to revert their color.
-    animations.push([i, j]);
+
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-      // We overwrite the value at index k in the original array with the
-      // value at index i in the auxiliary array.
-      animations.push([k, auxiliaryArray[i]]);
+      // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
+      // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
+      if (typeof animations[animations.length - 1][0] === 'object') {
+        animations[animations.length - 1].push([k, auxiliaryArray[i]]);
+      } else {
+        animations.push([[k, auxiliaryArray[i]]]);
+      }
+      //animations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {
-      // We overwrite the value at index k in the original array with the
-      // value at index j in the auxiliary array.
-      animations.push([k, auxiliaryArray[j]]);
+      if (typeof animations[animations.length - 1][0] === 'object') {
+        animations[animations.length - 1].push([k, auxiliaryArray[j]]);
+      } else {
+        animations.push([[k, auxiliaryArray[j]]]);
+      }
+      //animations.push([k, auxiliaryArray[j]]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
   while (i <= middleIdx) {
-    // These are the values that we're comparing; we push them once
-    // to change their color.
     animations.push([i, i]);
-    // These are the values that we're comparing; we push them a second
-    // time to revert their color.
     animations.push([i, i]);
-    // We overwrite the value at index k in the original array with the
-    // value at index i in the auxiliary array.
-    animations.push([k, auxiliaryArray[i]]);
+
+    if (typeof animations[animations.length - 1][0] === 'object') {
+      animations[animations.length - 1].push([k, auxiliaryArray[i]]);
+    } else {
+      animations.push([[k, auxiliaryArray[i]]]);
+    }
+    //animations.push([k, auxiliaryArray[i]]);
     mainArray[k++] = auxiliaryArray[i++];
   }
   while (j <= endIdx) {
-    // These are the values that we're comparing; we push them once
-    // to change their color.
     animations.push([j, j]);
-    // These are the values that we're comparing; we push them a second
-    // time to revert their color.
     animations.push([j, j]);
-    // We overwrite the value at index k in the original array with the
-    // value at index j in the auxiliary array.
-    animations.push([k, auxiliaryArray[j]]);
+
+    if (typeof animations[animations.length - 1][0] === 'object') {
+      animations[animations.length - 1].push([k, auxiliaryArray[j]]);
+    } else {
+      animations.push([[k, auxiliaryArray[j]]]);
+    }
+    //animations.push([k, auxiliaryArray[j]]);
     mainArray[k++] = auxiliaryArray[j++];
   }
 }

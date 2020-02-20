@@ -1,8 +1,11 @@
 export function getMergeSortAnimations(array) {
   const animations = [];
+  const highlightAnimations = [];
+  const swapAnimations = [];
   if (array.length <= 1) return array;
   const auxiliaryArray = array.slice();
-  mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
+  mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, highlightAnimations, swapAnimations);
+  combineAnimationArrays(highlightAnimations, swapAnimations, animations);
   return animations;
 }
 
@@ -11,13 +14,14 @@ function mergeSortHelper(
   startIdx,
   endIdx,
   auxiliaryArray,
-  animations,
+  highlightAnimations,
+  swapAnimations
 ) {
   if (startIdx === endIdx) return;
   const middleIdx = Math.floor((startIdx + endIdx) / 2);
-  mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
-  mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
-  doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
+  mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, highlightAnimations, swapAnimations);
+  mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, highlightAnimations, swapAnimations);
+  doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, highlightAnimations, swapAnimations);
 }
 
 // Refactor this function, and rename it to match with how insertion sort works
@@ -27,58 +31,47 @@ function doMerge(
   middleIdx,
   endIdx,
   auxiliaryArray,
-  animations,
+  highlightAnimations,
+  swapAnimations
 ) {
   let k = startIdx;
   let i = startIdx;
   let j = middleIdx + 1;
 
-  // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
+  // TO DO: Make it so that the highlight animation doesn't unhighlight (!) until after the swap has happened
   // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
 
   while (i <= middleIdx && j <= endIdx) {
-    //animations.push([i, j]);    
-    //animations.push([i, j]);
-
+    highlightAnimations.push([i, j]);
+    highlightAnimations.push([i, j]);
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-      if (animations[animations.length - 1].length !== 0) {
-        console.log('we can do this which we cant');
-      }
-      if (typeof animations[animations.length - 1] === 'undefined') {
-        animations.push([[k, auxiliaryArray[i]]]); 
-      } else {
-        animations[animations.length - 1].push('HI');
-      }
-      //animations.push([k, auxiliaryArray[i]]);
+      swapAnimations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {
-      animations.push([[k, auxiliaryArray[j]]]);
-      //animations.push([k, auxiliaryArray[j]]);
+      swapAnimations.push([k, auxiliaryArray[j]]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
   while (i <= middleIdx) {
-    //animations.push([i, i]);
-    //animations.push([i, i]);
-
-    if (typeof animations[animations.length - 1][0] === 'object') {
-      animations[animations.length - 1].push([k, auxiliaryArray[i]]);
-    } else {
-      animations.push([[k, auxiliaryArray[i]]]);
-    }
-    //animations.push([k, auxiliaryArray[i]]);
+    highlightAnimations.push([i, i]);
+    highlightAnimations.push([i, i]);
+    swapAnimations.push([k, auxiliaryArray[i]]);
     mainArray[k++] = auxiliaryArray[i++];
   }
   while (j <= endIdx) {
-    //animations.push([j, j]);
-    //animations.push([j, j]);
-
-    if (typeof animations[animations.length - 1][0] === 'object') {
-      animations[animations.length - 1].push([k, auxiliaryArray[j]]);
-    } else {
-      animations.push([[k, auxiliaryArray[j]]]);
-    }
-    //animations.push([k, auxiliaryArray[j]]);
+    highlightAnimations.push([j, j]);
+    highlightAnimations.push([j, j]);
+    swapAnimations.push([k, auxiliaryArray[j]]);
     mainArray[k++] = auxiliaryArray[j++];
+  }
+}
+
+function combineAnimationArrays(highlightArray, swapArray, animations) {
+  while (swapArray.length !== 0) {
+    let left = swapArray.shift();
+    let right = swapArray.shift();
+    animations.push(highlightArray.shift());
+    animations.push(highlightArray.shift());
+    animations.push([left, right]);
   }
 }

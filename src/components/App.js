@@ -30,12 +30,12 @@ const TURQUOISE = '#3BF2F5';
 const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-// 250 was the last set speed here.
-const ANIMATION_SPEED_MS = 10000;
+//  250 was the last set speed here.
+const ANIMATION_SPEED_MS = 2500;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
-// Colour*
+// Colour
 let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
 const SECONDARY_COLOR = 'white';
 // let arrayBars = document.getElementsByClassName('array-bar');

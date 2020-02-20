@@ -31,7 +31,7 @@ const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 //  250 was the last set speed here.
-const ANIMATION_SPEED_MS = 2500;
+const ANIMATION_SPEED_MS = 1000;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
@@ -58,41 +58,50 @@ export default class App extends React.Component {
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
-    console.log(animations);
-    /*
+    // fix this hack
+    let alternate = true;
     // HOLY HACK!!
     for (let i = 0; i < timesRun; i += 1) {
       setTimeoutIDs += 1960; 
     }
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
-      const isColorChange = i % 3 !== 2;
-      if (isColorChange) {
+      const arrayHeights = document.querySelectorAll('.bar-height');
+      const animateHighlight = typeof animations[i][0] === 'object' ? false : true;
+
+      if (animateHighlight) {
         const [barOneIdx, barTwoIdx] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
         setTimeout(() => {
-          barOneStyle.transition = '0s';
-          barTwoStyle.transition = '0s';
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
+          barOneStyle.backgroundColor = colour;
+          barTwoStyle.backgroundColor = colour;
         }, i * ANIMATION_SPEED_MS);
+        alternate = !alternate;
       } else {
         setTimeout(() => {
-          const [barOneIdx, newHeight] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight}px`;
+          const [barOneIndex, barOneHeight] = animations[i][0];
+          const [barTwoIndex, barTwoHeight] = animations[i][1];
+          const barOneStyle = arrayBars[barOneIndex].style;
+          const barTwoStyle = arrayBars[barTwoIndex].style;
+          barOneStyle.height = `${barOneHeight}px`;
+          barTwoStyle.height = `${barTwoHeight}px`;
+
+          const heightOneElement = arrayHeights[barOneIndex];
+          const heightTwoElement = arrayHeights[barTwoIndex];
+          heightOneElement.textContent = `${barOneHeight}`;
+          heightTwoElement.textContent = `${barTwoHeight}`;
         }, i * ANIMATION_SPEED_MS);
       }
     }
     timesRun += 1;
-    */
   }
 
   insertionSort() {
     // let testArray = [3, 2, 1];
     const animations = getInsertionSortAnimations(this.state.currentArray);
+    console.log(animations);
     // This is a hack. Fix this.
     let alternate = true;
 

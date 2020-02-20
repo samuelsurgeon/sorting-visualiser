@@ -40,7 +40,12 @@ function doMerge(
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
       // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
       // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
-      animations.push([[k, auxiliaryArray[i]]]);
+      if (animations[animations.length - 1][1]) {
+        animations[animations.length - 1][1].push('HI');
+      } else {
+        animations.push([[k, auxiliaryArray[i]]]); 
+      }
+      animations.push([[k, auxiliaryArray[i]]]); 
       //animations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {

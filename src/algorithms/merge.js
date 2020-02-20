@@ -33,19 +33,22 @@ function doMerge(
   let i = startIdx;
   let j = middleIdx + 1;
 
+  // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
+  // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
+
   while (i <= middleIdx && j <= endIdx) {
     //animations.push([i, j]);    
     //animations.push([i, j]);
 
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-      // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
-      // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
-      if (animations[animations.length - 1][1]) {
-        animations[animations.length - 1][1].push('HI');
-      } else {
-        animations.push([[k, auxiliaryArray[i]]]); 
+      if (animations[animations.length - 1].length !== 0) {
+        console.log('we can do this which we cant');
       }
-      animations.push([[k, auxiliaryArray[i]]]); 
+      if (typeof animations[animations.length - 1] === 'undefined') {
+        animations.push([[k, auxiliaryArray[i]]]); 
+      } else {
+        animations[animations.length - 1].push('HI');
+      }
       //animations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {

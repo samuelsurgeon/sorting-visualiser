@@ -32,34 +32,26 @@ function doMerge(
   let k = startIdx;
   let i = startIdx;
   let j = middleIdx + 1;
-  console.log(animations);
+
   while (i <= middleIdx && j <= endIdx) {
-    animations.push([i, j]);    
-    animations.push([i, j]);
+    //animations.push([i, j]);    
+    //animations.push([i, j]);
 
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
       // TO DO: turn animations[animations.length - 1][0] into a variable (with good semantics) and call it instead of hard typing this code :)
       // ALSO: just rewrite ALL this code, refactor it, because it sucks and doesn't make sense :)
-      if (typeof animations[animations.length - 1][0] === 'object') {
-        animations[animations.length - 1].push([k, auxiliaryArray[i]]);
-      } else {
-        animations.push([[k, auxiliaryArray[i]]]);
-      }
+      animations.push([[k, auxiliaryArray[i]]]);
       //animations.push([k, auxiliaryArray[i]]);
       mainArray[k++] = auxiliaryArray[i++];
     } else {
-      if (typeof animations[animations.length - 1][0] === 'object') {
-        animations[animations.length - 1].push([k, auxiliaryArray[j]]);
-      } else {
-        animations.push([[k, auxiliaryArray[j]]]);
-      }
+      animations.push([[k, auxiliaryArray[j]]]);
       //animations.push([k, auxiliaryArray[j]]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
   while (i <= middleIdx) {
-    animations.push([i, i]);
-    animations.push([i, i]);
+    //animations.push([i, i]);
+    //animations.push([i, i]);
 
     if (typeof animations[animations.length - 1][0] === 'object') {
       animations[animations.length - 1].push([k, auxiliaryArray[i]]);
@@ -70,8 +62,8 @@ function doMerge(
     mainArray[k++] = auxiliaryArray[i++];
   }
   while (j <= endIdx) {
-    animations.push([j, j]);
-    animations.push([j, j]);
+    //animations.push([j, j]);
+    //animations.push([j, j]);
 
     if (typeof animations[animations.length - 1][0] === 'object') {
       animations[animations.length - 1].push([k, auxiliaryArray[j]]);

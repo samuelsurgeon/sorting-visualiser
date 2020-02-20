@@ -59,6 +59,7 @@ export default class App extends React.Component {
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
     console.log(animations);
+    /*
     // HOLY HACK!!
     for (let i = 0; i < timesRun; i += 1) {
       setTimeoutIDs += 1960; 
@@ -86,6 +87,7 @@ export default class App extends React.Component {
       }
     }
     timesRun += 1;
+    */
   }
 
   insertionSort() {

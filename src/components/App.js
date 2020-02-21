@@ -61,6 +61,10 @@ export default class App extends React.Component {
     // This is a hack. Fix this.
     let alternate = true;
 
+    for (let i = 0; i < timesRun; i += 1) {
+      setTimeoutIDs += 1960;
+    };
+
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
       const arrayHeights = document.querySelectorAll('.bar-height');
@@ -93,6 +97,21 @@ export default class App extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
+    let timer = animations.length;
+    alternate = false;
+    for (let x = 0; x < 2; x += 1) {
+      setTimeout(() => {
+        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
+        const arrayBars = document.querySelectorAll('.array-bar');
+        let max = arrayBars.length;
+        for (let i = 0; i < max; i += 1) {
+          arrayBars[i].style.backgroundColor = colour;
+        }
+        console.log(colour);
+        alternate = !alternate;
+      }, animations.length++ * ANIMATION_SPEED_MS);
+    }
+    timesRun += 1;
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that

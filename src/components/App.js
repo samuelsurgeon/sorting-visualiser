@@ -1,9 +1,8 @@
 import React from 'react';
 // Use default export ?
-import { getMergeSortAnimations } from '../algorithms/merge';
 import { getInsertionSortAnimations } from '../algorithms/insertion';
-import { getBubbleSortAnimations } from '../algorithms/bubble';
 import { getSelectionSortAnimations } from '../algorithms/selection';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
 import Heading from './Heading';
 import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
@@ -56,49 +55,6 @@ export default class App extends React.Component {
   }
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
-  mergeSort() {
-    const animations = getMergeSortAnimations(this.state.currentArray);
-    console.log(animations);
-    // fix this hack
-    let alternate = true;
-    // HOLY HACK!!
-    for (let i = 0; i < timesRun; i += 1) {
-      setTimeoutIDs += 1960; 
-    }
-    for (let i = 0; i < animations.length; i += 1) {
-      const arrayBars = document.querySelectorAll('.array-bar');
-      const arrayHeights = document.querySelectorAll('.bar-height');
-      const animateHighlight = typeof animations[i][0] === 'object' ? false : true;
-
-      if (animateHighlight) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
-        setTimeout(() => {
-          barOneStyle.backgroundColor = colour;
-          barTwoStyle.backgroundColor = colour;
-        }, i * ANIMATION_SPEED_MS);
-        alternate = !alternate;
-      } else {
-        setTimeout(() => {
-          const [barOneIndex, barOneHeight] = animations[i][0];
-          const [barTwoIndex, barTwoHeight] = animations[i][1];
-          const barOneStyle = arrayBars[barOneIndex].style;
-          const barTwoStyle = arrayBars[barTwoIndex].style;
-          barOneStyle.height = `${barOneHeight}px`;
-          barTwoStyle.height = `${barTwoHeight}px`;
-
-          const heightOneElement = arrayHeights[barOneIndex];
-          const heightTwoElement = arrayHeights[barTwoIndex];
-          heightOneElement.textContent = `${barOneHeight}`;
-          heightTwoElement.textContent = `${barTwoHeight}`;
-        }, i * ANIMATION_SPEED_MS);
-      }
-    }
-    timesRun += 1;
-  }
-
   insertionSort() {
     // let testArray = [3, 2, 1];
     const animations = getInsertionSortAnimations(this.state.currentArray);
@@ -232,15 +188,6 @@ export default class App extends React.Component {
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     htmlStyle.transition = '2s';
 
-    if (buttonName === 'merge') {
-      htmlStyle.backgroundColor = ORANGE;
-      typeButtonStyles.forEach(element => {
-        // This code is garbage, figure out a better more succinct way to do this
-        element.getAttribute('name') === 'merge' ? element.className = 'type-button-orange selected': element.className = 'type-button-orange';
-      });
-      sliderStyle.className = 'slider-orange';
-      sortButtonStyle.className = 'sort-button-orange';
-    }
     if (buttonName === 'insertion') {
       htmlStyle.backgroundColor = GREEN;
       typeButtonStyles.forEach(element => {
@@ -281,7 +228,6 @@ export default class App extends React.Component {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         buttonStyle.textContent = 'Stop';
         // Replace the string literal with a const; because we type it out in each one
-        if (this.state.activeAlgorithm === 'merge') this.mergeSort();
         if (this.state.activeAlgorithm === 'insertion') this.insertionSort();
         if (this.state.activeAlgorithm === 'bubble') this.bubbleSort();
         if (this.state.activeAlgorithm === 'selection') this.selectionSort();

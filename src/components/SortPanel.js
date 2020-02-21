@@ -18,12 +18,6 @@ export default class SortPanel extends React.Component {
       <section className="component-sort-panel">
         Sort type
         <section className="buttons-container">
-          <button 
-            name="merge"
-            className="type-button"
-            onClick={this.handleClick}>
-            Merge
-          </button>
           <button
             name="insertion"
             className="type-button"

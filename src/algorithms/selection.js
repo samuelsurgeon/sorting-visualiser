@@ -10,7 +10,6 @@ function selectionSort(array, animations) {
   while (currentIndex < array.length - 1) {
     let smallestIndex = currentIndex;
     for (let i = currentIndex + 1; i < array.length; i += 1) {
-      console.log(`smallest: ${smallestIndex}, curr: ${i}`);
       animateHighlight(smallestIndex, i, animations);
       //animate(smallestIndex, currentIndex, array, animations);
       if (array[smallestIndex] > array[i]) {
@@ -36,6 +35,5 @@ function animateHighlight(i, j, animations) {
 }
 
 function animateSwap(i, j, array, animations) {
-  console.log(`swapped values: curr: ${i}: ${array[i]}, smallest: ${j}: ${array[j]}`);
   animations.push([[i, array[i]], [j, array[j]]]);
 }

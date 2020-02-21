@@ -31,7 +31,7 @@ const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 //  250 was the last set speed here.
-const ANIMATION_SPEED_MS = 1000;
+const ANIMATION_SPEED_MS = 2500;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
@@ -58,6 +58,7 @@ export default class App extends React.Component {
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.currentArray);
+    console.log(animations);
     // fix this hack
     let alternate = true;
     // HOLY HACK!!

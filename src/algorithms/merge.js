@@ -70,8 +70,8 @@ function combineAnimationArrays(highlightArray, swapArray, animations) {
   while (swapArray.length !== 0) {
     let left = swapArray.shift();
     let right = swapArray.shift();
-    animations.push(highlightArray.shift());
+    //animations.push(highlightArray.shift());
     animations.push([left, right]);
-    animations.push(highlightArray.shift());
+    //animations.push(highlightArray.shift());
   }
 }

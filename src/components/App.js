@@ -30,7 +30,7 @@ const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 //  250 was the last set speed here.
-const ANIMATION_SPEED_MS = 2500;
+const ANIMATION_SPEED_MS = 250;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 

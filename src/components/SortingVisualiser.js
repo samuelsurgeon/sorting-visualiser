@@ -22,6 +22,13 @@ export default class SortingVisualiser extends React.Component {
   // If I'm using this resetArray method in the App.js file then I should declare that function in App.js and pass it down as a prop.
   
   resetArray() {
+    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
+    sortButtonStyle.textContent = 'Sort';
+    const arrayBars = document.querySelectorAll('.array-bar');
+    const max = arrayBars.length;
+    for (let i = 0; i < max; i += 1) {
+      arrayBars[i].style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    }
     const array = [];
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(100, 800));

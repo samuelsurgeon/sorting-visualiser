@@ -102,6 +102,8 @@ export default class App extends React.Component {
       for (let i = 0; i < max; i += 1) {
         arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
       }
+      const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
+      sortButtonStyle.textContent = 'Reset';      
     }, animations.length * ANIMATION_SPEED_MS);
   timesRun += 1;
   }
@@ -149,6 +151,7 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
+    // Why did I call it like this? Maybe just class it with ('.sort-button');
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
 
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {

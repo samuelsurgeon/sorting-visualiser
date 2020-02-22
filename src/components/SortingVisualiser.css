@@ -1,3 +1,9 @@
+/*
+button {
+  background-image: url(../images/newArrayButton.png);
+}
+*/
+
 .component-sorting-visualiser {
   display: flex;
   flex-direction: column;
@@ -43,19 +49,18 @@
   width: 98.5%;
 }
 
-.new-array-button {
-  width: 40px;
-}
-
-.new-array-button:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-  cursor: pointer;
-}
-
 .info-button {
+  font-size: 2em;
+  background-color: transparent;
+  border: 1.5px solid black;
+  border-radius: 75px;
+  outline: none;
   margin-left: 1.5%;
-  width: 40px;
+  /*
+  padding: 2%;
+  */
+  width: 60px;
+  height: 60px;
 }
 
 .info-button:hover {

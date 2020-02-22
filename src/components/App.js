@@ -37,27 +37,24 @@ const TRANSITION_SPEED = 0.2;
 // Colour
 let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
 const SECONDARY_COLOR = 'white';
+
 // let arrayBars = document.getElementsByClassName('array-bar');
 
 export default class App extends React.Component {
   state = {
     activeAlgorithm: null,
     currentArray: null,
-    sortButtonClicked: false
+    sortButtonClicked: false,
   };
 
   updateArray = array => {
-    if (array.length === 0) {
-      console.log('In App.js failed');
-    } else {
-      this.setState({ currentArray: array });
-    }
+    this.setState({ currentArray: array, sortButtonClicked: false });
   }
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   runSortAnimations(sortAnimations) {
     const animations = sortAnimations;
-    // This is a hack. Fix this.
+    // This is a hack. Fix this. If this the only solution, this variable should be kept in the state
     let alternate = true;
 
     for (let i = 0; i < timesRun; i += 1) {
@@ -103,7 +100,7 @@ export default class App extends React.Component {
         arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
-      sortButtonStyle.textContent = 'Reset';      
+      sortButtonStyle.textContent = 'Reset';
     }, animations.length * ANIMATION_SPEED_MS);
   timesRun += 1;
   }
@@ -140,8 +137,7 @@ export default class App extends React.Component {
         element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
       });
       sliderStyle.className = 'slider-pink';
-      sortButtonStyle.className = 'sort-button-pink';
-    }
+      sortButtonStyle.className = 'sort-button-pink'; }
     // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });
 
     // I THINK THIS SORT METHOD IS THE PROBLEM LOL :-)
@@ -151,9 +147,8 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
-    // Why did I call it like this? Maybe just class it with ('.sort-button');
+    // If I try calling this normally it doesn't work. Why?
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
-
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         buttonStyle.textContent = 'Stop';
@@ -169,12 +164,6 @@ export default class App extends React.Component {
           window.clearTimeout(setTimeoutIDs);
         }
         setTimeoutIDs = 0;
-      });
-      // Using this .click() method is the ultimate hack
-      document.querySelector('.new-array-button').click();
-      const arrayBars = document.querySelectorAll('.array-bar');
-      arrayBars.forEach(element => {
-        element.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
       });
       buttonStyle.textContent = 'Sort';
     }
@@ -194,7 +183,9 @@ export default class App extends React.Component {
           </section>
         </section>
         <section className="visualiser">
-          <SortingVisualiser resetArray={shouldResetArray} updateArray={this.updateArray}></SortingVisualiser>
+          <SortingVisualiser 
+            resetArray={shouldResetArray}
+            updateArray={this.updateArray}></SortingVisualiser>
           {/* maybe might move these stickies out */}
           <Stickies></Stickies>
         </section>

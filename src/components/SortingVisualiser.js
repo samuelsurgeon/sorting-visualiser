@@ -1,10 +1,10 @@
 import React from 'react';
-import newArrayIcon from '../image/newArrayButton.png';
-import infoIcon from '../image/infoButton.png';
+//import newArrayIcon from '../image/newArrayButton.png';
+//import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
 // Remember this should be 65! That's what it originally was
-const NUMBER_OF_ARRAY_BARS = 12;
+const NUMBER_OF_ARRAY_BARS = 14;
 
 export default class SortingVisualiser extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class SortingVisualiser extends React.Component {
     }
     const array = [];
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(100, 800));
+      array.push(randomIntFromInterval(100, 900));
     }
     this.setState({ array });
     this.props.updateArray(array);
@@ -42,17 +42,11 @@ export default class SortingVisualiser extends React.Component {
     return (
       <section className="component-sorting-visualiser">
         <div className="button-container">
-          <img
-            className="new-array-button"
-            onClick={() => this.resetArray()}
-            alt="Generate New Array Button"
-            src={newArrayIcon}>
-          </img>
-          <img
+          <button
             className="info-button"
-            alt="Information Button"
-            src={infoIcon}>
-          </img>
+            alt="Information Button">
+            ?
+          </button>
         </div>
         <div className="sorting-visualiser-container">
           {array.map((value, idx) => (

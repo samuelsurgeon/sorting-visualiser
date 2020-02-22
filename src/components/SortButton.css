@@ -6,13 +6,14 @@
   --turquoise: #3BF2F5;
   --pink: #FE8DC5;
 }
-
+/* THIS SHOULD BE COMPONENT-SORT-BUTTON? */
 .sort-button {
+  margin-top: 5%;
   width: 100%;
   text-align: center;
-  border: 1.5px solid black;
+  border: 1px solid black;
   padding: 5%;
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: transparent;
   outline: none;
 }

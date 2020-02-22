@@ -11,13 +11,13 @@
   flex-direction: column;
   width: 100%;
   margin-top: 10%;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .slider {
   margin-top: 10%;
   margin-bottom: 10%;
-  height: 2px;
+  height: 1px;
   appearance: none;
   outline: none;
   background-color: black;
@@ -29,7 +29,7 @@
   appearance: none;
   background-color: var(--darkYellow);
   transition: 2s;
-  border: 1.5px solid black;
+  border: 1px solid black;
   border-radius: 75px;
 }
 

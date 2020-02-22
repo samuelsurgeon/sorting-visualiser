@@ -11,8 +11,8 @@ button {
   align-items: center;
   width: 100%;
   height: 100%;
-  border-left: 1.5px solid black;
-  border-bottom: 1.5px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .sorting-visualiser-container {
@@ -25,9 +25,9 @@ button {
 .array-bar {
   padding: 0;
   display: inline-block;
-  margin: 8px;
+  margin: 5px;
   margin-bottom: 0;
-  min-width: 60px;
+  min-width: 50px;
   transition: 0.7s;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1.4px solid black;
@@ -35,8 +35,8 @@ button {
 
 .bar-height {
   position: relative;
-  bottom: 40px;
-  font-size: 0.8em;
+  bottom: 35px;
+  font-size: 0.7em;
   text-align: center;
   letter-spacing: -0.05em;
   font-weight: 700;
@@ -50,9 +50,9 @@ button {
 }
 
 .info-button {
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: transparent;
-  border: 1.5px solid black;
+  border: 1px solid black;
   border-radius: 75px;
   outline: none;
   margin-left: 1.5%;

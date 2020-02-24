@@ -1,6 +1,4 @@
 import React from 'react';
-//import newArrayIcon from '../image/newArrayButton.png';
-//import infoIcon from '../image/infoButton.png';
 import './SortingVisualiser.css';
 
 // Remember this should be 65! That's what it originally was

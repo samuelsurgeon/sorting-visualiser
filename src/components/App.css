@@ -21,8 +21,8 @@ html {
 .sidebar-bottom {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 50%;
+  justify-content: space-between;
+  height: 37.5%;
 }
 
 .visualiser {

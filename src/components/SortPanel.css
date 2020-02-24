@@ -9,7 +9,6 @@
 
 /* Structure */
 .component-sort-panel {
-  margin-top: 10%;
   font-size: 1.5em;
 }
 
@@ -50,10 +49,10 @@
 .type-button-orange {
   position: relative;
   right: 3%;
-  margin: 0 2% 2% 0;
+  margin: 0 1% 1% 0;
   padding: 2% 6%;
   width: fit-content;
-  border: 1.5px solid black;
+  border: 1px solid black;
   background-color: transparent;
   border-radius: 75px;
   outline: none;
@@ -82,10 +81,10 @@
 .type-button-green {
   position: relative;
   right: 3%;
-  margin: 0 2% 2% 0;
+  margin: 0 1% 1% 0;
   padding: 2% 6%;
   width: fit-content;
-  border: 1.5px solid black;
+  border: 1px solid black;
   background-color: transparent;
   border-radius: 75px;
   outline: none;
@@ -114,10 +113,10 @@
 .type-button-turquoise {
   position: relative;
   right: 3%;
-  margin: 0 2% 2% 0;
+  margin: 0 1% 1% 0;
   padding: 2% 6%;
   width: fit-content;
-  border: 1.5px solid black;
+  border: 1px solid black;
   background-color: transparent;
   border-radius: 75px;
   outline: none;
@@ -146,10 +145,10 @@
 .type-button-pink {
   position: relative;
   right: 3%;
-  margin: 0 2% 2% 0;
+  margin: 0 1% 1% 0;
   padding: 2% 6%;
   width: fit-content;
-  border: 1.5px solid black;
+  border: 1px solid black;
   background-color: transparent;
   border-radius: 75px;
   outline: none;

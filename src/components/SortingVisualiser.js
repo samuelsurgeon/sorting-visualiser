@@ -14,14 +14,13 @@ export default class SortingVisualiser extends React.Component {
   }
 
   componentDidMount() {
-    this.resetArray();
+    this.resetArray(this.props.updateArray());
   }
 
   // If I'm using this resetArray method in the App.js file then I should declare that function in App.js and pass it down as a prop.
   
-  resetArray() {
-    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
-    sortButtonStyle.textContent = 'Sort';
+  resetArray(array) {
+    /*
     const arrayBars = document.querySelectorAll('.array-bar');
     const max = arrayBars.length;
     for (let i = 0; i < max; i += 1) {
@@ -32,7 +31,9 @@ export default class SortingVisualiser extends React.Component {
       array.push(randomIntFromInterval(100, 650));
     }
     this.setState({ array });
-    this.props.updateArray(array);
+    */
+    //this.setState({ array: this.props.updateArray() });
+    this.setState({ array });
   }
 
   render() {
@@ -63,6 +64,8 @@ export default class SortingVisualiser extends React.Component {
 }
 
 // Declaring this here? Ideally, we should pass this down from App.js or something like that :)
+/*
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);   
 }
+*/

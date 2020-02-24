@@ -34,6 +34,8 @@ const ANIMATION_SPEED_MS = 250;
 // This increases as the speed decreases
 const TRANSITION_SPEED = 0.2;
 
+const NUMBER_OF_ARRAY_BARS = 14;
+
 // Colour
 let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
 const SECONDARY_COLOR = 'white';
@@ -41,14 +43,30 @@ const SECONDARY_COLOR = 'white';
 // let arrayBars = document.getElementsByClassName('array-bar');
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.sortingVisualiserElement = React.createRef();
+  }
+
   state = {
     activeAlgorithm: null,
     currentArray: null,
     sortButtonClicked: false,
   };
 
-  updateArray = array => {
-    this.setState({ currentArray: array, sortButtonClicked: false });
+  updateArray = () => {
+    const arrayBars = document.querySelectorAll('.array-bar');
+    const max = arrayBars.length;
+    for (let i = 0; i < max; i += 1) {
+      arrayBars[i].style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    }
+    const array = [];
+    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+      array.push(randomIntFromInterval(100, 650));
+    }
+    // Where do I use currentArray? Because I might not need a state for it here, because I pass it down to the sortingVisualier in the end anyway :)
+    this.setState({ currentArray: array });
+    return array;
   }
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
@@ -166,6 +184,8 @@ export default class App extends React.Component {
         setTimeoutIDs = 0;
       });
       buttonStyle.textContent = 'Sort';
+      //this might be a bit convoluted, figure out better logic
+      this.sortingVisualiserElement.current.resetArray(this.updateArray());
     }
   }
 
@@ -184,8 +204,9 @@ export default class App extends React.Component {
         </section>
         <section className="visualiser">
           <SortingVisualiser 
-            resetArray={shouldResetArray}
-            updateArray={this.updateArray}></SortingVisualiser>
+            ref={this.sortingVisualiserElement}
+            updateArray={this.updateArray}
+            appState={this.state}></SortingVisualiser>
           {/* maybe might move these stickies out */}
           <Stickies></Stickies>
         </section>
@@ -201,4 +222,8 @@ function arraysAreEqual(arrayOne, arrayTwo) {
     if (arrayOne[i] !== arrayTwo[i]) return false;
   }
   return true;
+}
+
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }

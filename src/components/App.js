@@ -21,18 +21,21 @@ let timesRun = 1;
 
 // TO DO: Change the name of snapShot haha
 
+//DELETE ALL INSTANCES OF THIS
+const ORANGE = '#FFBE29';
+
 // COLOURS
 const YELLOW = '#FFED05';
-const ORANGE = '#FFBE29';
 const GREEN = '#44E78E';
 const TURQUOISE = '#3BF2F5';
 const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 //  250 was the last set speed here.
-const ANIMATION_SPEED_MS = 250;
+// this should probably be in state? I think
+let ANIMATION_SPEED_MS = 500;
 // This increases as the speed decreases
-const TRANSITION_SPEED = 0.2;
+let TRANSITION_SPEED = 0.5;
 
 const NUMBER_OF_ARRAY_BARS = 14;
 
@@ -93,6 +96,8 @@ export default class App extends React.Component {
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
+        barOneStyle.transition = TRANSITION_SPEED;
+        barTwoStyle.transition = TRANSITION_SPEED;
         }, i * ANIMATION_SPEED_MS);
         alternate = !alternate;
       } else {
@@ -103,6 +108,8 @@ export default class App extends React.Component {
           const barTwoStyle = arrayBars[barTwoIndex].style;
           barOneStyle.height = `${barOneHeight}px`;
           barTwoStyle.height = `${barTwoHeight}px`;
+          barOneStyle.transition = TRANSITION_SPEED;
+          barTwoStyle.transition = TRANSITION_SPEED;
 
           const heightOneElement = arrayHeights[barOneIndex];
           const heightTwoElement = arrayHeights[barTwoIndex];
@@ -115,6 +122,7 @@ export default class App extends React.Component {
       const arrayBars = document.querySelectorAll('.array-bar');
       let max = arrayBars.length;
       for (let i = 0; i < max; i += 1) {
+        arrayBars[i].style.transition = '1s';
         arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
@@ -170,6 +178,11 @@ export default class App extends React.Component {
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         buttonStyle.textContent = 'Stop';
+
+        const speedSlider = document.querySelector(`input[class*='slider']`);
+        ANIMATION_SPEED_MS = speedSlider.value;
+        TRANSITION_SPEED = speedSlider.value / 1000;
+        console.log(speedSlider.value / 1000);
         // Replace the string literal with a const; this line is long as shit shorten it lad
         if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.currentArray));
         if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.currentArray));

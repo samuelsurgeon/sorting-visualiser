@@ -19,10 +19,10 @@ export default class SortPanel extends React.Component {
         Sort type
         <section className="buttons-container">
           <button
-            name="selection"
+            name="insertion"
             className="type-button"
             onClick={this.handleClick}>
-            Selection
+            Insertion
           </button>
           <button
             name="bubble"
@@ -31,10 +31,10 @@ export default class SortPanel extends React.Component {
             Bubble
           </button>
           <button
-            name="insertion"
+            name="selection"
             className="type-button"
             onClick={this.handleClick}>
-            Insertion
+            Selection
           </button>
         </section>
       </section>

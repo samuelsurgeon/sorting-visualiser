@@ -164,12 +164,6 @@ export default class App extends React.Component {
       });
       sliderStyle.className = 'slider-pink';
       sortButtonStyle.className = 'sort-button-pink'; }
-    // this.setState({ activeAlgorithm: mergeSort(buttonName, this.state.currentArray) });
-
-    // I THINK THIS SORT METHOD IS THE PROBLEM LOL :-)
-    // const javascriptSortedArray = this.state.currentArray.slice().sort((a, b) => a - b);
-    // const sortedArray = SortingAlgorithm.mergeSort(this.state.currentArray);
-    // console.log(arraysAreEqual(javascriptSortedArray, sortedArray));
   };
 
   sortButtonClick = () => {
@@ -182,7 +176,6 @@ export default class App extends React.Component {
         const speedSlider = document.querySelector(`input[class*='slider']`);
         ANIMATION_SPEED_MS = speedSlider.value;
         TRANSITION_SPEED = speedSlider.value / 1000;
-        console.log(speedSlider.value / 1000);
         // Replace the string literal with a const; this line is long as shit shorten it lad
         if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.currentArray));
         if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.currentArray));

@@ -1,5 +1,5 @@
 # sorting-visualiser
-A visualiser for different types of sorting algorithms.
+A visualiser for different types of sorting algorithms. This project was based off: https://github.com/clementmihailescu/Sorting-Visualizer-Tutorial.
 
 # React generated content
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

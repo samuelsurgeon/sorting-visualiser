@@ -22,14 +22,14 @@ export default class SortingVisualiser extends React.Component {
     const { array } = this.state;
     return (
       <section className="component-sorting-visualiser">
-        <div className="button-container">
+        <section className="button-container">
           <button
             className="info-button"
             alt="Information Button">
             ?
           </button>
-        </div>
-        <div className="sorting-visualiser-container">
+        </section>
+        <section className="sorting-visualiser-container">
           {array.map((value, idx) => (
             <div
               className="array-bar"
@@ -39,7 +39,7 @@ export default class SortingVisualiser extends React.Component {
                 <h1 className="bar-height">{`${value}`}</h1>
             </div>
           ))}
-        </div>
+        </section>
       </section>
     );
   }

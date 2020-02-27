@@ -18,28 +18,23 @@ export default class SortingVisualiser extends React.Component {
     this.setState({ array });
   }
 
+  handleClick = () => {
+    this.props.infoButtonClick();
+  }
+
   render() {
     const { array } = this.state;
     return (
       <section className="component-sorting-visualiser">
-        <section className="button-container">
-          <button
-            className="info-button"
-            alt="Information Button">
-            ?
-          </button>
-        </section>
-        <section className="sorting-visualiser-container">
-          {array.map((value, idx) => (
-            <div
-              className="array-bar"
-              key={idx}
-              // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
-              style={{height: `${value}px`}}>
-                <h1 className="bar-height">{`${value}`}</h1>
-            </div>
-          ))}
-        </section>
+        {array.map((value, idx) => (
+          <div
+            className="array-bar"
+            key={idx}
+            // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
+            style={{height: `${value}px`}}>
+              <h1 className="bar-height">{`${value}`}</h1>
+          </div>))
+        }
       </section>
     );
   }

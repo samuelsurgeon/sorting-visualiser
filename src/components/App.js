@@ -38,6 +38,8 @@ let ANIMATION_SPEED_MS = 500;
 let TRANSITION_SPEED = 0.5;
 
 const NUMBER_OF_ARRAY_BARS = 14;
+const MIN_HEIGHT = 100;
+const MAX_HEIGHT = 600;
 
 // Colour
 let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
@@ -65,7 +67,7 @@ export default class App extends React.Component {
     }
     const array = [];
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(100, 650));
+      array.push(randomIntFromInterval(MIN_HEIGHT, MAX_HEIGHT));
     }
     // Where do I use currentArray? Because I might not need a state for it here, because I pass it down to the sortingVisualier in the end anyway :)
     this.setState({ currentArray: array });
@@ -195,6 +197,41 @@ export default class App extends React.Component {
     }
   }
 
+  infoButtonClick = () => {
+    
+  }
+
+  stickyClick = () => {
+    const sticky = document.querySelector(`article[class*='sticky']`);
+    sticky.onmousedown = event => {
+      sticky.style.position = 'absolute';
+      sticky.style.zIndex = 1000;
+      document.body.append(sticky);
+
+      moveAt(event.pageX, event.pageY);
+
+      function moveAt(pageX, pageY) {
+        sticky.style.left = pageX - sticky.offsetWidth / 2 + 'px';
+        sticky.style.top = pageY - sticky.offsetheight / 2 + 'px';
+      }
+
+      function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      sticky.onmouseup = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        sticky.onmouseup = null;
+      }
+
+      sticky.ondragstart = () => {
+        return false;
+      }
+    }
+  }
+
   render() {
     return (
       <section className="component-app">
@@ -209,12 +246,12 @@ export default class App extends React.Component {
           </section>
         </section>
         <section className="visualiser">
+          <Stickies infoButtonClick={this.infoButtonClick}></Stickies>
           <SortingVisualiser 
             ref={this.sortingVisualiserElement}
             updateArray={this.updateArray}
             appState={this.state}></SortingVisualiser>
           {/* maybe might move these stickies out */}
-          <Stickies></Stickies>
         </section>
       </section>
     );

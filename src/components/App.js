@@ -8,7 +8,7 @@ import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
 import SortButton from './SortButton';
 import SortingVisualiser from './SortingVisualiser';
-import Stickies from './Stickies';
+import InfoButton from './InfoButton';
 import './App.css';
 
 let shouldResetArray = false;
@@ -235,6 +235,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="component-app">
+        <div className="butt"><h1>Hi</h1></div>
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">
@@ -246,7 +247,7 @@ export default class App extends React.Component {
           </section>
         </section>
         <section className="visualiser">
-          <Stickies infoButtonClick={this.infoButtonClick}></Stickies>
+          <InfoButton infoButtonClick={this.infoButtonClick}></InfoButton>
           <SortingVisualiser 
             ref={this.sortingVisualiserElement}
             updateArray={this.updateArray}

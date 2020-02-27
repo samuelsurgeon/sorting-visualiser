@@ -17,6 +17,7 @@ html {
   justify-content: space-between;
   width: 23vw;
   height: 92vh;
+  filter: blur(7px);
 }
 
 .sidebar-bottom {
@@ -32,4 +33,16 @@ html {
   align-items: flex-end;
   width: 66vw;
   height: 90vh;
+  filter: blur(7px);
+}
+
+.butt {
+  position: absolute;
+  top: 10vh;
+  z-index: 10000;
+  width: 1000px;
+  height: 750px;
+  border: 1px solid black;
+  background-color: #ffed05;
+  text-align: center;
 }

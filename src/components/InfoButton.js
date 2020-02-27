@@ -1,7 +1,7 @@
 import React from 'react';
-import './Stickies.css';
+import './InfoButton.css';
 
-export default class Stickies extends React.Component {
+export default class InfoButton extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,7 +12,7 @@ export default class Stickies extends React.Component {
 
   render() {
     return (
-      <section className="component-stickies">
+      <section className="component-info-button">
         <section className="button-container">
           <button
             className="info-button"

@@ -9,6 +9,7 @@ import SpeedSlider from './SpeedSlider';
 import SortButton from './SortButton';
 import SortingVisualiser from './SortingVisualiser';
 import InfoButton from './InfoButton';
+import InfoPopUp from './InfoPopUp';
 import './App.css';
 
 let shouldResetArray = false;
@@ -235,7 +236,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="component-app">
-        <div className="butt"><h1>Hi</h1></div>
+        <InfoPopUp></InfoPopUp>
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">

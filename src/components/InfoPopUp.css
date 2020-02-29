@@ -1,4 +1,8 @@
 /* Declare this higher up */
+a {
+  cursor: pointer;
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -10,10 +14,9 @@ p {
   flex-direction: column;
   position: absolute;
   top: 10%;
-  padding: 2% 3%;
+  padding: 4% 3%;
   z-index: 10000;
-  width: 50vw;
-  height: 80vh;
+  width: 45vw;
   background-color: #FFED05;
   border: 1px solid black;
   font-size: 1.5em;
@@ -44,6 +47,11 @@ p {
   transition: 0.5s;
 }
 
+.info-heading-top {
+  font-size: 0.5em;
+}
+
 .info-heading {
+  margin-top: 4%;
   font-size: 0.5em;
 }

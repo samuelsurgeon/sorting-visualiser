@@ -13,7 +13,20 @@ p {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 10%;
+  top: 25vh;
+  padding: 4% 3%;
+  z-index: 10000;
+  width: 45vw;
+  background-color: #FFED05;
+  border: 1px solid black;
+  font-size: 1.5em;
+}
+
+.component-info-pop-up.hidden {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 25vh;
   padding: 4% 3%;
   z-index: 10000;
   width: 45vw;

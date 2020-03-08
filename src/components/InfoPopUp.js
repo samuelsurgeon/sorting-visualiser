@@ -7,7 +7,9 @@ export default class InfoPopUp extends React.Component {
   }
 
   handleClick = () => {
-    this.props.infoButtonClick();
+    /* I don't know if this code, should be firing here, or whether it should be firing in the App.js file */
+    const element = document.querySelector('.component-info-pop-up');
+    element.classList.add('hidden');
   }
 
   render() {

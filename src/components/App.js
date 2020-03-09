@@ -141,10 +141,17 @@ export default class App extends React.Component {
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
+    /* Get rid of the style on the end, just want to edit the classNames :) */
+    const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
+
+    /* Should probably do this in the .css file */
     htmlStyle.transition = '2s';
 
     if (buttonName === 'insertion') {
+      /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */
+      console.log(infoPopUp);
       htmlStyle.backgroundColor = GREEN;
+      infoPopUp.backgroundColor = GREEN;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
       });
@@ -153,6 +160,7 @@ export default class App extends React.Component {
     }
     if (buttonName === 'bubble') {
       htmlStyle.backgroundColor = TURQUOISE;
+      infoPopUp.backgroundColor = TURQUOISE;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
       });
@@ -162,6 +170,7 @@ export default class App extends React.Component {
     }
     if (buttonName === 'selection') {
       htmlStyle.backgroundColor = PINK;
+      infoPopUp.backgroundColor = PINK;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
       });
@@ -199,7 +208,25 @@ export default class App extends React.Component {
   }
 
   infoButtonClick = () => {
-    
+    const element = document.querySelector('.component-info-pop-up');
+    element.classList.remove('hidden');
+
+    const blurSidebar = document.querySelector('.sidebar');
+    blurSidebar.classList.add('blur');
+
+    const blurVisualiser = document.querySelector('.visualiser');
+    blurVisualiser.classList.add('blur');
+  }
+
+  closePopUpClick = () => {
+    const element = document.querySelector('.component-info-pop-up');
+    element.classList.add('hidden');
+
+    const blurSidebar = document.querySelector('.sidebar');
+    blurSidebar.classList.remove('blur');
+
+    const blurVisualiser = document.querySelector('.visualiser');
+    blurVisualiser.classList.remove('blur');
   }
 
   stickyClick = () => {
@@ -236,7 +263,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="component-app">
-        <InfoPopUp></InfoPopUp>
+        <InfoPopUp closePopUpClick={this.closePopUpClick}></InfoPopUp>
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">

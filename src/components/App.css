@@ -9,6 +9,7 @@ html {
   margin-top: 3vh;
   margin-bottom: 5vh;
   height: 100%;
+  transition: 1s;
 }
 
 .sidebar {
@@ -17,6 +18,11 @@ html {
   justify-content: space-between;
   width: 23vw;
   height: 92vh;
+  transition: 1s;
+  filter: none;
+}
+
+.sidebar.blur {
   filter: blur(7px);
 }
 
@@ -33,6 +39,12 @@ html {
   align-items: flex-end;
   width: 66vw;
   height: 90vh;
+  transition: 1s;
+  filter: none;
+}
+
+/* We don't need to repeat all the other code, just what we want to update? Remember when I tried that before and wasn't successful */
+.visualiser.blur {
   filter: blur(7px);
 }
 

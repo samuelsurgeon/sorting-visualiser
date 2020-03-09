@@ -24,6 +24,7 @@ p {
 
 .component-info-pop-up.hidden {
   display: none;
+  /* Might not need to declare all this again */
   flex-direction: column;
   position: absolute;
   top: 25vh;

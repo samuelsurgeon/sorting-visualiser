@@ -7,14 +7,12 @@ export default class InfoPopUp extends React.Component {
   }
 
   handleClick = () => {
-    /* I don't know if this code, should be firing here, or whether it should be firing in the App.js file */
-    const element = document.querySelector('.component-info-pop-up');
-    element.classList.add('hidden');
+    this.props.closePopUpClick();
   }
 
   render() {
     return (
-      <section className="component-info-pop-up">
+      <section className="component-info-pop-up hidden">
         <p className="info-heading-top">What is a sorting algorithm?</p>
         <p>{ 'Simply a list of instructions that arranges a set of values in a given order. On this site I\'ve implemented three simple algorithms that sort in ascending order.' }</p>
         <p className="info-heading">What is the performance of these algorithms?</p>

@@ -182,7 +182,8 @@ export default class App extends React.Component {
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        // DISABLE THE SORT PANEL HERE!!!
+        const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
+        sortButtons.forEach(element => element.disabled = true);       
 
         buttonStyle.textContent = 'Stop';
 
@@ -202,6 +203,8 @@ export default class App extends React.Component {
         }
         setTimeoutIDs = 0;
       });
+      const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
+      sortButtons.forEach(element => element.disabled = false);
       buttonStyle.textContent = 'Sort';
       //this might be a bit convoluted, figure out better logic
       this.sortingVisualiserElement.current.resetArray(this.updateArray());

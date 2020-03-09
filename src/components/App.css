@@ -1,5 +1,13 @@
+:root {
+  --yellow: #FFED05;
+}
+
 html {
-  background-color: #ffed05;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--yellow);
 }
 
 .component-app {
@@ -46,15 +54,4 @@ html {
 /* We don't need to repeat all the other code, just what we want to update? Remember when I tried that before and wasn't successful */
 .visualiser.blur {
   filter: blur(7px);
-}
-
-.butt {
-  position: absolute;
-  top: 10vh;
-  z-index: 10000;
-  width: 1000px;
-  height: 750px;
-  border: 1px solid black;
-  background-color: #ffed05;
-  text-align: center;
 }

@@ -179,10 +179,11 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
-    // If I try calling this normally it doesn't work. Why?
     const buttonStyle = document.querySelector(`button[class*='sort-button']`);
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
+        // DISABLE THE SORT PANEL HERE!!!
+
         buttonStyle.textContent = 'Stop';
 
         const speedSlider = document.querySelector(`input[class*='slider']`);

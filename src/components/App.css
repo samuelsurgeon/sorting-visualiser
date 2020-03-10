@@ -14,10 +14,8 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  margin-top: 3vh;
-  margin-bottom: 5vh;
-  height: 100%;
-  transition: 1s;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
 }
 
 .sidebar {

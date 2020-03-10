@@ -125,7 +125,7 @@ export default class App extends React.Component {
       const arrayBars = document.querySelectorAll('.array-bar');
       let max = arrayBars.length;
       for (let i = 0; i < max; i += 1) {
-        arrayBars[i].style.transition = '1s';
+        arrayBars[i].style.transition = TRANSITION_SPEED;
         arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
@@ -143,9 +143,6 @@ export default class App extends React.Component {
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     /* Get rid of the style on the end, just want to edit the classNames :) */
     const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
-
-    /* Should probably do this in the .css file */
-    htmlStyle.transition = '2s';
 
     if (buttonName === 'insertion') {
       /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */

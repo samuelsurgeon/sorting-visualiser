@@ -62,9 +62,8 @@
   color: var(--orange);
 }
 
-/* Think I can just delete all of these */
 .type-button-orange.selected:hover {
-  transform: scale(1);  
+  transform: none;  
 }
 
 .type-button-green {
@@ -92,7 +91,7 @@
 }
 
 .type-button-green.selected:hover {
-  transform: scale(1);  
+  transform: none;  
 }
 
 .type-button-turquoise {
@@ -120,37 +119,33 @@
 }
 
 .type-button-turquoise.selected:hover {
-  transform: scale(1);  
+  transform: none;  
 }
 
 .type-button-pink {
   position: relative;
-  right: 3%;
-  margin: 0 1% 1% 0;
-  padding: 2% 6%;
+  right: 1.5rem;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 1rem 3rem;
   width: fit-content;
-  border: 1px solid black;
+  border: 0.1rem solid black;
   background-color: transparent;
-  border-radius: 75px;
-  outline: none;
+  border-radius: 5rem;
   text-align: center;
-  font-size: 1em;
+  font-size: 2rem;
 }
 
 .type-button-pink:hover {
   background-color: black;
-  cursor: pointer;
-  transform: scale(1.05);
   color: var(--pink);
-  transition: 0.5s;
+  transform: scale(1.05);
 }
 
 .type-button-pink.selected {
-  transition: 2s;
-  color: var(--pink);
   background-color: black;
+  color: var(--pink);
 }
 
 .type-button-pink.selected:hover {
-  transform: scale(1);  
+  transform: none;  
 }

@@ -1,16 +1,15 @@
 :root {
-  --darkYellow: rgb(206, 192, 0);
-  --darkOrange: rgb(218, 163, 37);
-  --darkGreen: rgb(59, 192, 119);
-  --darkTurquoise: rgb(47, 186, 189);
-  --darkPink: rgb(206, 115, 160);
+  --darkYellow: #CEC000;
+  --darkGreen: #3BC077;
+  --darkTurquoise: #2FBABD;
+  --darkPink: #CE73A0;
 }
 
 .component-speed-slider {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  font-size: 1.5em;
+  width: 40rem;
+  font-size: 2rem;
 }
 
 .slider {

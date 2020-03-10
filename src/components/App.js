@@ -137,7 +137,7 @@ export default class App extends React.Component {
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
     this.setState({ activeAlgorithm: buttonName });
-    const htmlStyle = document.documentElement.style;
+    const bodyStyle = document.body.style;
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
@@ -146,9 +146,9 @@ export default class App extends React.Component {
 
     if (buttonName === 'insertion') {
       /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */
-      console.log(infoPopUp);
-      htmlStyle.backgroundColor = GREEN;
+      bodyStyle.backgroundColor = GREEN;
       infoPopUp.backgroundColor = GREEN;
+
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
       });
@@ -156,7 +156,7 @@ export default class App extends React.Component {
       sortButtonStyle.className = 'sort-button-green';
     }
     if (buttonName === 'bubble') {
-      htmlStyle.backgroundColor = TURQUOISE;
+      bodyStyle.backgroundColor = TURQUOISE;
       infoPopUp.backgroundColor = TURQUOISE;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
@@ -166,7 +166,7 @@ export default class App extends React.Component {
       sortButtonStyle.className = 'sort-button-turquoise';
     }
     if (buttonName === 'selection') {
-      htmlStyle.backgroundColor = PINK;
+      bodyStyle.backgroundColor = PINK;
       infoPopUp.backgroundColor = PINK;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';

@@ -4,10 +4,21 @@
 
 html {
   font-size: 62.5%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body {
   background-color: var(--yellow);
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .component-app {
@@ -22,34 +33,29 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 23vw;
-  height: 92vh;
-  transition: 1s;
-  filter: none;
+  width: 40rem;
+  height: 90rem;
 }
 
 .sidebar.blur {
-  filter: blur(7px);
+  filter: blur(0.5rem);
 }
 
 .sidebar-bottom {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 37.5%;
+  height: 30rem;
 }
 
 .visualiser {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 66vw;
-  height: 90vh;
-  transition: 1s;
-  filter: none;
+  width: 105rem;
+  height: 88rem;
 }
 
-/* We don't need to repeat all the other code, just what we want to update? Remember when I tried that before and wasn't successful */
 .visualiser.blur {
-  filter: blur(7px);
+  filter: blur(0.5rem);
 }

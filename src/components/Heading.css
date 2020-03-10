@@ -1,17 +1,7 @@
-/* Don't know why I have to specify this here ? */
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.component-heading {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 .title {
-  font-size: 2em;
+  font-size: 3rem;
 }
 
 .subtitle {
-  font-size: 1.5em;
+  font-size: 2rem;
 }

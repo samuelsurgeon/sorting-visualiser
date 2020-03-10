@@ -1,70 +1,43 @@
-/*
-button {
-  background-image: url(../images/newArrayButton.png);
-}
-*/
-
 .component-sorting-visualiser {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.sorting-visualiser-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+  width: 100rem;
+  height: 100rem;
+  border-left: 0.1rem solid black;
+  border-bottom: 0.1rem solid black;
 }
 
 .array-bar {
-  padding: 0;
-  display: inline-block;
-  margin: 5px;
+  margin: 0.5rem;
   margin-bottom: 0;
-  min-width: 40px;
-  transition: 0.4s;
+  width: 4rem;
   background-color: rgba(0, 0, 0, 0.2);
-  border: 1.4px solid black;
+  border: 0.14rem solid black;
 }
 
 .bar-height {
   position: relative;
-  bottom: 32px;
-  font-size: 0.65em;
+  bottom: 3.2rem;
+  font-size: 1rem;
   text-align: center;
   letter-spacing: -0.05em;
-  font-weight: 700;
   color: rgba(0, 0, 0, 0.8);
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  width: 98.5%;
-}
-
 .info-button {
-  font-size: 1.5em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  margin-left: 0.15rem;
+  width: 6rem;
+  height: 6rem;
   background-color: transparent;
-  border: 1px solid black;
-  border-radius: 75px;
-  outline: none;
-  margin-left: 1.5%;
-  /*
-  padding: 2%;
-  */
-  width: 60px;
-  height: 60px;
+  border: 0.1rem solid black;
+  border-radius: 5rem;
 }
 
 .info-button:hover {
   transform: scale(1.1);
-  transition: 0.5s;
-  cursor: pointer;
 }

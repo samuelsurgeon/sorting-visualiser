@@ -1,98 +1,66 @@
-/* Colours */
 :root {
   --yellow: #FFED05;
-  --orange: #FFBE29;
   --green: #44E78E;
   --turquoise: #3BF2F5;
   --pink: #FE8DC5;
 }
-/* THIS SHOULD BE COMPONENT-SORT-BUTTON? */
+
 .sort-button {
-  width: 100%;
-  text-align: center;
-  border: 1px solid black;
-  padding: 5%;
-  font-size: 1.5em;
+  width: 40rem;
+  padding: 2rem;
   background-color: transparent;
-  outline: none;
+  font-size: 2rem;
+  border: 0.1rem solid black;
+  text-align: center;
 }
 
 .sort-button:hover {
   background-color: black;
-  cursor: pointer;
   transform: scale(1.05);
   color: var(--yellow);
-  transition: 0.5s;
-}
-
-.sort-button-orange {
-  width: 100%;
-  text-align: center;
-  border: 1px solid black;
-  padding: 5%;
-  font-size: 1.5em;
-  background-color: transparent;
-  outline: none;
-}
-
-.sort-button-orange:hover {
-  background-color: black;
-  cursor: pointer;
-  transform: scale(1.05);
-  color: var(--orange);
-  transition: 0.5s;
 }
 
 .sort-button-green {
-  width: 100%;
-  text-align: center;
-  border: 1px solid black;
-  padding: 5%;
-  font-size: 1.5em;
+  width: 40rem;
+  padding: 2rem;
   background-color: transparent;
-  outline: none;
+  font-size: 2rem;
+  border: 0.1rem solid black;
+  text-align: center;
 }
 
 .sort-button-green:hover {
   background-color: black;
-  cursor: pointer;
   transform: scale(1.05);
   color: var(--green);
-  transition: 0.5s;
 }
 
 .sort-button-turquoise {
-  width: 100%;
-  text-align: center;
-  border: 1px solid black;
-  padding: 5%;
-  font-size: 1.5em;
+  width: 40rem;
+  padding: 2rem;
   background-color: transparent;
-  outline: none;
+  font-size: 2rem;
+  border: 0.1rem solid black;
+  text-align: center;
 }
 
 .sort-button-turquoise:hover {
   background-color: black;
-  cursor: pointer;
   transform: scale(1.05);
   color: var(--turquoise);
-  transition: 0.5s;
 }
 
 .sort-button-pink {
-  width: 100%;
-  text-align: center;
-  border: 1px solid black;
-  padding: 5%;
-  font-size: 1.5em;
+  width: 40rem;
+  padding: 2rem;
   background-color: transparent;
-  outline: none;
+  font-size: 2rem;
+  border: 0.1rem solid black;
+  text-align: center;
 }
 
 .sort-button-pink:hover {
   background-color: black;
-  cursor: pointer;
   transform: scale(1.05);
   color: var(--pink);
-  transition: 0.5s;
 }

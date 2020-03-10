@@ -1,71 +1,42 @@
-/* Declare this higher up */
-a {
-  cursor: pointer;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+:root {
+  --yellow: #FFED05;
 }
 
 .component-info-pop-up {
-  display: flex;
-  flex-direction: column;
   position: absolute;
-  top: 25vh;
-  padding: 4% 3%;
-  z-index: 10000;
-  width: 45vw;
-  background-color: #FFED05;
-  border: 1px solid black;
-  font-size: 1.5em;
+  top: 30rem;
+  padding: 4rem 3rem;
+  width: 70rem;
+  background-color: var(--yellow);
+  border: 0.1rem solid black;
+  font-size: 2rem;
+  z-index: 1;
 }
 
 .component-info-pop-up.hidden {
   display: none;
-  /* Might not need to declare all this again */
-  flex-direction: column;
-  position: absolute;
-  top: 25vh;
-  padding: 4% 3%;
-  z-index: 10000;
-  width: 45vw;
-  background-color: #FFED05;
-  border: 1px solid black;
-  font-size: 1.5em;
-}
-
-.button-container {
-  padding: 0;
-  width: 60px;
 }
 
 .close-button {
-  margin: 0;
-  padding: 0;
   position: absolute;
-  top: 0px;
-  right: 3px;
+  top: 0;
+  right: 0;
+  width: 4.5rem;
+  height: 4.5rem;
   font-size: 1em;
   background-color: transparent;
   border: none;
-  outline: none;
-  width: 60px;
-  height: 60px;
 }
 
 .close-button:hover {
   transform: scale(1.5);
-  cursor: pointer;
-  transition: 0.5s;
 }
 
 .info-heading-top {
-  font-size: 0.5em;
+  font-size: 1.1rem;
 }
 
 .info-heading {
-  margin-top: 4%;
-  font-size: 0.5em;
+  margin-top: 2.6rem;
+  font-size: 1.1rem;
 }

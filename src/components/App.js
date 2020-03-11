@@ -36,7 +36,7 @@ const PINK = '#FE8DC5';
 // this should probably be in state? I think
 let ANIMATION_SPEED_MS = 500;
 // This increases as the speed decreases
-let TRANSITION_SPEED = 0.5;
+let TRANSITION_SPEED = '0.5s';
 
 const NUMBER_OF_ARRAY_BARS = 14;
 const MIN_HEIGHT = 100;
@@ -99,8 +99,8 @@ export default class App extends React.Component {
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
-        barOneStyle.transition = TRANSITION_SPEED;
-        barTwoStyle.transition = TRANSITION_SPEED;
+        barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
+        barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
         }, i * ANIMATION_SPEED_MS);
         alternate = !alternate;
       } else {
@@ -111,8 +111,8 @@ export default class App extends React.Component {
           const barTwoStyle = arrayBars[barTwoIndex].style;
           barOneStyle.height = `${barOneHeight}px`;
           barTwoStyle.height = `${barTwoHeight}px`;
-          barOneStyle.transition = TRANSITION_SPEED;
-          barTwoStyle.transition = TRANSITION_SPEED;
+          barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
+          barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
 
           const heightOneElement = arrayHeights[barOneIndex];
           const heightTwoElement = arrayHeights[barTwoIndex];
@@ -125,7 +125,7 @@ export default class App extends React.Component {
       const arrayBars = document.querySelectorAll('.array-bar');
       let max = arrayBars.length;
       for (let i = 0; i < max; i += 1) {
-        arrayBars[i].style.transition = TRANSITION_SPEED;
+        arrayBars[i].style.transitionDuration = `${TRANSITION_SPEED}s`;
         arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);

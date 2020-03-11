@@ -14,22 +14,21 @@
 
 .slider {
   direction: rtl;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  height: 1px;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  height: 0.1rem;
+  background-color: black;
   appearance: none;
   outline: none;
-  background-color: black;
 }
 
 .slider::-webkit-slider-thumb {
-  width: 30px;
-  height: 30px;
-  appearance: none;
+  width: 3rem;
+  height: 3rem;
   background-color: var(--darkYellow);
-  transition: 2s;
-  border: 1px solid black;
-  border-radius: 75px;
+  appearance: none;
+  border: 0.1rem solid black;
+  border-radius: 5rem;
 }
 
 .slider::-webkit-slider-thumb:hover {
@@ -38,22 +37,21 @@
 
 .slider-green {
   direction: rtl;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  height: 1px;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  height: 0.1rem;
+  background-color: black;
   appearance: none;
   outline: none;
-  background-color: black;
 }
 
 .slider-green::-webkit-slider-thumb {
-  width: 30px;
-  height: 30px;
-  appearance: none;
+  width: 3rem;
+  height: 3rem;
   background-color: var(--darkGreen);
-  transition: 2s;
-  border: 1px solid black;
-  border-radius: 75px;
+  appearance: none;
+  border: 0.1rem solid black;
+  border-radius: 5rem;
 }
 
 .slider-green::-webkit-slider-thumb:hover {
@@ -62,22 +60,21 @@
 
 .slider-turquoise {
   direction: rtl;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  height: 1px;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  height: 0.1rem;
+  background-color: black;
   appearance: none;
   outline: none;
-  background-color: black;
 }
 
 .slider-turquoise::-webkit-slider-thumb {
-  width: 30px;
-  height: 30px;
-  appearance: none;
+  width: 3rem;
+  height: 3rem;
   background-color: var(--darkTurquoise);
-  transition: 2s;
-  border: 1px solid black;
-  border-radius: 75px;
+  appearance: none;
+  border: 0.1rem solid black;
+  border-radius: 5rem;
 }
 
 .slider-turquoise::-webkit-slider-thumb:hover {
@@ -86,22 +83,21 @@
 
 .slider-pink {
   direction: rtl;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  height: 1px;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  height: 0.1rem;
+  background-color: black;
   appearance: none;
   outline: none;
-  background-color: black;
 }
 
 .slider-pink::-webkit-slider-thumb {
-  width: 30px;
-  height: 30px;
-  appearance: none;
+  width: 3rem;
+  height: 3rem;
   background-color: var(--darkPink);
-  transition: 2s;
-  border: 1px solid black;
-  border-radius: 75px;
+  appearance: none;
+  border: 0.1rem solid black;
+  border-radius: 5rem;
 }
 
 .slider-pink::-webkit-slider-thumb:hover {

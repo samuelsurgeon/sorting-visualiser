@@ -9,11 +9,16 @@ html {
 
 body {
   background-color: var(--yellow);
+  transition: 0.5s;
 }
 
 button {
   outline: none;
   cursor: pointer;
+}
+
+p {
+  margin: 0;
 }
 
 a {

@@ -230,37 +230,6 @@ export default class App extends React.Component {
     blurVisualiser.classList.remove('blur');
   }
 
-  stickyClick = () => {
-    const sticky = document.querySelector(`article[class*='sticky']`);
-    sticky.onmousedown = event => {
-      sticky.style.position = 'absolute';
-      sticky.style.zIndex = 1000;
-      document.body.append(sticky);
-
-      moveAt(event.pageX, event.pageY);
-
-      function moveAt(pageX, pageY) {
-        sticky.style.left = pageX - sticky.offsetWidth / 2 + 'px';
-        sticky.style.top = pageY - sticky.offsetheight / 2 + 'px';
-      }
-
-      function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
-      }
-
-      document.addEventListener('mousemove', onMouseMove);
-
-      sticky.onmouseup = () => {
-        document.removeEventListener('mousemove', onMouseMove);
-        sticky.onmouseup = null;
-      }
-
-      sticky.ondragstart = () => {
-        return false;
-      }
-    }
-  }
-
   render() {
     return (
       <section className="component-app">

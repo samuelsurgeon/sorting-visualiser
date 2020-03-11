@@ -12,8 +12,6 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
-let shouldResetArray = false;
-
 // Just a hacc, figure it out later
 let setTimeoutIDs = 0;
 let timesRun = 1;

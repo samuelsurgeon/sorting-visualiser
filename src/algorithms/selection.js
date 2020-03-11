@@ -11,29 +11,28 @@ function selectionSort(unsortedArray, animationsArray) {
     let smallestIndex = currentIndex;
     for (let i = currentIndex + 1; i < unsortedArray.length; i += 1) {
       animateHighlight(smallestIndex, i, animationsArray);
-      //animate(smallestIndex, currentIndex, array, animations);
-      if (array[smallestIndex] > array[i]) {
+      if (unsortedArray[smallestIndex] > unsortedArray[i]) {
         smallestIndex = i;
       }
     }
-    swap(currentIndex, smallestIndex, array);
-    animateSwap(currentIndex, smallestIndex, array, animations);
+    swap(currentIndex, smallestIndex, unsortedArray);
+    animateSwap(currentIndex, smallestIndex, unsortedArray, animationsArray);
     currentIndex += 1;
   }
   // return array;
 }
 
-function swap(i, j, array) {
-  let hold = array[i];
-  array[i] = array[j];
-  array[j] = hold;
+function swap(i, j, unsortedArray) {
+  let hold = unsortedArray[i];
+  unsortedArray[i] = unsortedArray[j];
+  unsortedArray[j] = hold;
 }
 
-function animateHighlight(i, j, animations) {
-  animations.push([i, j]);
-  animations.push([i, j]);
+function animateHighlight(i, j, animationsArray) {
+  animationsArray.push([i, j]);
+  animationsArray.push([i, j]);
 }
 
-function animateSwap(i, j, array, animations) {
-  animations.push([[i, array[i]], [j, array[j]]]);
+function animateSwap(i, j, unsortedArray, animationsArray) {
+  animationsArray.push([[i, unsortedArray[i]], [j, unsortedArray[j]]]);
 }

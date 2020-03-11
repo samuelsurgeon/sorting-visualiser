@@ -1,23 +1,22 @@
-export function getBubbleSortAnimations(array) {
-  const animations = [];
-  if (array.length <= 1) return array;
-  bubbleSort(array, animations);
-  return animations;
+export function getBubbleSortAnimations(unsortedArray) {
+  const animationsArray = [];
+  if (unsortedArray.length <= 1) return unsortedArray;
+  bubbleSort(unsortedArray, animationsArray);
+  return animationsArray;
 }
 
-function bubbleSort(array, animations) {
+function bubbleSort(unsortedArray, animationsArray) {
   let isSorted = false;
   let counter = 0;
   while (!isSorted) {
     isSorted = true;
-    for (let i = 0; i < array.length - 1 - counter; i += 1) {
-      if (array[i] > array[i + 1]) {
-        swap(i, i + 1, array);
-        // maybe put this animate function inside the swap? mayyyybe. or nah, SRP.
-        animate(i, i + 1, array, animations);
+    for (let i = 0; i < unsortedArray.length - 1 - counter; i += 1) {
+      if (unsortedArray[i] > unsortedArray[i + 1]) {
+        swap(i, i + 1, unsortedArray);
+        animate(i, i + 1, unsortedArray, animationsArray);
         isSorted = false;
       } else {
-        animate(i, i + 1, array, animations);
+        animate(i, i + 1, unsortedArray, animationsArray);
       }
     }
     counter += 1;
@@ -25,15 +24,14 @@ function bubbleSort(array, animations) {
   // return array. magical behaviour babey
 }
 
-function swap(i, j, array) {
-  let hold = array[i];
-  array[i] = array[j];
-  array[j] = hold;
+function swap(i, j, unsortedArray) {
+  let hold = unsortedArray[i];
+  unsortedArray[i] = unsortedArray[j];
+  unsortedArray[j] = hold;
 }
 
-// This should be split up into two different methods. SRP. Maybe?
-function animate(i, j, array, animations) {
-  animations.push([i, j]);
-  animations.push([[i, array[i]], [j, array[j]]]);
-  animations.push([i, j]);
+function animate(i, j, unsortedArray, animationsArray) {
+  animationsArray.push([i, j]);
+  animationsArray.push([[i, unsortedArray[i]], [j, unsortedArray[j]]]);
+  animationsArray.push([i, j]);
 }

@@ -1,37 +1,31 @@
-export function getInsertionSortAnimations(array) {
-  const animations = [];
-  if (array.length <= 1) return array;
-  insertionSort(array, animations);
-  return animations;
+export function getInsertionSortAnimations(unsortedArray) {
+  const animationsArray = [];
+  if (unsortedArray.length <= 1) return unsortedArray;
+  insertionSort(unsortedArray, animationsArray);
+  return animationsArray;
 }
 
-function insertionSort(array, animations) {
-  for (let i = 1; i < array.length; i += 1) {
+function insertionSort(unsortedArray, animationsArray) {
+  for (let i = 1; i < unsortedArray.length; i += 1) {
     let j = i;
-    while (j > 0 && array[j] < array[j - 1]) {
-      swap(j, j - 1, array);
-      animate(j - 1, j, array, animations);
+    while (j > 0 && unsortedArray[j] < unsortedArray[j - 1]) {
+      swap(j, j - 1, unsortedArray);
+      animate(j - 1, j, unsortedArray, animationsArray);
       j -= 1;
     }
-    // Double check if this is right
-    if (j > 0 && array[j] >= array[j - 1]) animate(j - 1, j, array, animations);
+    if (j > 0 && unsortedArray[j] >= unsortedArray[j - 1]) animate(j - 1, j, unsortedArray, animationsArray);
   }
   //return array; (I don't actually need to return this lol. Because I use the 'magical behaviour' thing haha)
 }
 
-function swap(i, j, array) {
-  let hold = array[i];
-  array[i] = array[j];
-  array[j] = hold;
+function swap(i, j, unsortedArray) {
+  let hold = unsortedArray[i];
+  unsortedArray[i] = unsortedArray[j];
+  unsortedArray[j] = hold;
 }
 
-function animate(i, j, array, animations) {
-  animations.push([i, j]);
-  animations.push([[i, array[i]], [j, array[j]]]);
-  animations.push([i, j]);
-}
-
-function animateJustColour(i, j, array, animations) {
-  animations.push([i, j]);
-  animations.push([i, j]);
+function animate(i, j, unsortedArray, animationsArray) {
+  animationsArray.push([i, j]);
+  animationsArray.push([[i, unsortedArray[i]], [j, unsortedArray[j]]]);
+  animationsArray.push([i, j]);
 }

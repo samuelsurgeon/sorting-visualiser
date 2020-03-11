@@ -43,10 +43,8 @@ const MIN_HEIGHT = 100;
 const MAX_HEIGHT = 600;
 
 // Colour
-let PRIMARY_COLOR = 'rgba(0, 0, 0, 0.2)';
-const SECONDARY_COLOR = 'white';
-
-// let arrayBars = document.getElementsByClassName('array-bar');
+let PRIMARY_COLOUR = 'rgba(0, 0, 0, 0.2)';
+const SECONDARY_COLOUR = 'white';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -95,7 +93,7 @@ export default class App extends React.Component {
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
-        const colour = alternate ? SECONDARY_COLOR : PRIMARY_COLOR;
+        const colour = alternate ? SECONDARY_COLOUR : PRIMARY_COLOUR;
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;

@@ -1,16 +1,16 @@
-export function getSelectionSortAnimations(array) {
-  const animations = [];
-  if (array.length <= 1) return array;
-  selectionSort(array, animations);
-  return animations;
+export function getSelectionSortAnimations(unsortedArray) {
+  const animationsArray = [];
+  if (unsortedArray.length <= 1) return unsortedArray;
+  selectionSort(unsortedArray, animationsArray);
+  return animationsArray;
 }
 
-function selectionSort(array, animations) {
+function selectionSort(unsortedArray, animationsArray) {
   let currentIndex = 0;
-  while (currentIndex < array.length - 1) {
+  while (currentIndex < unsortedArray.length - 1) {
     let smallestIndex = currentIndex;
-    for (let i = currentIndex + 1; i < array.length; i += 1) {
-      animateHighlight(smallestIndex, i, animations);
+    for (let i = currentIndex + 1; i < unsortedArray.length; i += 1) {
+      animateHighlight(smallestIndex, i, animationsArray);
       //animate(smallestIndex, currentIndex, array, animations);
       if (array[smallestIndex] > array[i]) {
         smallestIndex = i;

@@ -12,37 +12,22 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
+const PRIMARY_COLOUR = '#00000033';
+const SECONDARY_COLOUR = '#FFFFFF';
+
 // Just a hacc, figure it out later
-let setTimeoutIDs = 0;
-let timesRun = 1;
+let setAnimationTimeoutIDs = 0;
+let timesSortAnimationsRun = 1;
 
 // TO DO: to get the array-bar elements used getElementsByClassName, instead of querySelector. querySelector returns a nodeList (I think), but does get Elements actually return HTMLElements? Look into this
-
-// TO DO: Change the name of snapShot haha
-
-//DELETE ALL INSTANCES OF THIS
-const ORANGE = '#FFBE29';
-
-// COLOURS
-const YELLOW = '#FFED05';
-const GREEN = '#44E78E';
-const TURQUOISE = '#3BF2F5';
-const PINK = '#FE8DC5';
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
 //  250 was the last set speed here.
 // this should probably be in state? I think
-let ANIMATION_SPEED_MS = 500;
-// This increases as the speed decreases
+// These shouldn't be all cappsed because they're not consts
+// Should these be in state? Maybe that's how you're supposed to do things in a React App
+let ANIMATION_SPEED = 500;
 let TRANSITION_SPEED = '0.5s';
-
-const NUMBER_OF_ARRAY_BARS = 14;
-const MIN_HEIGHT = 100;
-const MAX_HEIGHT = 600;
-
-// Colour
-let PRIMARY_COLOUR = 'rgba(0, 0, 0, 0.2)';
-const SECONDARY_COLOUR = 'white';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -52,38 +37,41 @@ export default class App extends React.Component {
 
   state = {
     activeAlgorithm: null,
-    currentArray: null,
+    unsortedArray: null,
     sortButtonClicked: false,
   };
 
   updateArray = () => {
+    const NUMBER_OF_ARRAY_BARS = 14;
+    const ARRAY_BAR_MIN_HEIGHT = 100;
+    const ARRAY_BAR_MAX_HEIGHT = 600;
     const arrayBars = document.querySelectorAll('.array-bar');
     const max = arrayBars.length;
     for (let i = 0; i < max; i += 1) {
-      arrayBars[i].style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+      arrayBars[i].style.backgroundColor = PRIMARY_COLOUR;
     }
-    const array = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(MIN_HEIGHT, MAX_HEIGHT));
+    const unsortedArray = [];
+    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i += 1) {
+      unsortedArray.push(randomIntFromInterval(ARRAY_BAR_MIN_HEIGHT, ARRAY_BAR_MAX_HEIGHT));
     }
-    // Where do I use currentArray? Because I might not need a state for it here, because I pass it down to the sortingVisualier in the end anyway :)
-    this.setState({ currentArray: array });
-    return array;
+    // Where do I use unsortedArray? Because I might not need a state for it here, because I pass it down to the sortingVisualier in the end anyway :)
+    this.setState({ unsortedArray });
+    return unsortedArray;
   }
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   runSortAnimations(sortAnimations) {
     const animations = sortAnimations;
     // This is a hack. Fix this. If this the only solution, this variable should be kept in the state
-    let alternate = true;
+    let shouldColourSwap = true;
 
-    for (let i = 0; i < timesRun; i += 1) {
-      setTimeoutIDs += 1960;
+    for (let i = 0; i < timesSortAnimationsRun; i += 1) {
+      setAnimationTimeoutIDs += 1960;
     };
 
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
-      const arrayHeights = document.querySelectorAll('.bar-height');
+      const barHeights = document.querySelectorAll('.bar-height');
       const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
       
       // Logic backwards?
@@ -91,14 +79,14 @@ export default class App extends React.Component {
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
-        const colour = alternate ? SECONDARY_COLOUR : PRIMARY_COLOUR;
+        const colour = shouldColourSwap ? SECONDARY_COLOUR : PRIMARY_COLOUR;
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
         barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
         barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
-        }, i * ANIMATION_SPEED_MS);
-        alternate = !alternate;
+        }, i * ANIMATION_SPEED);
+        shouldColourSwap = !shouldColourSwap;
       } else {
         setTimeout(() => {
           const [barOneIndex, barOneHeight] = animations[i][0];
@@ -110,11 +98,11 @@ export default class App extends React.Component {
           barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
           barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
 
-          const heightOneElement = arrayHeights[barOneIndex];
-          const heightTwoElement = arrayHeights[barTwoIndex];
-          heightOneElement.textContent = `${barOneHeight}`;
-          heightTwoElement.textContent = `${barTwoHeight}`;
-        }, i * ANIMATION_SPEED_MS);
+          const heightOneText = barHeights[barOneIndex];
+          const heightTwoText = barHeights[barTwoIndex];
+          heightOneText.textContent = `${barOneHeight}`;
+          heightTwoText.textContent = `${barTwoHeight}`;
+        }, i * ANIMATION_SPEED);
       }
     }
     setTimeout(() => {
@@ -126,12 +114,16 @@ export default class App extends React.Component {
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
       sortButtonStyle.textContent = 'Reset';
-    }, animations.length * ANIMATION_SPEED_MS);
-  timesRun += 1;
+    }, animations.length * ANIMATION_SPEED);
+  timesSortAnimationsRun += 1;
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
+    const GREEN = '#44E78E';
+    const TURQUOISE = '#3BF2F5';
+    const PINK = '#FE8DC5';
+
     this.setState({ activeAlgorithm: buttonName });
     const bodyStyle = document.body.style;
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
@@ -181,20 +173,20 @@ export default class App extends React.Component {
         buttonStyle.textContent = 'Stop';
 
         const speedSlider = document.querySelector(`input[class*='slider']`);
-        ANIMATION_SPEED_MS = speedSlider.value;
+        ANIMATION_SPEED = speedSlider.value;
         TRANSITION_SPEED = speedSlider.value / 1000;
         // Replace the string literal with a const; this line is long as shit shorten it lad
-        if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.currentArray));
-        if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.currentArray));
-        if (this.state.activeAlgorithm === 'selection') this.runSortAnimations(getSelectionSortAnimations(this.state.currentArray));
+        if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.unsortedArray));
+        if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.unsortedArray));
+        if (this.state.activeAlgorithm === 'selection') this.runSortAnimations(getSelectionSortAnimations(this.state.unsortedArray));
       });      
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        while (setTimeoutIDs--) {
-          window.clearTimeout(setTimeoutIDs);
+        while (setAnimationTimeoutIDs--) {
+          window.clearTimeout(setAnimationTimeoutIDs);
         }
-        setTimeoutIDs = 0;
+        setAnimationTimeoutIDs = 0;
       });
       const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
       sortButtons.forEach(element => element.disabled = false);

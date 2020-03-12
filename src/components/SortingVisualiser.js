@@ -6,7 +6,7 @@ export default class SortingVisualiser extends React.Component {
     super(props);
 
     this.state = {
-      array: [],
+      unsortedArray: [],
     }
   }
 
@@ -14,8 +14,8 @@ export default class SortingVisualiser extends React.Component {
     this.resetArray(this.props.updateArray());
   }
 
-  resetArray(array) {
-    this.setState({ array });
+  resetArray(unsortedArray) {
+    this.setState({ unsortedArray });
   }
 
   handleClick = () => {
@@ -23,17 +23,17 @@ export default class SortingVisualiser extends React.Component {
   }
 
   render() {
-    const { array } = this.state;
+    const { unsortedArray } = this.state;
     return (
       <section className="component-sorting-visualiser">
-        {array.map((value, idx) => (
-          <div
+        {unsortedArray.map((height, index) => (
+          <section
             className="array-bar"
-            key={idx}
+            key={index}
             // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
-            style={{height: `${value}px`}}>
-              <h1 className="bar-height">{`${value}`}</h1>
-          </div>))
+            style={{height: `${height}px`}}>
+              <h1 className="bar-height">{`${height}`}</h1>
+          </section>))
         }
       </section>
     );

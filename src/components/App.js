@@ -132,7 +132,7 @@ export default class App extends React.Component {
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     /* Get rid of the style on the end, just want to edit the classNames :) */
-    const infoPopUpStyle = document.querySelector(`section[class*='component-info-pop-up']`).style;
+    const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
 
     if (buttonName === 'insertion') {
       /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */

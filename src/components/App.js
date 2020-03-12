@@ -16,16 +16,6 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-// TO DO: to get the array-bar elements used getElementsByClassName, instead of querySelector. querySelector returns a nodeList (I think), but does get Elements actually return HTMLElements? Look into this
-
-// TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
-//  250 was the last set speed here.
-// this should probably be in state? I think
-// These shouldn't be all cappsed because they're not consts
-// Should these be in state? Maybe that's how you're supposed to do things in a React App
-let ANIMATION_SPEED = 500;
-let TRANSITION_SPEED = '0.5s';
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +32,7 @@ export default class App extends React.Component {
     const NUMBER_OF_ARRAY_BARS = 14;
     const ARRAY_BAR_MIN_HEIGHT = 100;
     const ARRAY_BAR_MAX_HEIGHT = 600;
+
     const arrayBars = document.querySelectorAll('.array-bar');
     const max = arrayBars.length;
     for (let i = 0; i < max; i += 1) {
@@ -51,13 +42,16 @@ export default class App extends React.Component {
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i += 1) {
       unsortedArray.push(randomIntFromInterval(ARRAY_BAR_MIN_HEIGHT, ARRAY_BAR_MAX_HEIGHT));
     }
-    // Where do I use unsortedArray? Because I might not need a state for it here, because I pass it down to the sortingVisualier in the end anyway :)
     this.setState({ unsortedArray });
     return unsortedArray;
   }
 
   // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   runSortAnimations(sortAnimations) {
+    const speedSlider = document.querySelector(`input[class*='slider']`);
+    const ANIMATION_SPEED = speedSlider.value;
+    const TRANSITION_SPEED = speedSlider.value / 1000;
+
     const animations = sortAnimations;
     // This is a hack. Fix this. If this the only solution, this variable should be kept in the state
     let shouldColourSwap = true;
@@ -165,9 +159,6 @@ export default class App extends React.Component {
 
         buttonStyle.textContent = 'Stop';
 
-        const speedSlider = document.querySelector(`input[class*='slider']`);
-        ANIMATION_SPEED = speedSlider.value;
-        TRANSITION_SPEED = speedSlider.value / 1000;
         // Replace the string literal with a const; this line is long as shit shorten it lad
         if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.unsortedArray));
         if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.unsortedArray));

@@ -14,6 +14,7 @@ import './App.css';
 
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
+const FINISHED_COLOUR = '#FFFFFFB3';
 
 // Just a hacc, figure it out later
 let setAnimationTimeoutIDs = 0;
@@ -110,7 +111,7 @@ export default class App extends React.Component {
       let max = arrayBars.length;
       for (let i = 0; i < max; i += 1) {
         arrayBars[i].style.transitionDuration = `${TRANSITION_SPEED}s`;
-        arrayBars[i].style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        arrayBars[i].style.backgroundColor = FINISHED_COLOUR;
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
       sortButtonStyle.textContent = 'Reset';
@@ -125,12 +126,13 @@ export default class App extends React.Component {
     const PINK = '#FE8DC5';
 
     this.setState({ activeAlgorithm: buttonName });
+
     const bodyStyle = document.body.style;
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     /* Get rid of the style on the end, just want to edit the classNames :) */
-    const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
+    const infoPopUpStyle = document.querySelector(`section[class*='component-info-pop-up']`).style;
 
     if (buttonName === 'insertion') {
       /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */
@@ -197,8 +199,8 @@ export default class App extends React.Component {
   }
 
   infoButtonClick = () => {
-    const element = document.querySelector('.component-info-pop-up');
-    element.classList.remove('hidden');
+    const infoPopUp = document.querySelector('.component-info-pop-up');
+    infoPopUp.classList.remove('hidden');
 
     const blurSidebar = document.querySelector('.sidebar');
     blurSidebar.classList.add('blur');
@@ -208,8 +210,8 @@ export default class App extends React.Component {
   }
 
   closePopUpClick = () => {
-    const element = document.querySelector('.component-info-pop-up');
-    element.classList.add('hidden');
+    const infoPopUp = document.querySelector('.component-info-pop-up');
+    infoPopUp.classList.add('hidden');
 
     const blurSidebar = document.querySelector('.sidebar');
     blurSidebar.classList.remove('blur');

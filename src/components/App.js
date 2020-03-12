@@ -46,7 +46,6 @@ export default class App extends React.Component {
     return unsortedArray;
   }
 
-  // All of these sort methods are pretty similar, maybe we can have one big runAnimations() method and then use conditional logic to edit it THESE REPEATING CODE PATTERNS ARE NOT DRY BROH
   runSortAnimations(sortAnimations) {
     const speedSlider = document.querySelector(`input[class*='slider']`);
     const ANIMATION_SPEED = speedSlider.value;

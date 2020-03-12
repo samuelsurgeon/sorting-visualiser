@@ -1,8 +1,4 @@
 import React from 'react';
-// Use default export ?
-import { getInsertionSortAnimations } from '../algorithms/insertion';
-import { getSelectionSortAnimations } from '../algorithms/selection';
-import { getBubbleSortAnimations } from '../algorithms/bubble';
 import Heading from './Heading';
 import SortPanel from './SortPanel';
 import SpeedSlider from './SpeedSlider';
@@ -11,6 +7,10 @@ import SortingVisualiser from './SortingVisualiser';
 import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
+
+import { getInsertionSortAnimations } from '../algorithms/insertion';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
+import { getSelectionSortAnimations } from '../algorithms/selection';
 
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';

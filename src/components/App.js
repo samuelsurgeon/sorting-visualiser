@@ -16,10 +16,6 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-// Just a hacc, figure it out later
-let setAnimationTimeoutIDs = 0;
-let timesSortAnimationsRun = 1;
-
 // TO DO: to get the array-bar elements used getElementsByClassName, instead of querySelector. querySelector returns a nodeList (I think), but does get Elements actually return HTMLElements? Look into this
 
 // TChange this value for the speed of the animations (THIS IS CLEMENT'S CODE CHANGE THIS!)
@@ -65,10 +61,6 @@ export default class App extends React.Component {
     const animations = sortAnimations;
     // This is a hack. Fix this. If this the only solution, this variable should be kept in the state
     let shouldColourSwap = true;
-
-    for (let i = 0; i < timesSortAnimationsRun; i += 1) {
-      setAnimationTimeoutIDs += 1960;
-    };
 
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
@@ -116,7 +108,6 @@ export default class App extends React.Component {
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
       sortButtonStyle.textContent = 'Reset';
     }, animations.length * ANIMATION_SPEED);
-  timesSortAnimationsRun += 1;
   }
 
   // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
@@ -185,10 +176,10 @@ export default class App extends React.Component {
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        while (setAnimationTimeoutIDs--) {
-          window.clearTimeout(setAnimationTimeoutIDs);
+        let timeoutIDs = 99999;
+        while (timeoutIDs--) {
+          window.clearTimeout(timeoutIDs);
         }
-        setAnimationTimeoutIDs = 0;
       });
       const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
       sortButtons.forEach(element => element.disabled = false);

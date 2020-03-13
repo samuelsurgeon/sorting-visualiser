@@ -226,7 +226,9 @@ function recolourBody(colour) {
 }
 
 function recolourInfoPopUp(colour) {
-  document.querySelector(`section[class*='component-info-pop-up']`).className = ` ${colour}`;
+  const fullClassName = document.querySelector(`section[class*='component-info-pop-up']`).className;
+  
+  console.log(className);
 }
 
 function recolourSlider(colour) {

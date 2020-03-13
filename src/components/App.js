@@ -101,50 +101,46 @@ export default class App extends React.Component {
   }
 
   sortPanelClick = buttonName => {
-    /* We should be able to get rid of these by the end of it */
-    const GREEN = '#44E78E';
-    const TURQUOISE = '#3BF2F5';
-    const PINK = '#FE8DC5';
+    const green = 'green';
+    const turquoise = 'turquoise';
+    const pink = 'pink';
 
-    this.setState({ activeAlgorithm: buttonName });
-
-    const body = document.body;
-    const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     /* Get rid of the style on the end, just want to edit the classNames :) */
-    const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
+
+    this.setState({ activeAlgorithm: buttonName });
 
     if (buttonName === 'insertion') {
-      body.className = 'green';
-      infoPopUp.backgroundColor = GREEN;
-
+      recolourBody(green);
+      recolourInfoPopUp(green);
+      recolourSlider(green);
+      recolourSortButton(green);
+      /*
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
       });
-      /* with these instead of doing slider-green, why don't I just add a class called .green and that'll change the colour to green */
-      sliderStyle.className = 'slider-green';
-      sortButtonStyle.className = 'sort-button-green';
+      */
     }
     if (buttonName === 'bubble') {
-      body.className = 'turquoise';
-      infoPopUp.backgroundColor = TURQUOISE;
+      /*
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
       });
       // These values shouldn't be hard coded!!!
       sliderStyle.className = 'slider-turquoise';
       sortButtonStyle.className = 'sort-button-turquoise';
+      */
     }
     if (buttonName === 'selection') {
-      body.className = 'pink';
-      infoPopUp.backgroundColor = PINK;
+      /*
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
       });
       sliderStyle.className = 'slider-pink';
       sortButtonStyle.className = 'sort-button-pink'; }
-      /*See how this whole sort panel click thing, does like 10 different things, split them up into single functions and call them from here */
+      See how this whole sort panel click thing, does like 10 different things, split them up into single functions and call them from here */
+    }
   };
 
   sortButtonClick = () => {
@@ -170,8 +166,7 @@ export default class App extends React.Component {
         }
       });
       const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
-      sortButtons.forEach(element => element.disabled = false);
-      buttonStyle.textContent = 'Sort';
+      sortButtons.forEach(element => element.disabled = false); buttonStyle.textContent = 'Sort';
       //this might be a bit convoluted, figure out better logic
       this.sortingVisualiserElement.current.resetArray(this.updateArray());
     }
@@ -224,6 +219,29 @@ export default class App extends React.Component {
       </section>
     );
   }
+}
+
+function recolourBody(colour) {
+  document.body.className = colour;
+}
+
+function recolourInfoPopUp(colour) {
+  document.querySelector(`section[class*='component-info-pop-up']`).className = ` ${colour}`;
+}
+
+function recolourSlider(colour) {
+
+}
+
+function recolourSortButton(colour) {
+
+}
+
+function selectTypeButton(colour) {
+  const typeButton = document.querySelectorAll(`button[class*='type-button']`);
+  typeButton.forEach(element => {
+    element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
+  });
 }
 
 function randomIntFromInterval(min, max) {

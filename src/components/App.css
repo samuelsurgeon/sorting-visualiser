@@ -64,3 +64,15 @@ a {
 .visualiser.blur {
   filter: blur(0.5rem);
 }
+
+.green {
+  background-color: var(--green);
+}
+
+.turquoise {
+  background-color: var(--turquoise);
+}
+
+.pink {
+  background-color: var(--pink);
+}

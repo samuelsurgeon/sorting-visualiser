@@ -48,20 +48,17 @@ export default class App extends React.Component {
 
   runSortAnimations(sortAnimations) {
     const speedSlider = document.querySelector(`input[class*='slider']`);
-    const ANIMATION_SPEED = speedSlider.value;
-    const TRANSITION_SPEED = speedSlider.value / 1000;
-
+    const animationSpeed = speedSlider.value;
+    const transitionSpeed = speedSlider.value / 1000;
     const animations = sortAnimations;
-    // This is a hack. Fix this. If this the only solution, this variable should be kept in the state
     let shouldColourSwap = true;
 
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.querySelectorAll('.array-bar');
       const barHeights = document.querySelectorAll('.bar-height');
-      const shouldAnimateSwap = typeof animations[i][0] === 'object' ? false : true;
+      const animateHighlight = typeof animations[i][0] === 'object' ? false : true;
       
-      // Logic backwards?
-      if (shouldAnimateSwap) {
+      if (animateHighlight) {
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -69,9 +66,9 @@ export default class App extends React.Component {
         setTimeout(() => {
         barOneStyle.backgroundColor = colour;
         barTwoStyle.backgroundColor = colour;
-        barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
-        barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
-        }, i * ANIMATION_SPEED);
+        barOneStyle.transitionDuration = `${transitionSpeed}s`;
+        barTwoStyle.transitionDuration = `${transitionSpeed}s`;
+        }, i * animationSpeed);
         shouldColourSwap = !shouldColourSwap;
       } else {
         setTimeout(() => {
@@ -81,37 +78,37 @@ export default class App extends React.Component {
           const barTwoStyle = arrayBars[barTwoIndex].style;
           barOneStyle.height = `${barOneHeight}px`;
           barTwoStyle.height = `${barTwoHeight}px`;
-          barOneStyle.transitionDuration = `${TRANSITION_SPEED}s`;
-          barTwoStyle.transitionDuration = `${TRANSITION_SPEED}s`;
+          barOneStyle.transitionDuration = `${transitionSpeed}s`;
+          barTwoStyle.transitionDuration = `${transitionSpeed}s`;
 
           const heightOneText = barHeights[barOneIndex];
           const heightTwoText = barHeights[barTwoIndex];
           heightOneText.textContent = `${barOneHeight}`;
           heightTwoText.textContent = `${barTwoHeight}`;
-        }, i * ANIMATION_SPEED);
+        }, i * animationSpeed);
       }
     }
     setTimeout(() => {
       const arrayBars = document.querySelectorAll('.array-bar');
       let max = arrayBars.length;
       for (let i = 0; i < max; i += 1) {
-        arrayBars[i].style.transitionDuration = `${TRANSITION_SPEED}s`;
+        arrayBars[i].style.transitionDuration = `${transitionSpeed}s`;
         arrayBars[i].style.backgroundColor = FINISHED_COLOUR;
       }
       const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
       sortButtonStyle.textContent = 'Reset';
-    }, animations.length * ANIMATION_SPEED);
+    }, animations.length * animationSpeed);
   }
 
-  // Name this function something else, to make sure that the flow of logic is good :) I think I only use the handleClick method to change the algorithm type, so maybe I should rename it to something like setAlgorithm or somethign liek that
   sortPanelClick = buttonName => {
+    /* We should be able to get rid of these by the end of it */
     const GREEN = '#44E78E';
     const TURQUOISE = '#3BF2F5';
     const PINK = '#FE8DC5';
 
     this.setState({ activeAlgorithm: buttonName });
 
-    const bodyStyle = document.body.style;
+    const body = document.body;
     const typeButtonStyles = document.querySelectorAll(`button[class*='type-button']`);
     const sliderStyle = document.querySelector(`input[class*='slider']`);
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
@@ -119,18 +116,18 @@ export default class App extends React.Component {
     const infoPopUp = document.querySelector(`section[class*='component-info-pop-up']`).style;
 
     if (buttonName === 'insertion') {
-      /* We shouldn't be altering the styles in JS, we should be assigning classes, separate your concerns, and keep your code clean */
-      bodyStyle.backgroundColor = GREEN;
+      body.className = 'green';
       infoPopUp.backgroundColor = GREEN;
 
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
       });
+      /* with these instead of doing slider-green, why don't I just add a class called .green and that'll change the colour to green */
       sliderStyle.className = 'slider-green';
       sortButtonStyle.className = 'sort-button-green';
     }
     if (buttonName === 'bubble') {
-      bodyStyle.backgroundColor = TURQUOISE;
+      body.className = 'turquoise';
       infoPopUp.backgroundColor = TURQUOISE;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
@@ -140,13 +137,14 @@ export default class App extends React.Component {
       sortButtonStyle.className = 'sort-button-turquoise';
     }
     if (buttonName === 'selection') {
-      bodyStyle.backgroundColor = PINK;
+      body.className = 'pink';
       infoPopUp.backgroundColor = PINK;
       typeButtonStyles.forEach(element => {
         element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
       });
       sliderStyle.className = 'slider-pink';
       sortButtonStyle.className = 'sort-button-pink'; }
+      /*See how this whole sort panel click thing, does like 10 different things, split them up into single functions and call them from here */
   };
 
   sortButtonClick = () => {

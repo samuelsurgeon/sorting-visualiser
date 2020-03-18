@@ -35,17 +35,11 @@
   cursor: pointer;
 }
 
-.slider-green {
-  direction: rtl;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  height: 0.1rem;
+.slider.green {
   background-color: black;
-  appearance: none;
-  outline: none;
 }
 
-.slider-green::-webkit-slider-thumb {
+.slider.green::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
   background-color: var(--darkGreen);
@@ -54,21 +48,15 @@
   border-radius: 5rem;
 }
 
-.slider-green::-webkit-slider-thumb:hover {
+.slider.green::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.slider-turquoise {
-  direction: rtl;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  height: 0.1rem;
+.slider.turquoise {
   background-color: black;
-  appearance: none;
-  outline: none;
 }
 
-.slider-turquoise::-webkit-slider-thumb {
+.slider.turquoise::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
   background-color: var(--darkTurquoise);
@@ -77,21 +65,15 @@
   border-radius: 5rem;
 }
 
-.slider-turquoise::-webkit-slider-thumb:hover {
+.slider.turquoise::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
-.slider-pink {
-  direction: rtl;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  height: 0.1rem;
+.slider.pink {
   background-color: black;
-  appearance: none;
-  outline: none;
 }
 
-.slider-pink::-webkit-slider-thumb {
+.slider.pink::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
   background-color: var(--darkPink);
@@ -100,6 +82,6 @@
   border-radius: 5rem;
 }
 
-.slider-pink::-webkit-slider-thumb:hover {
+.slider.pink::-webkit-slider-thumb:hover {
   cursor: pointer;
 }

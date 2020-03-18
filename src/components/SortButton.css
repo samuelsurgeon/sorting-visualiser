@@ -20,46 +20,19 @@
   color: var(--yellow);
 }
 
-.sort-button-green {
-  width: 40rem;
-  padding: 2rem;
-  background-color: transparent;
-  font-size: 2rem;
-  border: 0.1rem solid black;
-  text-align: center;
-}
-
-.sort-button-green:hover {
+.sort-button.green:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--green);
 }
 
-.sort-button-turquoise {
-  width: 40rem;
-  padding: 2rem;
-  background-color: transparent;
-  font-size: 2rem;
-  border: 0.1rem solid black;
-  text-align: center;
-}
-
-.sort-button-turquoise:hover {
+.sort-button.turquoise:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--turquoise);
 }
 
-.sort-button-pink {
-  width: 40rem;
-  padding: 2rem;
-  background-color: transparent;
-  font-size: 2rem;
-  border: 0.1rem solid black;
-  text-align: center;
-}
-
-.sort-button-pink:hover {
+.sort-button.pink:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--pink);

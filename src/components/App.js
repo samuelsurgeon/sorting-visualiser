@@ -212,12 +212,13 @@ function recolourInfoPopUp(colour) {
 }
 
 function recolourSlider(colour) {
-  const sliderStyle = document.querySelector(`input[class*='slider']`);
-
+  const sliderElement = document.querySelector(`input[class*='slider']`);
+  sliderElement.className = `slider ${colour}`;
 }
 
 function recolourSortButton(colour) {
-  const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
+  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
+  sortButtonElement.className = `sort-button ${colour}`;
 }
 
 function selectTypeButton(algorithmType, colour) {

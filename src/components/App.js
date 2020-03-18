@@ -207,11 +207,13 @@ function recolourBody(colour) {
 }
 
 function recolourInfoPopUp(colour) {
-  const fullClassName = document.querySelector(`section[class*='component-info-pop-up']`).className;
+  const infoPopUpElement = document.querySelector(`section[class*='component-info-pop-up']`);
+  infoPopUpElement.className.includes('hidden') ? infoPopUpElement.className = `component-info-pop-up hidden ${colour}` : infoPopUpElement.className = `component-info-pop-up ${colour}`;
 }
 
 function recolourSlider(colour) {
   const sliderStyle = document.querySelector(`input[class*='slider']`);
+
 }
 
 function recolourSortButton(colour) {

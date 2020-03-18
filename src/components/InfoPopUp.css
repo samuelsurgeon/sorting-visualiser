@@ -17,6 +17,18 @@
   display: none;
 }
 
+.component-info-pop-up.green {
+  background-color: var(--green);
+}
+
+.component-info-pop-up.turquoise {
+  background-color: var(--turquoise);
+}
+
+.component-info-pop-up.pink {
+  background-color: var(--pink);
+}
+
 .close-button {
   position: absolute;
   top: 0;

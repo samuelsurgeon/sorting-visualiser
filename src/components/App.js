@@ -118,15 +118,10 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
-    const buttonStyle = document.querySelector(`button[class*='sort-button']`);
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
-        sortButtons.forEach(element => element.disabled = true);       
-
-        buttonStyle.textContent = 'Stop';
-
-        // Replace the string literal with a const; this line is long as shit shorten it lad
+        disableSortTypeButtons();
+        changeSortButtonText('Stop');
         if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.unsortedArray));
         if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.unsortedArray));
         if (this.state.activeAlgorithm === 'selection') this.runSortAnimations(getSelectionSortAnimations(this.state.unsortedArray));
@@ -134,38 +129,21 @@ export default class App extends React.Component {
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        let timeoutIDs = 99999;
-        while (timeoutIDs--) {
-          window.clearTimeout(timeoutIDs);
-        }
+        clearAnimations();
       });
-      const sortButtons = document.querySelectorAll(`button[class*='type-button']`);
-      sortButtons.forEach(element => element.disabled = false); buttonStyle.textContent = 'Sort';
-      //this might be a bit convoluted, figure out better logic
+      changeSortButtonText('Sort');
       this.sortingVisualiserElement.current.resetArray(this.updateArray());
     }
   }
 
   infoButtonClick = () => {
-    const infoPopUp = document.querySelector('.component-info-pop-up');
-    infoPopUp.classList.remove('hidden');
-
-    const blurSidebar = document.querySelector('.sidebar');
-    blurSidebar.classList.add('blur');
-
-    const blurVisualiser = document.querySelector('.visualiser');
-    blurVisualiser.classList.add('blur');
+    revealInfoPopUp();
+    addBlurToBackground();
   }
 
   closePopUpClick = () => {
-    const infoPopUp = document.querySelector('.component-info-pop-up');
-    infoPopUp.classList.add('hidden');
-
-    const blurSidebar = document.querySelector('.sidebar');
-    blurSidebar.classList.remove('blur');
-
-    const blurVisualiser = document.querySelector('.visualiser');
-    blurVisualiser.classList.remove('blur');
+    hideInfoPopUp();
+    removeBlurFromBackground();
   }
 
   render() {
@@ -226,6 +204,47 @@ function selectTypeButton(algorithmType, colour) {
   typeButton.forEach(element => {
     element.getAttribute('name') === algorithmType ? element.className = `type-button ${colour} selected`: element.className = `type-button ${colour}`;
   });
+}
+
+function disableSortTypeButtons() {
+  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
+  sortTypeButtonElements.forEach(element => element.disabled = true);       
+}
+
+function changeSortButtonText(text) {
+  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
+  sortButtonElement.textContent = text;
+}
+
+function clearAnimations() {
+  let timeoutIDs = 99999;
+  while (timeoutIDs--) {
+    window.clearTimeout(timeoutIDs);
+  }
+}
+
+function revealInfoPopUp() {
+  const infoPopUp = document.querySelector('.component-info-pop-up');
+  infoPopUp.classList.remove('hidden');
+}
+
+function hideInfoPopUp() {
+  const infoPopUp = document.querySelector('.component-info-pop-up');
+  infoPopUp.classList.add('hidden');
+}
+
+function addBlurToBackground() {
+  const blurSidebar = document.querySelector('.sidebar');
+  blurSidebar.classList.add('blur');
+  const blurVisualiser = document.querySelector('.visualiser');
+  blurVisualiser.classList.add('blur');
+}
+
+function removeBlurFromBackground() {
+  const blurSidebar = document.querySelector('.sidebar');
+  blurSidebar.classList.remove('blur');
+  const blurVisualiser = document.querySelector('.visualiser');
+  blurVisualiser.classList.remove('blur');
 }
 
 function randomIntFromInterval(min, max) {

@@ -208,22 +208,20 @@ function recolourBody(colour) {
 
 function recolourInfoPopUp(colour) {
   const fullClassName = document.querySelector(`section[class*='component-info-pop-up']`).className;
-  
-  console.log(className);
 }
 
 function recolourSlider(colour) {
-    const sliderStyle = document.querySelector(`input[class*='slider']`);
+  const sliderStyle = document.querySelector(`input[class*='slider']`);
 }
 
 function recolourSortButton(colour) {
-    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
+  const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
 }
 
 function selectTypeButton(algorithmType, colour) {
   const typeButton = document.querySelectorAll(`button[class*='type-button']`);
   typeButton.forEach(element => {
-    element.getAttribute('name') === algorithmType ? element.className = `type-button-${colour} selected`: element.className = `type-button-${colour}`;
+    element.getAttribute('name') === algorithmType ? element.className = `type-button ${colour} selected`: element.className = `type-button ${colour}`;
   });
 }
 

@@ -53,58 +53,32 @@
   transform: none;  
 }
 
-.type-button-turquoise {
-  position: relative;
-  right: 1.5rem;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 1rem 3rem;
-  width: fit-content;
-  border: 0.1rem solid black;
-  background-color: transparent;
-  border-radius: 5rem;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.type-button-turquoise:hover {
+.type-button.turquoise:hover {
   background-color: black;
   color: var(--turquoise);
   transform: scale(1.05);
 }
 
-.type-button-turquoise.selected {
+.type-button.turquoise.selected {
   background-color: black;
   color: var(--turquoise);
 }
 
-.type-button-turquoise.selected:hover {
+.type-button.turquoise.selected:hover {
   transform: none;  
 }
 
-.type-button-pink {
-  position: relative;
-  right: 1.5rem;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 1rem 3rem;
-  width: fit-content;
-  border: 0.1rem solid black;
-  background-color: transparent;
-  border-radius: 5rem;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.type-button-pink:hover {
+.type-button.pink:hover {
   background-color: black;
   color: var(--pink);
   transform: scale(1.05);
 }
 
-.type-button-pink.selected {
+.type-button.pink.selected {
   background-color: black;
   color: var(--pink);
 }
 
-.type-button-pink.selected:hover {
+.type-button.pink.selected:hover {
   transform: none;  
 }

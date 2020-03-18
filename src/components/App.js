@@ -101,45 +101,19 @@ export default class App extends React.Component {
   }
 
   sortPanelClick = buttonName => {
-    const green = 'green';
-    const turquoise = 'turquoise';
-    const pink = 'pink';
-
-    const sliderStyle = document.querySelector(`input[class*='slider']`);
-    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
-    /* Get rid of the style on the end, just want to edit the classNames :) */
-
     this.setState({ activeAlgorithm: buttonName });
 
     if (buttonName === 'insertion') {
-      recolourBody(green);
-      recolourInfoPopUp(green);
-      recolourSlider(green);
-      recolourSortButton(green);
-      /*
-      typeButtonStyles.forEach(element => {
-        element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
-      });
-      */
+      recolourAllElements('green');
+      selectTypeButton('insertion', 'green');
     }
     if (buttonName === 'bubble') {
-      /*
-      typeButtonStyles.forEach(element => {
-        element.getAttribute('name') === 'bubble' ? element.className = 'type-button-turquoise selected': element.className = 'type-button-turquoise';
-      });
-      // These values shouldn't be hard coded!!!
-      sliderStyle.className = 'slider-turquoise';
-      sortButtonStyle.className = 'sort-button-turquoise';
-      */
+      recolourAllElements('turquoise');
+      selectTypeButton('bubble', 'turquoise');
     }
     if (buttonName === 'selection') {
-      /*
-      typeButtonStyles.forEach(element => {
-        element.getAttribute('name') === 'selection' ? element.className = 'type-button-pink selected': element.className = 'type-button-pink';
-      });
-      sliderStyle.className = 'slider-pink';
-      sortButtonStyle.className = 'sort-button-pink'; }
-      See how this whole sort panel click thing, does like 10 different things, split them up into single functions and call them from here */
+      recolourAllElements('pink');
+      selectTypeButton('selection', 'pink');
     }
   };
 
@@ -221,6 +195,13 @@ export default class App extends React.Component {
   }
 }
 
+function recolourAllElements(colour) {
+  recolourBody(colour);
+  recolourInfoPopUp(colour);
+  recolourSlider(colour);
+  recolourSortButton(colour);
+}
+
 function recolourBody(colour) {
   document.body.className = colour;
 }
@@ -232,17 +213,17 @@ function recolourInfoPopUp(colour) {
 }
 
 function recolourSlider(colour) {
-
+    const sliderStyle = document.querySelector(`input[class*='slider']`);
 }
 
 function recolourSortButton(colour) {
-
+    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
 }
 
-function selectTypeButton(colour) {
+function selectTypeButton(algorithmType, colour) {
   const typeButton = document.querySelectorAll(`button[class*='type-button']`);
   typeButton.forEach(element => {
-    element.getAttribute('name') === 'insertion' ? element.className = 'type-button-green selected': element.className = 'type-button-green';
+    element.getAttribute('name') === algorithmType ? element.className = `type-button-${colour} selected`: element.className = `type-button-${colour}`;
   });
 }
 

@@ -131,6 +131,7 @@ export default class App extends React.Component {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         clearAnimations();
       });
+      enableSortTypeButtons();
       changeSortButtonText('Sort');
       this.sortingVisualiserElement.current.resetArray(this.updateArray());
     }
@@ -153,8 +154,6 @@ export default class App extends React.Component {
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">
-            {/* selectAlgorithm and runAlgorithm? should rename these lads */}
-            {/* So I'm actually passing these lads down instead of up?? haha */}
             <SortPanel selectAlgorithm={this.sortPanelClick}></SortPanel>
             <SpeedSlider></SpeedSlider>
             <SortButton runAlgorithm={this.sortButtonClick}></SortButton>
@@ -166,7 +165,6 @@ export default class App extends React.Component {
             ref={this.sortingVisualiserElement}
             updateArray={this.updateArray}
             appState={this.state}></SortingVisualiser>
-          {/* maybe might move these stickies out */}
         </section>
       </section>
     );
@@ -209,6 +207,11 @@ function selectTypeButton(algorithmType, colour) {
 function disableSortTypeButtons() {
   const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
   sortTypeButtonElements.forEach(element => element.disabled = true);       
+}
+
+function enableSortTypeButtons() {
+  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
+  sortTypeButtonElements.forEach(element => element.disabled = false);
 }
 
 function changeSortButtonText(text) {

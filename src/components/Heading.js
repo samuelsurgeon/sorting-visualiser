@@ -2,7 +2,6 @@ import React from 'react';
 import './Heading.css';
 
 export default class Heading extends React.Component {
-  // Should this just be changed to a functional component? Because it's so simple?
   constructor(props) {
     super(props);
   }

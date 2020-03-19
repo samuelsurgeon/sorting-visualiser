@@ -30,7 +30,6 @@ export default class SortingVisualiser extends React.Component {
           <section
             className="array-bar"
             key={index}
-            // This needs to be implemented better, maybe split up better. Other engineers wouldn't be able to understand this code very easily...
             style={{height: `${height}px`}}>
               <h1 className="bar-height">{`${height}`}</h1>
           </section>))

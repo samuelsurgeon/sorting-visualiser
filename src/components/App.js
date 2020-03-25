@@ -51,6 +51,7 @@ export default class App extends React.Component {
     const animationSpeed = speedSlider.value;
     const transitionSpeed = speedSlider.value / 1000;
     const animations = sortAnimations;
+    // better implementation
     let shouldColourSwap = true;
 
     for (let i = 0; i < animations.length; i += 1) {

@@ -4,8 +4,6 @@ import './SortPanel.css';
 export default class SortPanel extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { selectedButton: null };
   }
 
   handleClick = buttonName => {

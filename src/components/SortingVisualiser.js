@@ -6,10 +6,6 @@ export default class SortingVisualiser extends React.Component {
     super(props);
   }
 
-  handleClick = () => {
-    this.props.infoButtonClick();
-  }
-
   render() {
     // think of a better more obvious way to do this. face the issue head, deal with the asyncness in App.js
     const unsortedArray = this.props.unsortedArray ? this.props.unsortedArray : [];

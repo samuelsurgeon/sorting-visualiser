@@ -31,7 +31,9 @@ export default class App extends React.Component {
     sortButtonClicked: false,
   };
 
-  componentDidMount =
+  componentDidMount() {
+    this.updateArray();
+  }
 
   updateArray = () => {
     const NUMBER_OF_ARRAY_BARS = 14;

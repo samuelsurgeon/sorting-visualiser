@@ -6,21 +6,13 @@ export default class SortingVisualiser extends React.Component {
     super(props);
   }
 
-  // Can this be lifted up? or is it better to keep this here?
-  componentDidMount() {
-    // console.log(this.props.updateArray());
-    // console.log(this.props.unsortedArray);
-  }
-
   handleClick = () => {
     this.props.infoButtonClick();
   }
 
   render() {
-    // If it turns out that I need this then just grab it from props
-    // const unsortedArray = this.props.updateArray();
-    const unsortedArray = [];
-    // const unsortedArray = this.props.unsortedArray;
+    // think of a better more obvious way to do this. face the issue head, deal with the asyncness in App.js
+    const unsortedArray = this.props.unsortedArray ? this.props.unsortedArray : [];
     return (
       <section className="component-sorting-visualiser">
         {unsortedArray.map((height, index) => (

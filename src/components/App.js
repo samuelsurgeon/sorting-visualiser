@@ -22,11 +22,16 @@ export default class App extends React.Component {
     this.sortingVisualiserElement = React.createRef();
   }
 
+  // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
+
+// shouldn't this be declared differently? like this.state or something?
   state = {
     activeAlgorithm: null,
     unsortedArray: null,
     sortButtonClicked: false,
   };
+
+  componentDidMount =
 
   updateArray = () => {
     const NUMBER_OF_ARRAY_BARS = 14;
@@ -44,6 +49,7 @@ export default class App extends React.Component {
     }
     this.setState({ unsortedArray });
     return unsortedArray;
+    console.log(`HI: ${unsortedArray}`);
   }
 
   runSortAnimations(sortAnimations) {
@@ -165,7 +171,8 @@ export default class App extends React.Component {
           <SortingVisualiser 
             ref={this.sortingVisualiserElement}
             updateArray={this.updateArray}
-            appState={this.state}></SortingVisualiser>
+            appState={this.state}
+            unsortedArray={this.state.unsortedArray}></SortingVisualiser>
         </section>
       </section>
     );

@@ -4,18 +4,12 @@ import './SortingVisualiser.css';
 export default class SortingVisualiser extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      unsortedArray: [],
-    }
   }
 
+  // Can this be lifted up? or is it better to keep this here?
   componentDidMount() {
-    this.resetArray(this.props.updateArray());
-  }
-
-  resetArray(unsortedArray) {
-    this.setState({ unsortedArray });
+    // console.log(this.props.updateArray());
+    // console.log(this.props.unsortedArray);
   }
 
   handleClick = () => {
@@ -23,7 +17,10 @@ export default class SortingVisualiser extends React.Component {
   }
 
   render() {
-    const { unsortedArray } = this.state;
+    // If it turns out that I need this then just grab it from props
+    // const unsortedArray = this.props.updateArray();
+    const unsortedArray = [];
+    // const unsortedArray = this.props.unsortedArray;
     return (
       <section className="component-sorting-visualiser">
         {unsortedArray.map((height, index) => (

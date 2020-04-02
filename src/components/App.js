@@ -25,7 +25,7 @@ export default class App extends React.Component {
   // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
 
 // shouldn't this be declared differently? like this.state or something?
-  state = {
+  this.state = {
     activeAlgorithm: null,
     unsortedArray: null,
     sortButtonClicked: false,

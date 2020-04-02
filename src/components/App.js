@@ -23,6 +23,7 @@ export default class App extends React.Component {
       // do I really need all of these?
       activeAlgorithm: null,
       unsortedArray: null,
+      sortedArray: null,
       // rename this to something more semantic, such as animationsRunning or something
       sortButtonClicked: false,
     };
@@ -135,29 +136,31 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
+    let sortedArray = [];
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         disableSortTypeButtons();
         changeSortButtonText('Stop');
         if (this.state.activeAlgorithm === 'insertion') {
-          sortedArray = getInsertionSortAnimations(this.state.unsortedArray);
-          console.log(sortedArray);
-          this.runSortAnimations(sortedArray);
+          this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
+            this.runSortAnimations(this.state.sortedArray);
+          });
         }
         if (this.state.activeAlgorithm === 'bubble') { 
-          sortedArray = getBubbleSortAnimations(this.state.unsortedArray);
-          this.runSortAnimations(sortedArray);
+          this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
+            this.runSortAnimations(this.state.sortedArray);
+          });
         }
         if (this.state.activeAlgorithm === 'selection') {
-          sortedArray = getSelectionSortAnimations(this.state.unsortedArray);
-          this.runSortAnimations(sortedArray);
+          this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
+            this.runSortAnimations(this.state.sortedArray);
+          });
         }
       });      
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        console.log(sortedArray);
-        clearAnimations(sortedArray.length);
+        clearAnimations(this.state.sortedArray.length);
       });
       enableSortTypeButtons();
       changeSortButtonText('Sort');
@@ -245,9 +248,9 @@ function changeSortButtonText(text) {
   sortButtonElement.textContent = text;
 }
 
-function clearAnimations(timeoutTotal) {
-  let timeoutIDs = timeoutTotal;
-  console.log(timeoutIDs);
+function clearAnimations(sortedArrayLength) {
+  const speedSlider = document.querySelector(`input[class*='slider']`);
+  let timeoutIDs = sortedArrayLength * speedSlider.value;
   while (timeoutIDs--) {
     window.clearTimeout(timeoutIDs);
   }

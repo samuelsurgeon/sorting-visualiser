@@ -25,7 +25,6 @@ export default class App extends React.Component {
       unsortedArray: null,
       // rename this to something more semantic, such as animationsRunning or something
       sortButtonClicked: false,
-      timeoutIDs: 0,
     };
   }
 
@@ -33,7 +32,8 @@ export default class App extends React.Component {
   componentDidMount() {
     this.updateArray();
   }
-
+  
+  // should be able to get rid of this
   shouldComponentUpdate() {
     if (this.state.sortButtonClicked) {
       return false;
@@ -85,8 +85,6 @@ export default class App extends React.Component {
         barTwoStyle.backgroundColor = colour;
         barOneStyle.transitionDuration = `${transitionSpeed}s`;
         barTwoStyle.transitionDuration = `${transitionSpeed}s`;
-        this.setState({ timeoutIDs: i * animationSpeed });
-        // console.log(i * animationSpeed);
         }, i * animationSpeed);
         shouldColourSwap = !shouldColourSwap;
       } else {
@@ -104,7 +102,6 @@ export default class App extends React.Component {
           const heightTwoText = barHeights[barTwoIndex];
           heightOneText.textContent = `${barOneHeight}`;
           heightTwoText.textContent = `${barTwoHeight}`;
-          console.log(i * animationSpeed);
         }, i * animationSpeed);
       }
     }
@@ -142,14 +139,25 @@ export default class App extends React.Component {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
         disableSortTypeButtons();
         changeSortButtonText('Stop');
-        if (this.state.activeAlgorithm === 'insertion') this.runSortAnimations(getInsertionSortAnimations(this.state.unsortedArray));
-        if (this.state.activeAlgorithm === 'bubble') this.runSortAnimations(getBubbleSortAnimations(this.state.unsortedArray));
-        if (this.state.activeAlgorithm === 'selection') this.runSortAnimations(getSelectionSortAnimations(this.state.unsortedArray));
+        if (this.state.activeAlgorithm === 'insertion') {
+          sortedArray = getInsertionSortAnimations(this.state.unsortedArray);
+          console.log(sortedArray);
+          this.runSortAnimations(sortedArray);
+        }
+        if (this.state.activeAlgorithm === 'bubble') { 
+          sortedArray = getBubbleSortAnimations(this.state.unsortedArray);
+          this.runSortAnimations(sortedArray);
+        }
+        if (this.state.activeAlgorithm === 'selection') {
+          sortedArray = getSelectionSortAnimations(this.state.unsortedArray);
+          this.runSortAnimations(sortedArray);
+        }
       });      
     }
     if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
       this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        clearAnimations();
+        console.log(sortedArray);
+        clearAnimations(sortedArray.length);
       });
       enableSortTypeButtons();
       changeSortButtonText('Sort');
@@ -237,8 +245,9 @@ function changeSortButtonText(text) {
   sortButtonElement.textContent = text;
 }
 
-function clearAnimations() {
-  let timeoutIDs = 99999;
+function clearAnimations(timeoutTotal) {
+  let timeoutIDs = timeoutTotal;
+  console.log(timeoutIDs);
   while (timeoutIDs--) {
     window.clearTimeout(timeoutIDs);
   }

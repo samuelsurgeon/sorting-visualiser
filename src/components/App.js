@@ -19,18 +19,16 @@ const FINISHED_COLOUR = '#FFFFFFB3';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      // do I really need all of these?
+      activeAlgorithm: null,
+      unsortedArray: null,
+      sortButtonClicked: false,
+    };
     this.sortingVisualiserElement = React.createRef();
   }
 
   // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
-
-// shouldn't this be declared differently? like this.state or something?
-  this.state = {
-    activeAlgorithm: null,
-    unsortedArray: null,
-    sortButtonClicked: false,
-  };
-
   componentDidMount() {
     this.updateArray();
   }
@@ -50,8 +48,8 @@ export default class App extends React.Component {
       unsortedArray.push(randomIntFromInterval(ARRAY_BAR_MIN_HEIGHT, ARRAY_BAR_MAX_HEIGHT));
     }
     this.setState({ unsortedArray });
+    // get rid of this return
     return unsortedArray;
-    console.log(`HI: ${unsortedArray}`);
   }
 
   runSortAnimations(sortAnimations) {

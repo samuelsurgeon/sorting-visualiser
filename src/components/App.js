@@ -25,7 +25,6 @@ export default class App extends React.Component {
       unsortedArray: null,
       sortButtonClicked: false,
     };
-    this.sortingVisualiserElement = React.createRef();
   }
 
   // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
@@ -66,6 +65,7 @@ export default class App extends React.Component {
       const animateHighlight = typeof animations[i][0] === 'object' ? false : true;
       
       if (animateHighlight) {
+        // maybe pack all this up into a function?
         const [barOneIndex, barTwoIndex] = animations[i];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -75,6 +75,7 @@ export default class App extends React.Component {
         barTwoStyle.backgroundColor = colour;
         barOneStyle.transitionDuration = `${transitionSpeed}s`;
         barTwoStyle.transitionDuration = `${transitionSpeed}s`;
+        console.log(i * animationSpeed);
         }, i * animationSpeed);
         shouldColourSwap = !shouldColourSwap;
       } else {
@@ -140,7 +141,7 @@ export default class App extends React.Component {
       });
       enableSortTypeButtons();
       changeSortButtonText('Sort');
-      this.sortingVisualiserElement.current.resetArray(this.updateArray());
+      this.updateArray();
     }
   }
 
@@ -169,9 +170,6 @@ export default class App extends React.Component {
         <section className="visualiser">
           <InfoButton infoButtonClick={this.infoButtonClick}></InfoButton>
           <SortingVisualiser 
-            ref={this.sortingVisualiserElement}
-            updateArray={this.updateArray}
-            appState={this.state}
             unsortedArray={this.state.unsortedArray}></SortingVisualiser>
         </section>
       </section>

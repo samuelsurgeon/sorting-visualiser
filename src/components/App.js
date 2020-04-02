@@ -23,13 +23,23 @@ export default class App extends React.Component {
       // do I really need all of these?
       activeAlgorithm: null,
       unsortedArray: null,
+      // rename this to something more semantic, such as animationsRunning or something
       sortButtonClicked: false,
+      timeoutIDs: 0,
     };
   }
 
   // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
   componentDidMount() {
     this.updateArray();
+  }
+
+  shouldComponentUpdate() {
+    if (this.state.sortButtonClicked) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   updateArray = () => {
@@ -75,7 +85,8 @@ export default class App extends React.Component {
         barTwoStyle.backgroundColor = colour;
         barOneStyle.transitionDuration = `${transitionSpeed}s`;
         barTwoStyle.transitionDuration = `${transitionSpeed}s`;
-        console.log(i * animationSpeed);
+        this.setState({ timeoutIDs: i * animationSpeed });
+        // console.log(i * animationSpeed);
         }, i * animationSpeed);
         shouldColourSwap = !shouldColourSwap;
       } else {
@@ -93,6 +104,7 @@ export default class App extends React.Component {
           const heightTwoText = barHeights[barTwoIndex];
           heightOneText.textContent = `${barOneHeight}`;
           heightTwoText.textContent = `${barTwoHeight}`;
+          console.log(i * animationSpeed);
         }, i * animationSpeed);
       }
     }

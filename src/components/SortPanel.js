@@ -6,8 +6,8 @@ export default class SortPanel extends React.Component {
     super(props);
   }
 
-  handleClick = buttonName => {
-    this.props.selectAlgorithm(buttonName.target.name);
+  handleClick = clickedButton => {
+    this.props.selectAlgorithm(clickedButton.target.name);
   }
 
   render() {

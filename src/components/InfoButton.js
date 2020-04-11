@@ -6,8 +6,8 @@ export default class InfoButton extends React.Component {
     super(props);
   }
 
-  handleClick = () => {
-    this.props.clickHandler('info-button');
+  handleClick = clickedButton => {
+    this.props.clickHandler(clickedButton.target.name);
   }
 
   render() {
@@ -15,6 +15,7 @@ export default class InfoButton extends React.Component {
       <section className="component-info-button">
         <section className="button-container">
           <button
+            name="infoButton"
             className="info-button"
             onClick={this.handleClick}
             alt="Information Button">

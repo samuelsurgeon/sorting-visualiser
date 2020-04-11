@@ -6,8 +6,8 @@ export default class InfoPopUp extends React.Component {
     super(props);
   }
 
-  handleClick = () => {
-    this.props.clickHandler('close-info-button');
+  handleClick = clickedButton => {
+    this.props.clickHandler(clickedButton.target.name);
   }
 
   render() {
@@ -20,7 +20,8 @@ export default class InfoPopUp extends React.Component {
         <p className="info-heading">Who are you?</p>
         <p>My name is Samuel Surgeon. I{'\''}m a developer from Sydney. Say hi to me <a href="http://samuelsurgeon.com/" target="_blank">here</a>.</p>
         <button
-          className="close-info-button"
+          name="closePopUpButton"
+          className="close-pop-up-button"
           onClick={this.handleClick}
           alt="Close Pop-up Button">
           ✕

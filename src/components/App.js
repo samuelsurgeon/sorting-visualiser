@@ -119,32 +119,15 @@ export default class App extends React.Component {
   }
 
   sortPanelClick = buttonName => {
-    this.setState({ activeAlgorithm: buttonName });
-
-    if (buttonName === 'insertion') {
-      recolourAllElements('green');
-      selectTypeButton('insertion', 'green');
-    }
-    if (buttonName === 'bubble') {
-      recolourAllElements('turquoise');
-      selectTypeButton('bubble', 'turquoise');
-    }
-    if (buttonName === 'selection') {
-      recolourAllElements('pink');
-      selectTypeButton('selection', 'pink');
-    }
   };
 
-  sortButtonClick = () => {
-  }
-
   handleClick = buttonName => {
-    if (buttonName === 'info-button') {
+    if (buttonName === 'infoButton') {
       // package these two guys up into another .js file. Do the same for every single click
       revealInfoPopUp();
       addBlurToBackground();
     }
-    if (buttonName === 'close-info-button') {
+    if (buttonName === 'closePopUpButton') {
       hideInfoPopUp();
       removeBlurFromBackground();
     }
@@ -178,6 +161,22 @@ export default class App extends React.Component {
           enableSortTypeButtons();
         changeSortButtonText('Sort');
         this.updateArray();
+      }
+    }
+    if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
+      this.setState({ activeAlgorithm: buttonName });
+
+      if (buttonName === 'insertion') {
+        recolourAllElements('green');
+        selectTypeButton('insertion', 'green');
+      }
+      if (buttonName === 'bubble') {
+        recolourAllElements('turquoise');
+        selectTypeButton('bubble', 'turquoise');
+      }
+      if (buttonName === 'selection') {
+        recolourAllElements('pink');
+        selectTypeButton('selection', 'pink');
       }
     }
   }

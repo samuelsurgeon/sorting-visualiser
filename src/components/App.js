@@ -41,6 +41,7 @@ export default class App extends React.Component {
   }
 
   updateArray = () => {
+    const PRIMARY_COLOUR = '#00000033';
     const NUMBER_OF_ARRAY_BARS = 14;
     const ARRAY_BAR_MIN_HEIGHT = 100;
     const ARRAY_BAR_MAX_HEIGHT = 600;
@@ -77,17 +78,17 @@ export default class App extends React.Component {
           changeSortButtonText('Stop');
           if (this.state.activeAlgorithm === 'insertion') {
             this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
-              this.runSortAnimations(this.state.sortedArray);
+              runSortAnimations(this.state.sortedArray);
             });
           }
           if (this.state.activeAlgorithm === 'bubble') { 
             this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
-              this.runSortAnimations(this.state.sortedArray);
+              runSortAnimations(this.state.sortedArray);
             });
           }
           if (this.state.activeAlgorithm === 'selection') {
             this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
-              this.runSortAnimations(this.state.sortedArray);
+              runSortAnimations(this.state.sortedArray);
             });
           }
         });      

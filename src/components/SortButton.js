@@ -3,7 +3,7 @@ import './SortButton.css';
 
 export default class SortButton extends React.Component {
   handleClick = () => {
-    this.props.runAlgorithm();
+    this.props.clickHandler('sort-button');
   }
 
   render() {

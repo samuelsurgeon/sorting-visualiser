@@ -136,36 +136,6 @@ export default class App extends React.Component {
   };
 
   sortButtonClick = () => {
-    let sortedArray = [];
-    if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
-      this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        disableSortTypeButtons();
-        changeSortButtonText('Stop');
-        if (this.state.activeAlgorithm === 'insertion') {
-          this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
-            this.runSortAnimations(this.state.sortedArray);
-          });
-        }
-        if (this.state.activeAlgorithm === 'bubble') { 
-          this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
-            this.runSortAnimations(this.state.sortedArray);
-          });
-        }
-        if (this.state.activeAlgorithm === 'selection') {
-          this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
-            this.runSortAnimations(this.state.sortedArray);
-          });
-        }
-      });      
-    }
-    if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
-      this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-        clearAnimations(this.state.sortedArray.length);
-      });
-      enableSortTypeButtons();
-      changeSortButtonText('Sort');
-      this.updateArray();
-    }
   }
 
   handleClick = buttonName => {
@@ -178,6 +148,38 @@ export default class App extends React.Component {
       hideInfoPopUp();
       removeBlurFromBackground();
     }
+    if (buttonName === 'sort-button') {
+      let sortedArray = [];
+      if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
+        this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
+          disableSortTypeButtons();
+          changeSortButtonText('Stop');
+          if (this.state.activeAlgorithm === 'insertion') {
+            this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
+              this.runSortAnimations(this.state.sortedArray);
+            });
+          }
+          if (this.state.activeAlgorithm === 'bubble') { 
+            this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
+              this.runSortAnimations(this.state.sortedArray);
+            });
+          }
+          if (this.state.activeAlgorithm === 'selection') {
+            this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
+              this.runSortAnimations(this.state.sortedArray);
+            });
+          }
+        });      
+      }
+      if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
+        this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
+          clearAnimations(this.state.sortedArray.length);
+        });
+          enableSortTypeButtons();
+        changeSortButtonText('Sort');
+        this.updateArray();
+      }
+    }
   }
 
   render() {
@@ -189,7 +191,7 @@ export default class App extends React.Component {
           <section className="sidebar-bottom">
             <SortPanel selectAlgorithm={this.sortPanelClick}></SortPanel>
             <SpeedSlider></SpeedSlider>
-            <SortButton runAlgorithm={this.sortButtonClick}></SortButton>
+            <SortButton clickHandler={this.handleClick}></SortButton>
           </section>
         </section>
         <section className="visualiser">

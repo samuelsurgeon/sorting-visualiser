@@ -168,7 +168,8 @@ export default class App extends React.Component {
     }
   }
 
-  infoButtonClick = () => {
+  handleClick = buttonName => {
+    alert(buttonName);
     revealInfoPopUp();
     addBlurToBackground();
   }
@@ -191,7 +192,7 @@ export default class App extends React.Component {
           </section>
         </section>
         <section className="visualiser">
-          <InfoButton infoButtonClick={this.infoButtonClick}></InfoButton>
+          <InfoButton clickHandler={this.handleClick}></InfoButton>
           <SortingVisualiser 
             unsortedArray={this.state.unsortedArray}></SortingVisualiser>
         </section>

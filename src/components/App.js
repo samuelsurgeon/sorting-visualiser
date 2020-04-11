@@ -169,20 +169,21 @@ export default class App extends React.Component {
   }
 
   handleClick = buttonName => {
-    alert(buttonName);
-    revealInfoPopUp();
-    addBlurToBackground();
-  }
-
-  closePopUpClick = () => {
-    hideInfoPopUp();
-    removeBlurFromBackground();
+    if (buttonName === 'info-button') {
+      // package these two guys up into another .js file. Do the same for every single click
+      revealInfoPopUp();
+      addBlurToBackground();
+    }
+    if (buttonName === 'close-info-button') {
+      hideInfoPopUp();
+      removeBlurFromBackground();
+    }
   }
 
   render() {
     return (
       <section className="component-app">
-        <InfoPopUp closePopUpClick={this.closePopUpClick}></InfoPopUp>
+        <InfoPopUp clickHandler={this.handleClick}></InfoPopUp>
         <section className="sidebar">
           <Heading></Heading>
           <section className="sidebar-bottom">

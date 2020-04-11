@@ -29,7 +29,7 @@
   background-color: var(--pink);
 }
 
-.close-button {
+.close-info-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -40,7 +40,7 @@
   border: none;
 }
 
-.close-button:hover {
+.close-info-button:hover {
   transform: scale(1.5);
 }
 

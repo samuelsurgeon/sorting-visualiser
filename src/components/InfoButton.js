@@ -11,13 +11,6 @@ export default class InfoButton extends React.Component {
   }
 
   render() {
-    // figure out if this is a better way to deal with this problem. It might be too verbose for me.
-    const className = [
-      "info-button",
-      this.props.orange ? "orange" : "",
-      this.props.wide ? "wide" : "",
-    ];
-
     return (
       <section className="component-info-button">
         <section className="button-container">

@@ -11,7 +11,8 @@ import './App.css';
 import { getInsertionSortAnimations } from '../algorithms/insertion';
 import { getBubbleSortAnimations } from '../algorithms/bubble';
 import { getSelectionSortAnimations } from '../algorithms/selection';
-import { runSortAnimations } from '../animations/animations';
+import { runSortAnimations } from '../operators/runAnimations';
+import { generateArray } from '../operators/generateArray';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class App extends React.Component {
 
   // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
   componentDidMount() {
-    this.updateArray();
+    this.setState({ unsortedArray: generateArray() });
   }
   
   // should be able to get rid of this
@@ -38,26 +39,6 @@ export default class App extends React.Component {
     } else {
       return true;
     }
-  }
-
-  updateArray = () => {
-    const PRIMARY_COLOUR = '#00000033';
-    const NUMBER_OF_ARRAY_BARS = 14;
-    const ARRAY_BAR_MIN_HEIGHT = 100;
-    const ARRAY_BAR_MAX_HEIGHT = 600;
-
-    const arrayBars = document.querySelectorAll('.array-bar');
-    const max = arrayBars.length;
-    for (let i = 0; i < max; i += 1) {
-      arrayBars[i].style.backgroundColor = PRIMARY_COLOUR;
-    }
-    const unsortedArray = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i += 1) {
-      unsortedArray.push(randomIntFromInterval(ARRAY_BAR_MIN_HEIGHT, ARRAY_BAR_MAX_HEIGHT));
-    }
-    this.setState({ unsortedArray });
-    // get rid of this return
-    return unsortedArray;
   }
 
   handleClick = buttonName => {
@@ -99,7 +80,7 @@ export default class App extends React.Component {
         });
           enableSortTypeButtons();
         changeSortButtonText('Sort');
-        this.updateArray();
+        this.setState({ unsortedArray: generateArray() });
       }
     }
     if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
@@ -220,8 +201,4 @@ function removeBlurFromBackground() {
   blurSidebar.classList.remove('blur');
   const blurVisualiser = document.querySelector('.visualiser');
   blurVisualiser.classList.remove('blur');
-}
-
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
 }

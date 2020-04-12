@@ -13,6 +13,10 @@ import { getBubbleSortAnimations } from '../algorithms/bubble';
 import { getSelectionSortAnimations } from '../algorithms/selection';
 import { runSortAnimations } from '../operators/runAnimations';
 import { generateArray } from '../operators/generateArray';
+import { recolourAllElements } from '../operators/changeColours';
+import { openInfoPopUp } from '../operators/openInfoPopUp';
+import { closeInfoPopUp } from '../operators/closeInfoPopUp';
+import { selectSortType } from '../operators/selectSortType';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,12 +31,10 @@ export default class App extends React.Component {
     };
   }
 
-  // I THINK I SHOULD DELETE updateArray as a prop on the SortingVisualiser component
   componentDidMount() {
     this.setState({ unsortedArray: generateArray() });
   }
   
-  // should be able to get rid of this
   shouldComponentUpdate() {
     if (this.state.sortButtonClicked) {
       return false;
@@ -43,61 +45,17 @@ export default class App extends React.Component {
 
   handleClick = buttonName => {
     if (buttonName === 'infoButton') {
-      // package these two guys up into another .js file. Do the same for every single click
-      revealInfoPopUp();
-      addBlurToBackground();
+      openInfoPopUp();
     }
     if (buttonName === 'closePopUpButton') {
-      hideInfoPopUp();
-      removeBlurFromBackground();
+      closeInfoPopUp();
     }
     if (buttonName === 'sortButton') {
-      let sortedArray = [];
-      if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
-        this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-          disableSortTypeButtons();
-          changeSortButtonText('Stop');
-          if (this.state.activeAlgorithm === 'insertion') {
-            this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
-              runSortAnimations(this.state.sortedArray);
-            });
-          }
-          if (this.state.activeAlgorithm === 'bubble') { 
-            this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
-              runSortAnimations(this.state.sortedArray);
-            });
-          }
-          if (this.state.activeAlgorithm === 'selection') {
-            this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
-              runSortAnimations(this.state.sortedArray);
-            });
-          }
-        });      
-      }
-      if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
-        this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-          clearAnimations(this.state.sortedArray.length);
-        });
-          enableSortTypeButtons();
-        changeSortButtonText('Sort');
-        this.setState({ unsortedArray: generateArray() });
-      }
+      runSortAnimations();
     }
     if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
       this.setState({ activeAlgorithm: buttonName });
-
-      if (buttonName === 'insertion') {
-        recolourAllElements('green');
-        selectTypeButton('insertion', 'green');
-      }
-      if (buttonName === 'bubble') {
-        recolourAllElements('turquoise');
-        selectTypeButton('bubble', 'turquoise');
-      }
-      if (buttonName === 'selection') {
-        recolourAllElements('pink');
-        selectTypeButton('selection', 'pink');
-      }
+      selectSortType(buttonName);
     }
   }
 
@@ -121,84 +79,4 @@ export default class App extends React.Component {
       </section>
     );
   }
-}
-
-function recolourAllElements(colour) {
-  recolourBody(colour);
-  recolourInfoPopUp(colour);
-  recolourSlider(colour);
-  recolourSortButton(colour);
-}
-
-function recolourBody(colour) {
-  document.body.className = colour;
-}
-
-function recolourInfoPopUp(colour) {
-  const infoPopUpElement = document.querySelector(`section[class*='component-info-pop-up']`);
-  infoPopUpElement.className.includes('hidden') ? infoPopUpElement.className = `component-info-pop-up hidden ${colour}` : infoPopUpElement.className = `component-info-pop-up ${colour}`;
-}
-
-function recolourSlider(colour) {
-  const sliderElement = document.querySelector(`input[class*='slider']`);
-  sliderElement.className = `slider ${colour}`;
-}
-
-function recolourSortButton(colour) {
-  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
-  sortButtonElement.className = `sort-button ${colour}`;
-}
-
-function selectTypeButton(algorithmType, colour) {
-  const typeButton = document.querySelectorAll(`button[class*='type-button']`);
-  typeButton.forEach(element => {
-    element.getAttribute('name') === algorithmType ? element.className = `type-button ${colour} selected`: element.className = `type-button ${colour}`;
-  });
-}
-
-function disableSortTypeButtons() {
-  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-  sortTypeButtonElements.forEach(element => element.disabled = true);       
-}
-
-function enableSortTypeButtons() {
-  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-  sortTypeButtonElements.forEach(element => element.disabled = false);
-}
-
-function changeSortButtonText(text) {
-  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
-  sortButtonElement.textContent = text;
-}
-
-function clearAnimations(sortedArrayLength) {
-  const speedSlider = document.querySelector(`input[class*='slider']`);
-  let timeoutIDs = sortedArrayLength * speedSlider.value;
-  while (timeoutIDs--) {
-    window.clearTimeout(timeoutIDs);
-  }
-}
-
-function revealInfoPopUp() {
-  const infoPopUp = document.querySelector('.component-info-pop-up');
-  infoPopUp.classList.remove('hidden');
-}
-
-function hideInfoPopUp() {
-  const infoPopUp = document.querySelector('.component-info-pop-up');
-  infoPopUp.classList.add('hidden');
-}
-
-function addBlurToBackground() {
-  const blurSidebar = document.querySelector('.sidebar');
-  blurSidebar.classList.add('blur');
-  const blurVisualiser = document.querySelector('.visualiser');
-  blurVisualiser.classList.add('blur');
-}
-
-function removeBlurFromBackground() {
-  const blurSidebar = document.querySelector('.sidebar');
-  blurSidebar.classList.remove('blur');
-  const blurVisualiser = document.querySelector('.visualiser');
-  blurVisualiser.classList.remove('blur');
 }

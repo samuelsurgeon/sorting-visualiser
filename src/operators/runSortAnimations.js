@@ -1,8 +1,13 @@
+import { getInsertionSortAnimations } from '../algorithms/insertion';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
+import { getSelectionSortAnimations } from '../algorithms/selection';
+import { generateArray } from './generateArray';
+
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function runSortAnimations(sortAnimations) {
+export function setTimeoutEventsForAnimations(sortAnimations) {
   const speedSlider = document.querySelector(`input[class*='slider']`);
   const animationSpeed = speedSlider.value;
   const transitionSpeed = speedSlider.value / 1000;
@@ -56,39 +61,6 @@ export function runSortAnimations(sortAnimations) {
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     sortButtonStyle.textContent = 'Reset';
   }, animations.length * animationSpeed);
-}
-
-export function runSortAnimations() {
-  let sortedArray = [];
-  if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {
-    this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-      disableSortTypeButtons();
-      changeSortButtonText('Stop');
-      if (this.state.activeAlgorithm === 'insertion') {
-        this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
-          runSortAnimations(this.state.sortedArray);
-        });
-      }
-      if (this.state.activeAlgorithm === 'bubble') {
-        this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
-          runSortAnimations(this.state.sortedArray);
-        });
-      }
-      if (this.state.activeAlgorithm === 'selection') {
-        this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
-          runSortAnimations(this.state.sortedArray);
-        });
-      }
-    });
-  }
-  if (this.state.sortButtonClicked === true && this.state.activeAlgorithm !== null) {
-    this.setState({ sortButtonClicked: !this.state.sortButtonClicked }, () => {
-      clearAnimations(this.state.sortedArray.length);
-    });
-      enableSortTypeButtons();
-    changeSortButtonText('Sort');
-    this.setState({ unsortedArray: generateArray() });
-  }
 }
 
 function disableSortTypeButtons() {

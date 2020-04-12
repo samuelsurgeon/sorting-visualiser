@@ -8,12 +8,9 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
-import { getInsertionSortAnimations } from '../algorithms/insertion';
-import { getBubbleSortAnimations } from '../algorithms/bubble';
-import { getSelectionSortAnimations } from '../algorithms/selection';
-import { runSortAnimations } from '../operators/runAnimations';
+// check if I need to import any of these? 
 import { generateArray } from '../operators/generateArray';
-import { recolourAllElements } from '../operators/changeColours';
+import { changeElementColours } from '../operators/changeColours';
 import { openInfoPopUp } from '../operators/openInfoPopUp';
 import { closeInfoPopUp } from '../operators/closeInfoPopUp';
 import { selectSortType } from '../operators/selectSortType';

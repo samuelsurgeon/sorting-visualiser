@@ -14,6 +14,7 @@ import { changeElementColours } from '../operators/changeColours';
 import { openInfoPopUp } from '../operators/openInfoPopUp';
 import { closeInfoPopUp } from '../operators/closeInfoPopUp';
 import { selectSortType } from '../operators/selectSortType';
+import { setTimeoutsForAnimations } from '../operators/animationHelperFunctions';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class App extends React.Component {
       closeInfoPopUp();
     }
     if (buttonName === 'sortButton') {
-      runSortAnimations();
+      setTimeoutsForAnimations();
     }
     if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
       this.setState({ activeAlgorithm: buttonName });

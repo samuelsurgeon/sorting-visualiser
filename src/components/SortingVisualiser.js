@@ -5,7 +5,6 @@ import './SortingVisualiser.css';
 import { getInsertionSortAnimations } from '../algorithms/insertion';
 import { getBubbleSortAnimations } from '../algorithms/bubble';
 import { getSelectionSortAnimations } from '../algorithms/selection';
-import { setTimeoutsForAnimations } from '../operators/animationHelperFunctions';
 import { generateArray } from '../operators/generateArray';
 
 const PRIMARY_COLOUR = '#00000033';

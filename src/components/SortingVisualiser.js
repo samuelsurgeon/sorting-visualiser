@@ -1,14 +1,20 @@
 import React from 'react';
 import './SortingVisualiser.css';
 
+// I think the way to solve the problem of importing multiple functions from the same .js (bad) is to create a separate .js file for each function, there was another repo that did that. I think it was C
+import { getInsertionSortAnimations } from '../algorithms/insertion';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
+import { getSelectionSortAnimations } from '../algorithms/selection';
+import { setTimeoutsForAnimations } from '../operators/animationHelperFunctions';
+import { disableSortTypeButtons } from '../operators/animationHelperFunctions';
+import { changeSortButtonText } from '../operators/animationHelperFunctions';
+import { clearAnimations } from '../operators/animationHelperFunctions';
+import { enableSortTypeButtons } from '../operators/animationHelperFunctions';
+import { generateArray } from '../operators/generateArray';
+
 export default class SortingVisualiser extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  disableSortTypeButtons() {
-    const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-    sortTypeButtonElements.forEach(element => element.disabled = true);
   }
 
   runSortAnimations() {
@@ -19,17 +25,17 @@ export default class SortingVisualiser extends React.Component {
         changeSortButtonText('Stop');
         if (this.state.activeAlgorithm === 'insertion') {
           this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => {
-            runSortAnimations(this.state.sortedArray);
+            setTimeoutsForAnimations(this.state.sortedArray);
           });
         }
         if (this.state.activeAlgorithm === 'bubble') {
           this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) }, () => {
-            runSortAnimations(this.state.sortedArray);
+            setTimeoutsForAnimations(this.state.sortedArray);
           });
         }
         if (this.state.activeAlgorithm === 'selection') {
           this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) }, () => {
-            runSortAnimations(this.state.sortedArray);
+            setTimeoutsForAnimations(this.state.sortedArray);
           });
         }
       });

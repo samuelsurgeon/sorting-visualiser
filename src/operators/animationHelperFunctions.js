@@ -7,7 +7,7 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function setTimeoutEventsForAnimations(sortAnimations) {
+export function setTimeoutsForAnimations(sortAnimations) {
   const speedSlider = document.querySelector(`input[class*='slider']`);
   const animationSpeed = speedSlider.value;
   const transitionSpeed = speedSlider.value / 1000;
@@ -63,17 +63,22 @@ export function setTimeoutEventsForAnimations(sortAnimations) {
   }, animations.length * animationSpeed);
 }
 
-function enableSortTypeButtons() {
+export function disableSortTypeButtons() {
+  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
+  sortTypeButtonElements.forEach(element => element.disabled = true);
+}
+
+export function enableSortTypeButtons() {
   const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
   sortTypeButtonElements.forEach(element => element.disabled = false);
 }
 
-function changeSortButtonText(text) {
+export function changeSortButtonText(text) {
   const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
   sortButtonElement.textContent = text;
 }
 
-function clearAnimations(sortedArrayLength) {
+export function clearAnimations(sortedArrayLength) {
   const speedSlider = document.querySelector(`input[class*='slider']`);
   let timeoutIDs = sortedArrayLength * speedSlider.value;
   while (timeoutIDs--) {

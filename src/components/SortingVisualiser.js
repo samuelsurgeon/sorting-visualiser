@@ -6,6 +6,11 @@ export default class SortingVisualiser extends React.Component {
     super(props);
   }
 
+  disableSortTypeButtons() {
+    const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
+    sortTypeButtonElements.forEach(element => element.disabled = true);
+  }
+
   runSortAnimations() {
     let sortedArray = [];
     if (this.state.sortButtonClicked === false && this.state.activeAlgorithm !== null) {

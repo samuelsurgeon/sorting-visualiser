@@ -63,11 +63,6 @@ export function setTimeoutEventsForAnimations(sortAnimations) {
   }, animations.length * animationSpeed);
 }
 
-function disableSortTypeButtons() {
-  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-  sortTypeButtonElements.forEach(element => element.disabled = true);
-}
-
 function enableSortTypeButtons() {
   const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
   sortTypeButtonElements.forEach(element => element.disabled = false);

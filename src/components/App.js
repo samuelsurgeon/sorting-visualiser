@@ -8,13 +8,17 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
-// check if I need to import any of these? 
-import { generateArray } from '../operators/generateArray';
-import { changeElementColours } from '../operators/changeColours';
-import { openInfoPopUp } from '../operators/openInfoPopUp';
-import { closeInfoPopUp } from '../operators/closeInfoPopUp';
-import { selectSortType } from '../operators/selectSortType';
-import { setTimeoutsForAnimations } from '../operators/animationHelperFunctions';
+import { getInsertionSortAnimations } from '../algorithms/insertion';
+import { getBubbleSortAnimations } from '../algorithms/bubble';
+import { getSelectionSortAnimations } from '../algorithms/selection';
+
+import {
+  generateArray,
+  openInfoPopUp,
+  closeInfoPopUp,
+  setTimeoutsForAnimations,
+  selectSortType
+} from '../operators/operators'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -48,12 +52,15 @@ export default class App extends React.Component {
     if (buttonName === 'closePopUpButton') {
       closeInfoPopUp();
     }
-    if (buttonName === 'sortButton') {
-      setTimeoutsForAnimations();
-    }
     if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
       this.setState({ activeAlgorithm: buttonName });
+      if (this.state.activeAlgorithm === 'insertion') this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => console.log(this.state.sortedArray));
+      if (this.state.activeAlgorithm === 'bubble') this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) });
+      if (this.state.activeAlgorithm === 'selection') this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) });
       selectSortType(buttonName);
+    }
+    if (buttonName === 'sortButton') {
+      setTimeoutsForAnimations(this.state.sortedArray);
     }
   }
 
@@ -72,7 +79,9 @@ export default class App extends React.Component {
         <section className="visualiser">
           <InfoButton clickHandler={this.handleClick}></InfoButton>
           <SortingVisualiser 
-            unsortedArray={this.state.unsortedArray}></SortingVisualiser>
+            unsortedArray={this.state.unsortedArray}
+            sortedArray={this.state.sortedArray}
+          ></SortingVisualiser>
         </section>
       </section>
     );

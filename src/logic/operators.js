@@ -42,6 +42,7 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// just collapse these into one function? maybe? separation of concerns??
 export function openInfoPopUp() {
   revealInfoPopUp();
   addBlurToBackground();

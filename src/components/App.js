@@ -8,6 +8,7 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
+// These should be imported into other files
 import { getInsertionSortAnimations } from '../algorithms/insertion';
 import { getBubbleSortAnimations } from '../algorithms/bubble';
 import { getSelectionSortAnimations } from '../algorithms/selection';
@@ -38,6 +39,7 @@ export default class App extends React.Component {
   }
   
   shouldComponentUpdate() {
+    // this should be in sorting visualiser component
     if (this.state.sortButtonClicked) {
       return false;
     } else {

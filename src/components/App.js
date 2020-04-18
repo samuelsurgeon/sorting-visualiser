@@ -48,6 +48,7 @@ export default class App extends React.Component {
   }
 
   handleClick = buttonName => {
+    this.setState(handleAction(this.state.unsortedArray, this.state.sortedArray, buttonName);
     if (buttonName === 'infoButton') {
       openInfoPopUp();
     }

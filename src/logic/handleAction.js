@@ -103,10 +103,6 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
   }
 }
 
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 function recolourAllElements(colour) {
   document.body.className = colour;
 

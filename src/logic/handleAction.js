@@ -103,22 +103,6 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
   }
 }
 
-export function generateArray() {
-  const NUMBER_OF_ARRAY_BARS = 14;
-  const ARRAY_BAR_MIN_HEIGHT = 100;
-  const ARRAY_BAR_MAX_HEIGHT = 600;
-  const arrayBars = document.querySelectorAll('.array-bar');
-  const max = arrayBars.length;
-  for (let i = 0; i < max; i += 1) {
-    arrayBars[i].style.backgroundColor = PRIMARY_COLOUR;
-  }
-  const unsortedArray = [];
-  for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i += 1) {
-    unsortedArray.push(randomIntFromInterval(ARRAY_BAR_MIN_HEIGHT, ARRAY_BAR_MAX_HEIGHT));
-  }
-  return unsortedArray;
-}
-
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -141,27 +125,4 @@ function selectTypeButton(algorithmType, colour) {
   typeButton.forEach(element => {
     element.getAttribute('name') === algorithmType ? element.className = `type-button ${colour} selected`: element.className = `type-button ${colour}`;
   });
-}
-
-export function disableSortTypeButtons() {
-  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-  sortTypeButtonElements.forEach(element => element.disabled = true);
-}
-
-export function enableSortTypeButtons() {
-  const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
-  sortTypeButtonElements.forEach(element => element.disabled = false);
-}
-
-export function changeSortButtonText(text) {
-  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
-  sortButtonElement.textContent = text;
-}
-
-export function clearAnimations(sortedArrayLength) {
-  const speedSlider = document.querySelector(`input[class*='slider']`);
-  let timeoutIDs = sortedArrayLength * speedSlider.value;
-  while (timeoutIDs--) {
-    window.clearTimeout(timeoutIDs);
-  }
 }

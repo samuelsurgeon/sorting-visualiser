@@ -8,18 +8,8 @@ import InfoButton from './InfoButton';
 import InfoPopUp from './InfoPopUp';
 import './App.css';
 
-// These should be imported into other files
-import { getInsertionSortAnimations } from '../algorithms/insertion';
-import { getBubbleSortAnimations } from '../algorithms/bubble';
-import { getSelectionSortAnimations } from '../algorithms/selection';
-
-import {
-  generateArray,
-  openInfoPopUp,
-  closeInfoPopUp,
-  setTimeoutsForAnimations,
-  selectSortType
-} from '../operators/operators'
+import { generateArray } from '../logic/generateArray';
+import { handleAction } from '../logic/handleAction';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -48,23 +38,7 @@ export default class App extends React.Component {
   }
 
   handleClick = buttonName => {
-    this.setState(handleAction(this.state.unsortedArray, this.state.sortedArray, buttonName);
-    if (buttonName === 'infoButton') {
-      openInfoPopUp();
-    }
-    if (buttonName === 'closePopUpButton') {
-      closeInfoPopUp();
-    }
-    if (buttonName === 'insertion' || buttonName === 'bubble' || buttonName === 'selection') {
-      this.setState({ activeAlgorithm: buttonName });
-      if (this.state.activeAlgorithm === 'insertion') this.setState({ sortedArray: getInsertionSortAnimations(this.state.unsortedArray) }, () => console.log(this.state.sortedArray));
-      if (this.state.activeAlgorithm === 'bubble') this.setState({ sortedArray: getBubbleSortAnimations(this.state.unsortedArray) });
-      if (this.state.activeAlgorithm === 'selection') this.setState({ sortedArray: getSelectionSortAnimations(this.state.unsortedArray) });
-      selectSortType(buttonName);
-    }
-    if (buttonName === 'sortButton') {
-      setTimeoutsForAnimations(this.state.sortedArray);
-    }
+    this.setState(handleAction(this.state.activeAlgorithm, this.state.unsortedArray, this.state.sortedArray, buttonName));
   }
 
   render() {

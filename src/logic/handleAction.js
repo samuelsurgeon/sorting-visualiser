@@ -1,3 +1,5 @@
+import { recolourElements } from './recolourElements';
+
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
@@ -26,7 +28,7 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
   }
 
   if (buttonName === 'insertion') {
-    recolourAllElements('green');
+    recolourElements('green');
     selectTypeButton('insertion', 'green');
 
     return getInsertionSortAnimations(unsortedArray);
@@ -101,24 +103,4 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
       sortButtonStyle.textContent = 'Reset';
     }, animations.length * animationSpeed);
   }
-}
-
-function recolourAllElements(colour) {
-  document.body.className = colour;
-
-  const infoPopUpElement = document.querySelector(`section[class*='component-info-pop-up']`);
-  infoPopUpElement.className.includes('hidden') ? infoPopUpElement.className = `component-info-pop-up hidden ${colour}` : infoPopUpElement.className = `component-info-pop-up ${colour}`;
-
-  const sliderElement = document.querySelector(`input[class*='slider']`);
-  sliderElement.className = `slider ${colour}`;
-
-  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
-  sortButtonElement.className = `sort-button ${colour}`;
-}
-
-function selectTypeButton(algorithmType, colour) {
-  const typeButton = document.querySelectorAll(`button[class*='type-button']`);
-  typeButton.forEach(element => {
-    element.getAttribute('name') === algorithmType ? element.className = `type-button ${colour} selected`: element.className = `type-button ${colour}`;
-  });
 }

@@ -2,26 +2,53 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function closeInfoPopUp() {
-  // you should be able to compile all of these since I'm never reusing them again. But it doesn't follow the SRP
-  hideInfoPopUp();
-  removeBlurFromBackground();
-}
+export function handleAction(unsortedArray, sortedArray, buttonName) {
+  if (buttonName === 'infoButton') {
+    const infoPopUp = document.querySelector('.component-info-pop-up');
+    infoPopUp.classList.remove('hidden');
 
-function hideInfoPopUp() {
-  const infoPopUp = document.querySelector('.component-info-pop-up');
-  infoPopUp.classList.add('hidden');
-}
+    const blurSidebar = document.querySelector('.sidebar');
+    blurSidebar.classList.add('blur');
 
-function removeBlurFromBackground() {
-  const blurSidebar = document.querySelector('.sidebar');
-  blurSidebar.classList.remove('blur');
-  const blurVisualiser = document.querySelector('.visualiser');
-  blurVisualiser.classList.remove('blur');
+    const blurVisualiser = document.querySelector('.visualiser');
+    blurVisualiser.classList.add('blur');
+  }
+
+  if (buttonName === 'closePopUpButton') {
+    const infoPopUp = document.querySelector('.component-info-pop-up');
+    infoPopUp.classList.add('hidden');
+
+    const blurSidebar = document.querySelector('.sidebar');
+    blurSidebar.classList.remove('blur');
+
+    const blurVisualiser = document.querySelector('.visualiser');
+    blurVisualiser.classList.remove('blur');
+  }
+
+  if (buttonName === 'insertion') {
+    recolourAllElements('green');
+    selectTypeButton('insertion', 'green');
+
+    return getInsertionSortAnimations(unsortedArray);
+    // Remember that I'm returning the active algorithm here. One other thing, I'm returning this three separate times, maybe there's a better way to handle it? Wait, do I even need to return activeAlgorithm? Let's try doing it without it.
+   // return buttonName;
+  }
+  if (buttonName === 'bubble') {
+    recolourAllElements('turquoise');
+    selectTypeButton('bubble', 'turquoise');
+
+    return getBubbleSortAnimations(unsortedArray);
+  }
+  if (buttonName === 'selection') {
+    recolourAllElements('pink');
+    selectTypeButton('selection', 'pink');
+
+    // These can be one-liners if you want it
+    return getSelectionSortAnimations(unsortedArray);
+  }
 }
 
 export function generateArray() {
-  const PRIMARY_COLOUR = '#00000033';
   const NUMBER_OF_ARRAY_BARS = 14;
   const ARRAY_BAR_MIN_HEIGHT = 100;
   const ARRAY_BAR_MAX_HEIGHT = 600;
@@ -42,39 +69,6 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// just collapse these into one function? maybe? separation of concerns??
-export function openInfoPopUp() {
-  revealInfoPopUp();
-  addBlurToBackground();
-}
-
-function revealInfoPopUp() {
-  const infoPopUp = document.querySelector('.component-info-pop-up');
-  infoPopUp.classList.remove('hidden');
-}
-
-function addBlurToBackground() {
-  const blurSidebar = document.querySelector('.sidebar');
-  blurSidebar.classList.add('blur');
-  const blurVisualiser = document.querySelector('.visualiser');
-  blurVisualiser.classList.add('blur');
-}
-
-export function selectSortType(buttonName) {
-  if (buttonName === 'insertion') {
-    recolourAllElements('green');
-    selectTypeButton('insertion', 'green');
-  }
-  if (buttonName === 'bubble') {
-    recolourAllElements('turquoise');
-    selectTypeButton('bubble', 'turquoise');
-  }
-  if (buttonName === 'selection') {
-    recolourAllElements('pink');
-    selectTypeButton('selection', 'pink');
-  }
-}
-
 function selectTypeButton(algorithmType, colour) {
   const typeButton = document.querySelectorAll(`button[class*='type-button']`);
   typeButton.forEach(element => {
@@ -82,7 +76,7 @@ function selectTypeButton(algorithmType, colour) {
   });
 }
 
-export function recolourAllElements(colour) {
+function recolourAllElements(colour) {
   recolourBody(colour);
   recolourInfoPopUp(colour);
   recolourSlider(colour);
@@ -165,9 +159,6 @@ export function setTimeoutsForAnimations(sortAnimations) {
         const barTwoStyle = arrayBars[barTwoIndex].style;
         barOneStyle.height = `${barOneHeight}px`;
         barTwoStyle.height = `${barTwoHeight}px`;
-        barOneStyle.transitionDuration = `${transitionSpeed}s`;
-        barTwoStyle.transitionDuration = `${transitionSpeed}s`;
-
         const heightOneText = barHeights[barOneIndex];
         const heightTwoText = barHeights[barTwoIndex];
         heightOneText.textContent = `${barOneHeight}`;

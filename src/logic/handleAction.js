@@ -1,10 +1,15 @@
 import { recolourElements } from './recolourElements';
+import { selectTypeButton } from './selectTypeButton';
+
+import { getInsertionSortAnimations } from './algorithms/insertion';
+import { getBubbleSortAnimations } from './algorithms/bubble';
+import { getSelectionSortAnimations } from './algorithms/selection';
 
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function handleAction(unsortedArray, sortedArray, buttonName) {
+export function handleAction(activeAlgorithm, unsortedArray, sortedArray, buttonName) {
   if (buttonName === 'infoButton') {
     const infoPopUp = document.querySelector('.component-info-pop-up');
     infoPopUp.classList.remove('hidden');
@@ -28,34 +33,34 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
   }
 
   if (buttonName === 'insertion') {
+    const activeAlgorithm = buttonName;
     recolourElements('green');
     selectTypeButton('insertion', 'green');
-
-    return getInsertionSortAnimations(unsortedArray);
+    return { activeAlgorithm: buttonName };
     // Remember that I'm returning the active algorithm here. One other thing, I'm returning this three separate times, maybe there's a better way to handle it? Wait, do I even need to return activeAlgorithm? Let's try doing it without it.
    // return buttonName;
   }
 
   if (buttonName === 'bubble') {
-    recolourAllElements('turquoise');
+    recolourElements('turquoise');
     selectTypeButton('bubble', 'turquoise');
 
     return getBubbleSortAnimations(unsortedArray);
   }
 
   if (buttonName === 'selection') {
-    recolourAllElements('pink');
+    recolourElements('pink');
     selectTypeButton('selection', 'pink');
 
-    // These can be one-liners if you want it
+    // These can be one-liners if you want it. This is actually a bit redundant, because if someone is changing between the buttons, then the
     return getSelectionSortAnimations(unsortedArray);
   }
-
+  /*
   if (buttonName === 'sortButton') {
     const speedSlider = document.querySelector(`input[class*='slider']`);
     const animationSpeed = speedSlider.value;
     const transitionSpeed = speedSlider.value / 1000;
-    const animations = sortAnimations;
+    //const animations = sortAnimations;
     // better implementation
     let shouldColourSwap = true;
 
@@ -103,4 +108,5 @@ export function handleAction(unsortedArray, sortedArray, buttonName) {
       sortButtonStyle.textContent = 'Reset';
     }, animations.length * animationSpeed);
   }
+  */
 }

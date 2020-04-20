@@ -33,12 +33,10 @@ export function handleAction(activeAlgorithm, unsortedArray, sortedArray, button
   }
 
   if (buttonName === 'insertion') {
-    const activeAlgorithm = buttonName;
     recolourElements('green');
     selectTypeButton('insertion', 'green');
     return { activeAlgorithm: buttonName };
     // Remember that I'm returning the active algorithm here. One other thing, I'm returning this three separate times, maybe there's a better way to handle it? Wait, do I even need to return activeAlgorithm? Let's try doing it without it.
-   // return buttonName;
   }
 
   if (buttonName === 'bubble') {
@@ -55,12 +53,20 @@ export function handleAction(activeAlgorithm, unsortedArray, sortedArray, button
     // These can be one-liners if you want it. This is actually a bit redundant, because if someone is changing between the buttons, then the
     return getSelectionSortAnimations(unsortedArray);
   }
-  /*
   if (buttonName === 'sortButton') {
+    let animations;
+    if (activeAlgorithm === 'insertion') {
+      animations = getInsertionSortAnimations(unsortedArray);
+    }
+    if (activeAlgorithm === 'bubble') {
+      animations = getBubbleSortAnimations(unsortedArray);
+    }
+    if (activeAlgorithm === 'selection') {
+      animations = getSelectionSortAnimations(unsortedArray);
+    }
     const speedSlider = document.querySelector(`input[class*='slider']`);
     const animationSpeed = speedSlider.value;
     const transitionSpeed = speedSlider.value / 1000;
-    //const animations = sortAnimations;
     // better implementation
     let shouldColourSwap = true;
 
@@ -108,5 +114,4 @@ export function handleAction(activeAlgorithm, unsortedArray, sortedArray, button
       sortButtonStyle.textContent = 'Reset';
     }, animations.length * animationSpeed);
   }
-  */
 }

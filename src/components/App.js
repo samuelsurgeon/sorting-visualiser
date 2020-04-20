@@ -29,12 +29,15 @@ export default class App extends React.Component {
   }
   
   shouldComponentUpdate() {
+    return true;
     // this should be in sorting visualiser component
+    /*
     if (this.state.sortButtonClicked) {
       return false;
     } else {
       return true;
     }
+    */
   }
 
   handleClick = buttonName => {

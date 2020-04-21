@@ -1,5 +1,5 @@
 import React from 'react';
-import './SortPanel.css';
+import './AlgorithmPanel.css';
 
 export default class SortPanel extends React.Component {
   constructor(props) {

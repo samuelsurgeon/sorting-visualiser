@@ -18,6 +18,7 @@ export default class App extends React.Component {
       // do I really need all of these?
       activeAlgorithm: null,
       unsortedArray: null,
+      // get rid of sortedArray, just use an array slot and update it
       sortedArray: null,
       // rename this to something more semantic, such as animationsRunning or something
       sortButtonClicked: false,
@@ -29,19 +30,16 @@ export default class App extends React.Component {
   }
   
   shouldComponentUpdate() {
-    return true;
-    // this should be in sorting visualiser component
-    /*
     if (this.state.sortButtonClicked) {
       return false;
     } else {
       return true;
     }
-    */
   }
 
   handleClick = buttonName => {
-    this.setState(handleAction(this.state.activeAlgorithm, this.state.unsortedArray, this.state.sortedArray, buttonName));
+    let boy = handleAction(this.state, buttonName);
+    this.setState({ boy });
   }
 
   render() {

@@ -10,6 +10,13 @@ const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
 export function handleAction(state, buttonName) {
+  if (buttonName === 'insertion') {
+    recolourElements('green');
+    selectTypeButton('insertion', 'green');
+    return { activeAlgorithm: buttonName };
+  }
+
+
   if (buttonName === 'infoButton') {
     const infoPopUp = document.querySelector('.component-info-pop-up');
     infoPopUp.classList.remove('hidden');
@@ -32,12 +39,8 @@ export function handleAction(state, buttonName) {
     blurVisualiser.classList.remove('blur');
   }
 
-  if (buttonName === 'insertion') {
-    recolourElements('green');
-    selectTypeButton('insertion', 'green');
-    return { activeAlgorithm: buttonName };
-  }
-
+  
+  /*
   if (buttonName === 'bubble') {
     recolourElements('turquoise');
     selectTypeButton('bubble', 'turquoise');
@@ -93,4 +96,5 @@ export function handleAction(state, buttonName) {
       this.setState({ unsortedArray: generateArray() });
     }
   }
+  */
 }

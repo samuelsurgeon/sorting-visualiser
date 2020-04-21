@@ -1,36 +1,25 @@
 import React from 'react';
 import './AlgorithmPanel.css';
 
-export default class SortPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleClick = clickedButton => {
-    this.props.clickHandler(clickedButton.target.name);
-  }
-
+export default class AlgorithmPanel extends React.Component {
   render() {
     return (
-      <section className="component-sort-panel">
+      <section className="component-algorithm-panel">
         Sort type
         <section className="buttons-container">
           <button
             name="insertion"
-            className="type-button"
-            onClick={this.handleClick}>
+            className="type-button">
             Insertion
           </button>
           <button
             name="bubble"
-            className="type-button"
-            onClick={this.handleClick}>
+            className="type-button">
             Bubble
           </button>
           <button
             name="selection"
-            className="type-button"
-            onClick={this.handleClick}>
+            className="type-button">
             Selection
           </button>
         </section>

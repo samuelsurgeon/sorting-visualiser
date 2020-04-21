@@ -9,7 +9,7 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function handleAction(activeAlgorithm, unsortedArray, sortedArray, buttonName) {
+export function handleAction(state, buttonName) {
   if (buttonName === 'infoButton') {
     const infoPopUp = document.querySelector('.component-info-pop-up');
     infoPopUp.classList.remove('hidden');
@@ -36,33 +36,30 @@ export function handleAction(activeAlgorithm, unsortedArray, sortedArray, button
     recolourElements('green');
     selectTypeButton('insertion', 'green');
     return { activeAlgorithm: buttonName };
-    // Remember that I'm returning the active algorithm here. One other thing, I'm returning this three separate times, maybe there's a better way to handle it? Wait, do I even need to return activeAlgorithm? Let's try doing it without it.
   }
 
   if (buttonName === 'bubble') {
     recolourElements('turquoise');
     selectTypeButton('bubble', 'turquoise');
-
-    return getBubbleSortAnimations(unsortedArray);
+    return { activeAlgorithm: buttonName };
   }
 
   if (buttonName === 'selection') {
     recolourElements('pink');
     selectTypeButton('selection', 'pink');
-
-    // These can be one-liners if you want it. This is actually a bit redundant, because if someone is changing between the buttons, then the
-    return getSelectionSortAnimations(unsortedArray);
+    return { activeAlgorithm: buttonName };
   }
+
   if (buttonName === 'sortButton') {
     let animations;
-    if (activeAlgorithm === 'insertion') {
-      animations = getInsertionSortAnimations(unsortedArray);
+    if (state.activeAlgorithm === 'insertion') {
+      animations = getInsertionSortAnimations(state.unsortedArray);
     }
-    if (activeAlgorithm === 'bubble') {
-      animations = getBubbleSortAnimations(unsortedArray);
+    if (state.activeAlgorithm === 'bubble') {
+      animations = getBubbleSortAnimations(state.unsortedArray);
     }
-    if (activeAlgorithm === 'selection') {
-      animations = getSelectionSortAnimations(unsortedArray);
+    if (state.activeAlgorithm === 'selection') {
+      animations = getSelectionSortAnimations(state.unsortedArray);
     }
 
     let sortedArray = [];

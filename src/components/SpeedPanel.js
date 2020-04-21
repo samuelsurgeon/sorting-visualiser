@@ -1,17 +1,12 @@
 import React from 'react';
 import './SpeedPanel.css';
 
-export default class SpeedSlider extends React.Component {
-  componentDidMount() {
-    const speedSlider = document.querySelector(`input[class*='slider']`);
-    speedSlider.value = 250;
-  }
-
+export default class SpeedPanel extends React.Component {
   render() {
     return (
-      <section className="component-speed-slider">
+      <section className="component-speed-panel">
         Speed
-        <input className="slider" type="range" min="150" max="350"></input>
+        <input className="slider" type="range" defaultValue="250" min="150" max="350"></input>
       </section>
     );
   }

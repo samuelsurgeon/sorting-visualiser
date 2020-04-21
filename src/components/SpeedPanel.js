@@ -1,5 +1,5 @@
 import React from 'react';
-import './SpeedSlider.css';
+import './SpeedPanel.css';
 
 export default class SpeedSlider extends React.Component {
   componentDidMount() {

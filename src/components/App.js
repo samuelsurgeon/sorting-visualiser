@@ -17,6 +17,12 @@ export default class App extends React.Component {
       animationRunning: false,
       infoPopUpHidden: true
     };
+
+    this.handleInfoButton = this.handleInfoButton.bind(this);
+  }
+
+  handleInfoButton() {
+    this.setState({ infoPopUpHidden: false });
   }
 
   render() {
@@ -38,7 +44,8 @@ export default class App extends React.Component {
         </section>
         <section className="visualiser">
           <InfoButton 
-            infoPopUpHidden={this.state.infoPopUpHidden} />
+            infoPopUpHidden={this.state.infoPopUpHidden} 
+            onInfoButtonClick={this.handleInfoButton} />
           <SortingVisualiser 
             unsortedArray={this.props.unsortedArray} />
         </section>

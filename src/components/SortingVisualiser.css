@@ -6,6 +6,7 @@
   height: 100rem;
   border-left: 0.1rem solid black;
   border-bottom: 0.1rem solid black;
+  transition: 0.5s;
 }
 
 .array-bar {

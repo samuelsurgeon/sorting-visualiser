@@ -1,3 +1,7 @@
 .component-info-button {
   position: absolute;
 }
+
+.info-button {
+  transition: 0.1s;
+}

@@ -12,6 +12,7 @@
   font-size: 2rem;
   border: 0.1rem solid black;
   text-align: center;
+  transition: 0.1s;
 }
 
 .sort-button:hover {

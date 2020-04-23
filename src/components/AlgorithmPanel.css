@@ -25,6 +25,7 @@
   border-radius: 5rem;
   text-align: center;
   font-size: 2rem;
+  transition: 0.1s;
 }
 
 .type-button:hover {

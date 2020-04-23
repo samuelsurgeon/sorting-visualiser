@@ -32,7 +32,6 @@ export default class App extends React.Component {
   }
 
   handleTypeButton(algorithm) {
-    console.log(this.state.selectedAlgorithm);
     this.setState({ selectedAlgorithm: algorithm });
   }
 

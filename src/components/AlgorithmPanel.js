@@ -13,15 +13,24 @@ export default class AlgorithmPanel extends React.Component {
   }
 
   render() {
-    const selectedAlgorithm = this.props.selectedAlgorithm;
-
+    const className = [
+      'type-button',
+      this.props.selectedAlgorithm ? this.props.selectedAlgorithm : '',
+      document.querySelectorAll(`button[class*='type-button']`).forEach(element => {
+        element.getAttribute('name') === this.props.selectedAlgorithm ? 'selected' : '';
+      })
+    ];
+    console.log(className);
+      
+    const buttons = document.querySelector('button');
+      
     return (
       <section className="component-algorithm-panel">
         Sort type
         <section className="buttons-container">
           <button
             name="insertion"
-            className="type-button"
+            className={className.join(' ').trim()}
             onClick={this.handleTypeButton}>
             Insertion
           </button>

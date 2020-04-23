@@ -4,10 +4,10 @@ export default function getClassName(selectedAlgorithm) {
   className.push(selectedAlgorithm ? selectedAlgorithm : '');
   let buttons = document.querySelectorAll(`button[class*='type-button']`);
   buttons.forEach(element => {
+    if (element.getAttribute('name') === selectedAlgorithm) className.push('selected');
     console.log(element);
-    element.getAttribute('name') === selectedAlgorithm ? className.push('selected') : className.push('');
   });
-  console.log(className);
+  
 }
 
 /*

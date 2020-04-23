@@ -16,9 +16,7 @@ export default class AlgorithmPanel extends React.Component {
   }
 
   render() {
-    getClassName(this.props.selectedAlgorithm);
-    const className = '';
-    /*
+    //getClassName(this.props.selectedAlgorithm);
     const className = [
       'type-button',
       this.props.selectedAlgorithm ? this.props.selectedAlgorithm : '',
@@ -28,8 +26,6 @@ export default class AlgorithmPanel extends React.Component {
     ];
     console.log(className);
       
-    const buttons = document.querySelector('button');
-    */ 
     return (
       <section className="component-algorithm-panel">
         Sort type

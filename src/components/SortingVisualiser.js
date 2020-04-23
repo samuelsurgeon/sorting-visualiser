@@ -3,11 +3,9 @@ import './SortingVisualiser.css';
 
 export default class SortingVisualiser extends React.Component {
   render() {
-    //const unsortedArray = this.props.unsortedArray ? this.props.unsortedArray : [];
-    const array = [];
     return (
       <section className="component-sorting-visualiser">
-        {array.map((height, index) => (
+        {this.props.unsortedArray.map((height, index) => (
           <section
             className="array-bar"
             key={index}

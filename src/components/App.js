@@ -23,7 +23,7 @@ export default class App extends React.Component {
         </section>
         <section className="visualiser">
           <InfoButton />
-          <SortingVisualiser />
+          <SortingVisualiser unsortedArray={this.props.unsortedArray} />
         </section>
       </section>
     );

@@ -1,6 +1,9 @@
 import React from 'react';
 import './AlgorithmPanel.css';
 
+//just a temporary fix
+import getClassName from '../logic/selectTypeButton';
+
 export default class AlgorithmPanel extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +16,9 @@ export default class AlgorithmPanel extends React.Component {
   }
 
   render() {
+    getClassName(this.props.selectedAlgorithm);
+    const className = '';
+    /*
     const className = [
       'type-button',
       this.props.selectedAlgorithm ? this.props.selectedAlgorithm : '',
@@ -23,14 +29,14 @@ export default class AlgorithmPanel extends React.Component {
     console.log(className);
       
     const buttons = document.querySelector('button');
-      
+    */ 
     return (
       <section className="component-algorithm-panel">
         Sort type
         <section className="buttons-container">
           <button
             name="insertion"
-            className={className.join(' ').trim()}
+            className="type-button"
             onClick={this.handleTypeButton}>
             Insertion
           </button>

@@ -1,14 +1,16 @@
-export function getClassName(selectedAlgorithm) {
+export default function getClassName(selectedAlgorithm) {
   const className = ['type-button'];
-
   //Compile this into a literal expression of the array. Just like in calculator
   className.push(selectedAlgorithm ? selectedAlgorithm : '');
-  className.push(document.querySelectorAll(`button[class*='type-button']`).forEach(element => {
-    element.getAttribute('name') == this.props.selectedAlgorithm ? 'selected' : '';
-  }));
+  let buttons = document.querySelectorAll(`button[class*='type-button']`);
+  buttons.forEach(element => {
+    console.log(element);
+    element.getAttribute('name') === selectedAlgorithm ? className.push('selected') : className.push('');
+  });
   console.log(className);
 }
 
+/*
 expor tfunction selectTypeButton(algorithmType, colour) {
   const typeButton = document.querySelectorAll(`button[class*='type-button']`);
   typeButton.forEach(element => {
@@ -30,3 +32,4 @@ export function changeSortButtonText(text) {
   const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
   sortButtonElement.textContent = text;
 }
+*/

@@ -4,7 +4,6 @@ import './InfoPopUp.css';
 export default class InfoPopUp extends React.Component {
   render() {
     const infoPopUpHidden = this.props.infoPopUpHidden;
-    console.log(infoPopUpHidden);
 
     return (
       <section className="component-info-pop-up hidden">

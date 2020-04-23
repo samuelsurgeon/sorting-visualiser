@@ -3,6 +3,8 @@ import './AlgorithmPanel.css';
 
 export default class AlgorithmPanel extends React.Component {
   render() {
+    const selectedAlgorithm = this.props.selectedAlgorithm;
+
     return (
       <section className="component-algorithm-panel">
         Sort type

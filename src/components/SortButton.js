@@ -3,6 +3,10 @@ import './SortButton.css';
 
 export default class SortButton extends React.Component {
   render() {
+    const selectedAlgorithm = this.props.selectedAlgorithm;
+    const animationSpeed = this.props.animationSpeed;
+    const animationRunning = this.props.animationRunning;
+
     return (
       <section className="component-sort-button">
         <button 

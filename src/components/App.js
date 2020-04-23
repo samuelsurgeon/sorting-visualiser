@@ -19,16 +19,23 @@ export default class App extends React.Component {
     };
 
     this.handleInfoButton = this.handleInfoButton.bind(this);
+    this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
   }
 
   handleInfoButton() {
     this.setState({ infoPopUpHidden: false });
   }
 
+  handleClosePopUpButton() {
+    this.setState({ infoPopUpHidden: true });
+  }
+
   render() {
     return (
       <section className="component-app">
-        <InfoPopUp infoPopUpHidden={this.state.infoPopUpHidden} />
+        <InfoPopUp
+          infoPopUpHidden={this.state.infoPopUpHidden} 
+          onClosePopUpButtonClick={this.handleClosePopUpButton} />
         <section className="sidebar">
           <Heading />
           <section className="sidebar-bottom">

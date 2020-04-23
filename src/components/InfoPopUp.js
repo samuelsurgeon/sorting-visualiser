@@ -2,11 +2,21 @@ import React from 'react';
 import './InfoPopUp.css';
 
 export default class InfoPopUp extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
+  }
+
+  handleClosePopUpButton() {
+    this.props.onClosePopUpButtonClick();
+  }
+
   render() {
     const infoPopUpHidden = this.props.infoPopUpHidden;
 
     return (
-      <section className="component-info-pop-up hidden">
+      <section className={infoPopUpHidden ? 'component-info-pop-up hidden' : 'component-info-pop-up'}>
         <p className="info-heading-top">What is a sorting algorithm?</p>
         <p>A list of instructions that arranges a set of values in a given order. On this site I{'\''}ve implemented three simple algorithms that are sorted in ascending order.</p>
         <p className="info-heading">What is the performance of these algorithms?</p>
@@ -16,6 +26,7 @@ export default class InfoPopUp extends React.Component {
         <button
           name="closePopUpButton"
           className="close-pop-up-button"
+          onClick={this.handleClosePopUpButton}
           alt="Close Pop-up Button">
           ✕
         </button>

@@ -9,6 +9,16 @@ import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedAlgorithm: null,
+      animationSpeed: 250,
+      animationsRunning: false,
+      
+    };
+  }
+
   render() {
     return (
       <section className="component-app">

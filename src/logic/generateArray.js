@@ -1,4 +1,4 @@
-export function generateArray() {
+export default function generateArray() {
   const PRIMARY_COLOUR = 'black';
   const NUMBER_OF_ARRAY_BARS = 14;
   const ARRAY_BAR_MIN_HEIGHT = 100;

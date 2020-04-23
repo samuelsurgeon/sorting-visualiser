@@ -14,26 +14,33 @@ export default class App extends React.Component {
     this.state = {
       selectedAlgorithm: null,
       animationSpeed: 250,
-      animationsRunning: false,
-      
+      animationRunning: false,
+      infoPopUpHidden: true
     };
   }
 
   render() {
     return (
       <section className="component-app">
-        <InfoPopUp />
+        <InfoPopUp infoPopUpHidden={this.state.infoPopUpHidden} />
         <section className="sidebar">
           <Heading />
           <section className="sidebar-bottom">
-            <AlgorithmPanel />
-            <SpeedPanel />
-            <SortButton />
+            <AlgorithmPanel 
+              selectedAlgorithm={this.state.selectedAlgorithm} />
+            <SpeedPanel
+              animationSpeed={this.state.animationSpeed} />
+            <SortButton 
+              selectedAlgorithm={this.state.selectedAlgorithm}
+              animationSpeed={this.state.animationSpeed}
+              animationRunning={this.state.animationRunning} />
           </section>
         </section>
         <section className="visualiser">
-          <InfoButton />
-          <SortingVisualiser unsortedArray={this.props.unsortedArray} />
+          <InfoButton 
+            infoPopUpHidden={this.state.infoPopUpHidden} />
+          <SortingVisualiser 
+            unsortedArray={this.props.unsortedArray} />
         </section>
       </section>
     );

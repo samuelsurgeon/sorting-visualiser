@@ -15,12 +15,13 @@ export default class AlgorithmButton extends React.Component {
   render() {
     const className = [
       'type-button',
-
+      this.props.selectedAlgorithm,
+      this.props.selectedAlgorithm === this.props.name ? 'selected' : '',
     ]
 
     return (
       <button
-        className={className}
+        className={className.join(' ').trim()}
         onClick={this.handleAlgorithmButton}>
         {this.props.name}
       </button>

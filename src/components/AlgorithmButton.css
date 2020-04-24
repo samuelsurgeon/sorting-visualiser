@@ -1,0 +1,85 @@
+:root {
+  --yellow: #FFED05;
+  --green: #44E78E;
+  --turquoise: #3BF2F5;
+  --pink: #FE8DC5;
+}
+
+.component-algorithm-panel {
+  font-size: 2rem;
+}
+
+.buttons-container {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.type-button {
+  position: relative;
+  right: 1.5rem;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 1rem 3rem;
+  width: fit-content;
+  border: 0.1rem solid black;
+  background-color: transparent;
+  border-radius: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  transition: 0.1s;
+}
+
+.type-button:hover {
+  background-color: black;
+  color: var(--yellow);
+  transform: scale(1.05);
+}
+
+.type-button.selected {
+  background-color: black;
+  color: var(--yellow);
+}
+
+.type-button.insertion:hover {
+  background-color: black;
+  color: var(--green);
+  transform: scale(1.05);
+}
+
+.type-button.insertion.selected {
+  background-color: black;
+  color: var(--green);
+}
+
+.type-button.insertion.selected:hover {
+  transform: none;  
+}
+
+.type-button.bubble:hover {
+  background-color: black;
+  color: var(--turquoise);
+  transform: scale(1.05);
+}
+
+.type-button.bubble.selected {
+  background-color: black;
+  color: var(--turquoise);
+}
+
+.type-button.bubble.selected:hover {
+  transform: none;  
+}
+
+.type-button.selection:hover {
+  background-color: black;
+  color: var(--pink);
+  transform: scale(1.05);
+}
+
+.type-button.selection.selected {
+  background-color: black;
+  color: var(--pink);
+}
+
+.type-button.selection.selected:hover {
+  transform: none;  
+}

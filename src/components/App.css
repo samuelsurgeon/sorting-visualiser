@@ -16,6 +16,10 @@ button {
   cursor: pointer;
 }
 
+button:first-letter {
+  text-transform: capitalize;
+}
+
 p {
   margin: 0;
 }

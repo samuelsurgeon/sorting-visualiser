@@ -21,6 +21,7 @@ export default class App extends React.Component {
     this.handleInfoButton = this.handleInfoButton.bind(this);
     this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
+    this.handleRangeChange = this.handleRangeChange.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,10 @@ export default class App extends React.Component {
     this.setState({ selectedAlgorithm: algorithm });
   }
 
+  handleRangeChange(rangeValue) {
+    this.setState({ animationSpeed: rangeValue });
+  }
+
   render() {
     return (
       <section className="component-app">
@@ -52,7 +57,8 @@ export default class App extends React.Component {
               selectedAlgorithm={this.state.selectedAlgorithm} 
               onAlgorithmButtonClick={this.handleAlgorithmButton} />
             <SpeedPanel
-              animationSpeed={this.state.animationSpeed} />
+              animationSpeed={this.state.animationSpeed}
+              onRangeChange={this.handleRangeChange} />
             <SortButton 
               selectedAlgorithm={this.state.selectedAlgorithm}
               animationSpeed={this.state.animationSpeed}

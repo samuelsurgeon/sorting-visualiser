@@ -8,6 +8,9 @@ export default class AlgorithmPanel extends React.Component {
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
 
+  componentDidUpdate() {
+    document.body.className = this.props.selectedAlgorithm;
+  }
   
   handleAlgorithmButton(algorithm) {
     this.props.onAlgorithmButtonClick(algorithm);

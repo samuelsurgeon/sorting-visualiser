@@ -23,8 +23,8 @@ export default class App extends React.Component {
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
 
-  componentDidUpdate() {
-    document.body.className = this.state.selectedAlgorithm;
+  componentDidMount() {
+    window.onload = () => document.body.classList.remove('preload');
   }
 
   handleInfoButton() {

@@ -9,30 +9,31 @@ export default class AlgorithmPanel extends React.Component {
   constructor(props) {
     super(props);
     
-    this.handleTypeButton = this.handleTypeButton.bind(this);
+    this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
   
-  handleAlgorithmButton(e) {
-    this.props.onTypeButtonClick(e.target.name);
+  handleAlgorithmButton(algorithm) {
+    this.props.onAlgorithmButtonClick(algorithm);
   }
 
   render() {
-    //getClassName(this.props.selectedAlgorithm);
-    const className = [
-      'type-button',
-      this.props.selectedAlgorithm ? this.props.selectedAlgorithm : '',
-      document.querySelectorAll(`button[class*='type-button']`).forEach(element => {
-        element.getAttribute('name') === this.props.selectedAlgorithm ? 'selected' : '';
-      })
-    ];
-      
+    console.log(this.props.selectedAlgorithm);
     return (
       <section className="component-algorithm-panel">
         Sort type
         <section className="buttons-container">
-          <AlgorithmButton name="insertion" onAlgorithmButtonClick={this.handleAlgorithmButton} />
-          <AlgorithmButton name="bubble" onAlgorithmButtonClick={this.handleAlgorithmButton} />
-          <AlgorithmButton name="selection" onAlgorithmButtonClick={this.handleAlgorithmButton} />
+          <AlgorithmButton
+            name="Insertion"
+            selectedAlgorithm={this.props.selectedAlgorithm}
+            onAlgorithmButtonClick={this.handleAlgorithmButton} />
+          <AlgorithmButton 
+            name="Bubble"
+            selectedAlgorithm={this.props.selectedAlgorithm}
+            onAlgorithmButtonClick={this.handleAlgorithmButton} />
+          <AlgorithmButton
+            name="Selection"
+            selectedAlgorithm={this.prop.selectedAlgorithm}
+            onAlgorithmButtonClick={this.handleAlgorithmButton} />
         </section>
       </section>
     );

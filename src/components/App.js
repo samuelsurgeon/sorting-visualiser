@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
     this.handleInfoButton = this.handleInfoButton.bind(this);
     this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
-    this.handleTypeButton = this.handleTypeButton.bind(this);
+    this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
 
   handleInfoButton() {
@@ -31,7 +31,8 @@ export default class App extends React.Component {
     this.setState({ infoPopUpHidden: true });
   }
 
-  handleTypeButton(algorithm) {
+  handleAlgorithmButton(algorithm) {
+    console.log(algorithm);
     this.setState({ selectedAlgorithm: algorithm });
   }
 
@@ -46,7 +47,7 @@ export default class App extends React.Component {
           <section className="sidebar-bottom">
             <AlgorithmPanel 
               selectedAlgorithm={this.state.selectedAlgorithm} 
-              onTypeButtonClick={this.handleTypeButton} />
+              onAlgorithmButtonClick={this.handleAlgorithmButton} />
             <SpeedPanel
               animationSpeed={this.state.animationSpeed} />
             <SortButton 

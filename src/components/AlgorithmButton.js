@@ -9,24 +9,21 @@ export default class AlgorithmButton extends React.Component {
   }
 
   handleAlgorithmButton() {
-    console.log('hi');
+    this.props.onAlgorithmButtonClick(this.props.name);
   }
 
   render() {
     const className = [
       'type-button',
+
     ]
 
-    return ( 'hi');
-    
-    /*
     return (
       <button
         className={className}
         onClick={this.handleAlgorithmButton}>
-        hi
+        {this.props.name}
       </button>
     );
-    */
   }
 }

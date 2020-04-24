@@ -8,12 +8,14 @@ import InfoButton from './InfoButton';
 import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
+import generateArray from '../logic/generateArray';
 import { runAnimations, clearAnimations } from '../logic/runSortAnimations';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      array: [],
       selectedAlgorithm: null,
       animationSpeed: 250,
       animationRunning: false,
@@ -29,6 +31,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window.onload = () => document.body.classList.remove('preload');
+    this.setState({ array: generateArray() });
   }
 
   handleInfoButton() {
@@ -50,9 +53,10 @@ export default class App extends React.Component {
   handleSortButton() {
     this.setState({ animationRunning: !this.state.animationRunning }, () => {
       if (this.state.animationRunning) {
-        runAnimations(this.state.selectedAlgorithm, this.props.unsortedArray);
+        runAnimations(this.state.selectedAlgorithm, this.state.array);
       } else {
-        clearAnimations(this.props.unsortedArray.length);
+        clearAnimations(this.state.array.length);
+        this.setState({ array: generateArray() });
       }
     });
   }
@@ -89,7 +93,7 @@ export default class App extends React.Component {
             infoPopUpHidden={this.state.infoPopUpHidden} 
             onInfoButtonClick={this.handleInfoButton} />
           <SortingVisualiser 
-            unsortedArray={this.props.unsortedArray} />
+            array={this.state.array} />
         </section>
       </section>
     );

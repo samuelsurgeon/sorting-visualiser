@@ -9,7 +9,7 @@ export default class SortingVisualiser extends React.Component {
   render() {
     return (
       <section className="component-sorting-visualiser">
-        {this.props.unsortedArray.map((height, index) => (
+        {this.props.array.map((height, index) => (
           <section
             className="array-bar"
             key={index}

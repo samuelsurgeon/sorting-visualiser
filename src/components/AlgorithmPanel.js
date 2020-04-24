@@ -1,4 +1,5 @@
 import React from 'react';
+import AlgorithmButton from './AlgorithmButton';
 import './AlgorithmPanel.css';
 
 //just a temporary fix
@@ -11,7 +12,7 @@ export default class AlgorithmPanel extends React.Component {
     this.handleTypeButton = this.handleTypeButton.bind(this);
   }
   
-  handleTypeButton(e) {
+  handleAlgorithmButton(e) {
     this.props.onTypeButtonClick(e.target.name);
   }
 
@@ -24,30 +25,14 @@ export default class AlgorithmPanel extends React.Component {
         element.getAttribute('name') === this.props.selectedAlgorithm ? 'selected' : '';
       })
     ];
-    console.log(className);
       
     return (
       <section className="component-algorithm-panel">
         Sort type
         <section className="buttons-container">
-          <button
-            name="insertion"
-            className="type-button"
-            onClick={this.handleTypeButton}>
-            Insertion
-          </button>
-          <button
-            name="bubble"
-            className="type-button"
-            onClick={this.handleTypeButton}>
-            Bubble
-          </button>
-          <button
-            name="selection"
-            className="type-button"
-            onClick={this.handleTypeButton}>
-            Selection
-          </button>
+          <AlgorithmButton name="insertion" onAlgorithmButtonClick={this.handleAlgorithmButton} />
+          <AlgorithmButton name="bubble" onAlgorithmButtonClick={this.handleAlgorithmButton} />
+          <AlgorithmButton name="selection" onAlgorithmButtonClick={this.handleAlgorithmButton} />
         </section>
       </section>
     );

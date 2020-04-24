@@ -13,11 +13,7 @@ export default class SpeedPanel extends React.Component {
   }
 
   render() {
-    const className = [
-      'slider',
-      this.props.selectedAlgorithm,
-    ]
-
+    const className = ['slider', this.props.selectedAlgorithm];
     const animationSpeed = this.props.animationSpeed;
 
     return (

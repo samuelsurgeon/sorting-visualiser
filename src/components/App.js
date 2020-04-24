@@ -45,13 +45,16 @@ export default class App extends React.Component {
   }
 
   render() {
+    const classNameSidebar = ['sidebar', this.state.infoPopUpHidden ? '' : 'blur'];
+    const classNameVisualiser = ['visualiser', this.state.infoPopUpHidden ? '' : 'blur'];
+
     return (
       <section className="component-app">
         <InfoPopUp
           infoPopUpHidden={this.state.infoPopUpHidden} 
           selectedAlgorithm={this.state.selectedAlgorithm}
           onClosePopUpButtonClick={this.handleClosePopUpButton} />
-        <section className="sidebar">
+        <section className={classNameSidebar.join(' ').trim()}>
           <Heading />
           <section className="sidebar-bottom">
             <AlgorithmPanel 
@@ -67,7 +70,7 @@ export default class App extends React.Component {
               animationRunning={this.state.animationRunning} />
           </section>
         </section>
-        <section className="visualiser">
+        <section className={classNameVisualiser.join(' ').trim()}>
           <InfoButton 
             infoPopUpHidden={this.state.infoPopUpHidden} 
             onInfoButtonClick={this.handleInfoButton} />

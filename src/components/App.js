@@ -36,12 +36,10 @@ export default class App extends React.Component {
   }
 
   handleAlgorithmButton(algorithm) {
-    console.log(algorithm);
     this.setState({ selectedAlgorithm: algorithm });
   }
 
   render() {
-
     return (
       <section className="component-app">
         <InfoPopUp

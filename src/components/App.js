@@ -15,7 +15,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      array: [],
+      array: generateArray(),
       selectedAlgorithm: null,
       animationSpeed: 250,
       animationRunning: false,
@@ -31,7 +31,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window.onload = () => document.body.classList.remove('preload');
-    this.setState({ array: generateArray() });
   }
 
   handleInfoButton() {
@@ -62,7 +61,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.animationRunning);
     const classNameSidebar = ['sidebar', this.state.infoPopUpHidden ? '' : 'blur'];
     const classNameVisualiser = ['visualiser', this.state.infoPopUpHidden ? '' : 'blur'];
 

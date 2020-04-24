@@ -68,14 +68,14 @@ a {
   filter: blur(0.5rem);
 }
 
-.green {
+.insertion {
   background-color: var(--green);
 }
 
-.turquoise {
+.bubble {
   background-color: var(--turquoise);
 }
 
-.pink {
+.selection {
   background-color: var(--pink);
 }

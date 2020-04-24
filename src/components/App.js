@@ -23,6 +23,10 @@ export default class App extends React.Component {
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
 
+  componentDidUpdate() {
+    document.body.className = this.state.selectedAlgorithm;
+  }
+
   handleInfoButton() {
     this.setState({ infoPopUpHidden: false });
   }
@@ -37,6 +41,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     return (
       <section className="component-app">
         <InfoPopUp

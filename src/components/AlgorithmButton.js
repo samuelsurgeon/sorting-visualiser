@@ -8,6 +8,7 @@ export default class AlgorithmButton extends React.Component {
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
   }
 
+
   handleAlgorithmButton() {
     this.props.onAlgorithmButtonClick(this.props.name);
   }
@@ -18,6 +19,7 @@ export default class AlgorithmButton extends React.Component {
       this.props.selectedAlgorithm,
       this.props.selectedAlgorithm === this.props.name ? 'selected' : '',
     ]
+
 
     return (
       <button

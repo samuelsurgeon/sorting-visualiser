@@ -49,6 +49,7 @@ export default class App extends React.Component {
       <section className="component-app">
         <InfoPopUp
           infoPopUpHidden={this.state.infoPopUpHidden} 
+          selectedAlgorithm={this.state.selectedAlgorithm}
           onClosePopUpButtonClick={this.handleClosePopUpButton} />
         <section className="sidebar">
           <Heading />
@@ -58,6 +59,7 @@ export default class App extends React.Component {
               onAlgorithmButtonClick={this.handleAlgorithmButton} />
             <SpeedPanel
               animationSpeed={this.state.animationSpeed}
+              selectedAlgorithm={this.state.selectedAlgorithm}
               onRangeChange={this.handleRangeChange} />
             <SortButton 
               selectedAlgorithm={this.state.selectedAlgorithm}

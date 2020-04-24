@@ -13,13 +13,18 @@ export default class SpeedPanel extends React.Component {
   }
 
   render() {
+    const className = [
+      'slider',
+      this.props.selectedAlgorithm,
+    ]
+
     const animationSpeed = this.props.animationSpeed;
 
     return (
       <section className="component-speed-panel">
         Speed
         <input 
-          className="slider"
+          className={className.join(' ').trim()}
           type="range"
           min="150" max="350" 
           value={animationSpeed}

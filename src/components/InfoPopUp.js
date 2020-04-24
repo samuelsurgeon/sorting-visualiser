@@ -13,10 +13,14 @@ export default class InfoPopUp extends React.Component {
   }
 
   render() {
-    const infoPopUpHidden = this.props.infoPopUpHidden;
+    const className = [
+      'component-info-pop-up',
+      this.props.infoPopUpHidden ? 'hidden' : '',
+      this.props.selectedAlgorithm,
+    ]
 
     return (
-      <section className={infoPopUpHidden ? 'component-info-pop-up hidden' : 'component-info-pop-up'}>
+      <section className={className.join(' ').trim()}>
         <p className="info-heading-top">What is a sorting algorithm?</p>
         <p>A list of instructions that arranges a set of values in a given order. On this site I{'\''}ve implemented three simple algorithms that are sorted in ascending order.</p>
         <p className="info-heading">What is the performance of these algorithms?</p>

@@ -17,15 +17,15 @@
   display: none;
 }
 
-.component-info-pop-up.green {
+.component-info-pop-up.insertion {
   background-color: var(--green);
 }
 
-.component-info-pop-up.turquoise {
+.component-info-pop-up.bubble {
   background-color: var(--turquoise);
 }
 
-.component-info-pop-up.pink {
+.component-info-pop-up.selection {
   background-color: var(--pink);
 }
 

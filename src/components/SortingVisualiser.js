@@ -2,6 +2,10 @@ import React from 'react';
 import './SortingVisualiser.css';
 
 export default class SortingVisualiser extends React.Component {
+  shouldComponentUpdate() {
+    return this.props.animationRunning;
+  }
+
   render() {
     return (
       <section className="component-sorting-visualiser">

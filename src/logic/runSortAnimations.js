@@ -64,9 +64,9 @@ export function runAnimations(selectedAlgorithm, unsortedArray) {
   }, animations.length * animationSpeed);
 }
 
-export function clearAnimations(sortedArrayLength) {
+export function clearAnimations(arrayLength) {
   const speedSlider = document.querySelector(`input[class*='slider']`);
-  let timeoutIDs = sortedArrayLength * speedSlider.value;
+  let timeoutIDs = arrayLength * speedSlider.value;
   while (timeoutIDs--) {
     window.clearTimeout(timeoutIDs);
   }

@@ -49,7 +49,11 @@ export default class App extends React.Component {
 
   handleSortButton() {
     this.setState({ animationRunning: !this.state.animationRunning }, () => {
-      this.state.animationRunning ? runAnimations(this.state.selectedAlgorithm, this.props.unsortedArray) : clearAnimations();
+      if (this.state.animationRunning) {
+        runAnimations(this.state.selectedAlgorithm, this.props.unsortedArray);
+      } else {
+        clearAnimations(this.props.unsortedArray.length);
+      }
     });
   }
 

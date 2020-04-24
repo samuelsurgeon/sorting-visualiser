@@ -1,4 +1,4 @@
-export function getInsertionSortAnimations(unsortedArray) {
+export default function getInsertionSortAnimations(unsortedArray) {
   const animationsArray = [];
   if (unsortedArray.length <= 1) return unsortedArray;
   insertionSort(unsortedArray, animationsArray);

@@ -1,4 +1,4 @@
-export function getSelectionSortAnimations(unsortedArray) {
+export default function getSelectionSortAnimations(unsortedArray) {
   const animationsArray = [];
   if (unsortedArray.length <= 1) return unsortedArray;
   selectionSort(unsortedArray, animationsArray);

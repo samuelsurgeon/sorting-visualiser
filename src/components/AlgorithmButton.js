@@ -20,7 +20,6 @@ export default class AlgorithmButton extends React.Component {
       this.props.selectedAlgorithm === this.props.name ? 'selected' : '',
     ]
 
-
     return (
       <button
         className={className.join(' ').trim()}

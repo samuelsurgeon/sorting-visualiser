@@ -8,6 +8,8 @@ import InfoButton from './InfoButton';
 import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
+import { runAnimations, clearAnimations } from '../logic/runSortAnimations';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,7 @@ export default class App extends React.Component {
     this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
     this.handleRangeChange = this.handleRangeChange.bind(this);
+    this.handleSortButton = this.handleSortButton.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +47,14 @@ export default class App extends React.Component {
     this.setState({ animationSpeed: rangeValue });
   }
 
+  handleSortButton() {
+    this.setState({ animationRunning: !this.state.animationRunning }, () => {
+      this.state.animationRunning ? runAnimations(this.state.selectedAlgorithm, this.props.unsortedArray) : clearAnimations();
+    });
+  }
+
   render() {
+    console.log(this.state.animationRunning);
     const classNameSidebar = ['sidebar', this.state.infoPopUpHidden ? '' : 'blur'];
     const classNameVisualiser = ['visualiser', this.state.infoPopUpHidden ? '' : 'blur'];
 
@@ -64,10 +74,10 @@ export default class App extends React.Component {
               animationSpeed={this.state.animationSpeed}
               selectedAlgorithm={this.state.selectedAlgorithm}
               onRangeChange={this.handleRangeChange} />
-            <SortButton 
+            <SortButton
               selectedAlgorithm={this.state.selectedAlgorithm}
-              animationSpeed={this.state.animationSpeed}
-              animationRunning={this.state.animationRunning} />
+              animationRunning={this.state.animationRunning}
+              onSortButtonClick={this.handleSortButton} />
           </section>
         </section>
         <section className={classNameVisualiser.join(' ').trim()}>

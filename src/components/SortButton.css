@@ -21,19 +21,19 @@
   color: var(--yellow);
 }
 
-.sort-button.green:hover {
+.sort-button.insertion:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--green);
 }
 
-.sort-button.turquoise:hover {
+.sort-button.bubble:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--turquoise);
 }
 
-.sort-button.pink:hover {
+.sort-button.selection:hover {
   background-color: black;
   transform: scale(1.05);
   color: var(--pink);

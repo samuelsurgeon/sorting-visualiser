@@ -1,13 +1,9 @@
-:root {
-  --yellow: #FFED05;
-}
-
 .component-info-pop-up {
   position: absolute;
   top: 30rem;
   padding: 4rem 3rem;
   width: 70rem;
-  background-color: var(--yellow);
+  background-color: var(--grey);
   border: 0.1rem solid black;
   font-size: 2rem;
   z-index: 1;
@@ -18,15 +14,15 @@
 }
 
 .component-info-pop-up.insertion {
-  background-color: var(--green);
+  background-color: var(--yellow);
 }
 
 .component-info-pop-up.bubble {
-  background-color: var(--turquoise);
+  background-color: var(--blue);
 }
 
 .component-info-pop-up.selection {
-  background-color: var(--pink);
+  background-color: var(--green);
 }
 
 .close-pop-up-button {

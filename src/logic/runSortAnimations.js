@@ -6,16 +6,14 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function runAnimations(selectedAlgorithm, unsortedArray) {
+export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) {
   let animations = [];
 
   if (selectedAlgorithm === 'insertion') animations = getInsertionSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'bubble') animations = getBubbleSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'selection') animations = getSelectionSortAnimations(unsortedArray);
 
-  const speedSlider = document.querySelector(`input[class*='slider']`);
-  const animationSpeed = speedSlider.value;
-  const transitionSpeed = speedSlider.value / 1000;
+  const transitionSpeed = animationSpeed / 1000;
   // better implementation
   let shouldColourSwap = true;
 
@@ -64,9 +62,8 @@ export function runAnimations(selectedAlgorithm, unsortedArray) {
   }, animations.length * animationSpeed);
 }
 
-export function clearAnimations(arrayLength) {
-  const speedSlider = document.querySelector(`input[class*='slider']`);
-  let timeoutIDs = arrayLength * speedSlider.value;
+export function clearAnimations(arrayLength, animationSpeed) {
+  let timeoutIDs = arrayLength * animationSpeed;
   while (timeoutIDs--) {
     window.clearTimeout(timeoutIDs);
   }

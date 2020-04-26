@@ -3,7 +3,7 @@
   top: 30rem;
   padding: 4rem 3rem;
   width: 70rem;
-  background-color: var(--grey);
+  background-color: var(--bg);
   border: 0.1rem solid black;
   font-size: 2rem;
   z-index: 1;
@@ -14,15 +14,15 @@
 }
 
 .component-info-pop-up.insertion {
-  background-color: var(--yellow);
+  background-color: var(--insertion);
 }
 
 .component-info-pop-up.bubble {
-  background-color: var(--blue);
+  background-color: var(--bubble);
 }
 
 .component-info-pop-up.selection {
-  background-color: var(--green);
+  background-color: var(--selection);
 }
 
 .close-pop-up-button {

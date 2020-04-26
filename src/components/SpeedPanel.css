@@ -1,8 +1,8 @@
 :root {
-  --darkGrey: #947D7C;
-  --darkYellow: #C4AB3B;
-  --darkBlue: #769B9C;
-  --darkGreen: #6C916C;
+  --darkBg: #66573E;
+  --darkInsertion: #9C865F;
+  --darkBubble: #D1BC94;
+  --darkSelection: #917E59;
 }
 
 .component-speed-panel {
@@ -25,7 +25,7 @@
 .slider::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
-  background-color: var(--darkGrey);
+  background-color: var(--darkBg);
   appearance: none;
   border: 0.1rem solid black;
   border-radius: 5rem;
@@ -42,7 +42,7 @@
 .slider.insertion::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
-  background-color: var(--darkYellow);
+  background-color: var(--darkInsertion);
   appearance: none;
   border: 0.1rem solid black;
   border-radius: 5rem;
@@ -59,7 +59,7 @@
 .slider.bubble::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
-  background-color: var(--darkBlue);
+  background-color: var(--darkBubble);
   appearance: none;
   border: 0.1rem solid black;
   border-radius: 5rem;
@@ -76,7 +76,7 @@
 .slider.selection::-webkit-slider-thumb {
   width: 3rem;
   height: 3rem;
-  background-color: var(--darkGreen);
+  background-color: var(--darkSelection);
   appearance: none;
   border: 0.1rem solid black;
   border-radius: 5rem;

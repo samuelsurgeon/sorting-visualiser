@@ -23,24 +23,24 @@
 
 .type-button:hover {
   background-color: black;
-  color: var(--yellow);
+  color: var(--bg);
   transform: scale(1.05);
 }
 
 .type-button.selected {
   background-color: black;
-  color: var(--yellow);
+  color: var(--bg);
 }
 
 .type-button.insertion:hover {
   background-color: black;
-  color: var(--green);
+  color: var(--insertion);
   transform: scale(1.05);
 }
 
 .type-button.insertion.selected {
   background-color: black;
-  color: var(--green);
+  color: var(--insertion);
 }
 
 .type-button.insertion.selected:hover {
@@ -49,13 +49,13 @@
 
 .type-button.bubble:hover {
   background-color: black;
-  color: var(--turquoise);
+  color: var(--bubble);
   transform: scale(1.05);
 }
 
 .type-button.bubble.selected {
   background-color: black;
-  color: var(--turquoise);
+  color: var(--bubble);
 }
 
 .type-button.bubble.selected:hover {
@@ -64,13 +64,13 @@
 
 .type-button.selection:hover {
   background-color: black;
-  color: var(--pink);
+  color: var(--selection);
   transform: scale(1.05);
 }
 
 .type-button.selection.selected {
   background-color: black;
-  color: var(--pink);
+  color: var(--selection);
 }
 
 .type-button.selection.selected:hover {

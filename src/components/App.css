@@ -1,8 +1,8 @@
 :root {
-  --grey: #806E4E;
-  --yellow: #CCB07C;
-  --blue: #FFE5B5;
-  --green: #B39A6D;
+  --bg: #806E4E;
+  --insertion: #CCB07C;
+  --bubble: #FFE5B5;
+  --selection: #B39A6D;
 }
 
 html {
@@ -18,7 +18,7 @@ body.preload {
 }
 
 body {
-  background-color: var(--grey);
+  background-color: var(--bg);
   transition: 1s;
 }
 
@@ -80,13 +80,13 @@ a {
 }
 
 .insertion {
-  background-color: var(--yellow);
+  background-color: var(--insertion);
 }
 
 .bubble {
-  background-color: var(--blue);
+  background-color: var(--bubble);
 }
 
 .selection {
-  background-color: var(--green);
+  background-color: var(--selection);
 }

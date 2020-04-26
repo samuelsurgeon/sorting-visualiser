@@ -18,7 +18,7 @@ export default class App extends React.Component {
       array: generateArray(),
       selectedAlgorithm: null,
       animationSpeed: 250,
-      animationRunning: false,
+      animationRunning: true,
       infoPopUpHidden: true
     };
 
@@ -51,12 +51,12 @@ export default class App extends React.Component {
 
   handleSortButton() {
     this.setState({ animationRunning: !this.state.animationRunning }, () => {
-      if (this.state.animationRunning) {
-        runAnimations(this.state.selectedAlgorithm, this.state.array, this.state.animationSpeed);
-      } else {
-        clearAnimations(this.state.array.length, this.state.animationSpeed);
-        this.setState({ array: generateArray() });
-      }
+      animationHandler(
+        this.state.animationRunning,
+        this.state.selectedAlgorithm,
+        this.state.array,
+        this.state.animationSpeed
+      );
     });
   }
 

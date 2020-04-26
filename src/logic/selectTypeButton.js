@@ -27,9 +27,4 @@ export function enableSortTypeButtons() {
   const sortTypeButtonElements = document.querySelectorAll(`button[class*='type-button']`);
   sortTypeButtonElements.forEach(element => element.disabled = false);
 }
-
-export function changeSortButtonText(text) {
-  const sortButtonElement = document.querySelector(`button[class*='sort-button']`);
-  sortButtonElement.textContent = text;
-}
 */

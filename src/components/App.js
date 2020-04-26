@@ -54,8 +54,8 @@ export default class App extends React.Component {
       if (this.state.animationRunning) {
         runAnimations(this.state.selectedAlgorithm, this.state.array);
       } else {
-        this.setState({ array: generateArray() });
         clearAnimations(this.state.array.length);
+        this.setState({ array: generateArray() });
       }
     });
   }

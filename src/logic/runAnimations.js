@@ -6,7 +6,7 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function runAnimations(selectedAlgorithm, unsortedArray, animationsSpeed) {
+export default function runAnimations(selectedAlgorithm, unsortedArray, animationsSpeed) {
   let animations = [];
 
   if (selectedAlgorithm === 'insertion') animations = getInsertionSortAnimations(unsortedArray);
@@ -60,11 +60,4 @@ export function runAnimations(selectedAlgorithm, unsortedArray, animationsSpeed)
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     sortButtonStyle.textContent = 'Reset';
   }, animations.length * animationsSpeed);
-}
-
-export function clearAnimations(arrayLength, animationsSpeed) {
-  let timeoutIDs = arrayLength * animationsSpeed;
-  while (timeoutIDs--) {
-    window.clearTimeout(timeoutIDs);
-  }
 }

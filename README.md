@@ -6,7 +6,7 @@ I recently began my journey to become a Front-end developer and after dabbling w
 
 The goal of the project was to help me understand the fundamentals of JavaScript and React, so I only used those pieces of tech and avoided using Redux or any other addons for the animations.
 
-Since its my first project please let me know if there are any blaringly obvious mistakes or anti-patterns. I struggled quite a bit figuring out where the logic for the animations should go and I definitely need to read up on React design patterns more. I've used setTimeouts for the animations but might switch them out for requestAnimationFrame to make the code cleaner.
+Since its my first project please let me know if there are any blaringly obvious mistakes or anti-patterns. I struggled quite a bit figuring out where the logic for the animations should go and I definitely need to read up on React design patterns more. I used setTimeouts for the animations but might switch them out for requestAnimationFrame to make the code cleaner.
 
 ## The algorithms
 

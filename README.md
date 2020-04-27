@@ -1,6 +1,8 @@
 # Sorting Algorithm Visualiser
 A visualiser for different types of sorting algorithms. In this project I've implemented three simple sorting algorithms that sort in ascending order.
 
+You can access the project here: https://samuelsurgeon.github.io/sorting-visualiser/
+
 ## Why did I make this?
 I recently began my journey to become a Front-end developer and after dabbling with some HTML & CSS here and there, I decided finally to take the plunge and make a proper JavaScript app!
 

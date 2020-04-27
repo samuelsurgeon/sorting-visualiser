@@ -7,6 +7,7 @@ const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
 export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) {
+  console.log('Im getting here');
   let animations = [];
 
   if (selectedAlgorithm === 'insertion') animations = getInsertionSortAnimations(unsortedArray);

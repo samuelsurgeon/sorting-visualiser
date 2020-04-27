@@ -57,6 +57,7 @@ export default class App extends React.Component {
 
   handleSortButton() {
     this.setState(handleAnimations(this.state));
+    // test head
   }
 
   render() {

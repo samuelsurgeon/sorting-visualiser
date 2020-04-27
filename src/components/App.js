@@ -9,7 +9,7 @@ import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
 import generateArray from '../logic/generateArray';
-import handleAnimations from '../logic/animationHandler';
+import { runAnimations, clearAnimations } from '../logic/runSortAnimation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -56,8 +56,14 @@ export default class App extends React.Component {
   }
 
   handleSortButton() {
-    this.setState(handleAnimations(this.state));
-    // test head
+    this.setState({ animationRunning: !this.state.animationRunning }, () => {
+      if (this.state.animationRunning) {
+        runAnimations(this.state.selectedAlgorithm, this.state.array);
+      } else {
+        clearAnimations(this.state.array.length);
+        this.setState({ array: generateArray() });
+      }
+    });
   }
 
   render() {

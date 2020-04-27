@@ -23,7 +23,7 @@ export default class AlgorithmButton extends React.Component {
       <button
         className={className.join(' ').trim()}
         onClick={this.handleAlgorithmButton}
-        disabled={this.props.animationRunning}>
+        disabled={this.props.animationsRunning}>
         {this.props.name}
       </button>
     );

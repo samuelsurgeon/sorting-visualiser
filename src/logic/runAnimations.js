@@ -6,14 +6,14 @@ const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
-export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) {
+export function runAnimations(selectedAlgorithm, unsortedArray, animationsSpeed) {
   let animations = [];
 
   if (selectedAlgorithm === 'insertion') animations = getInsertionSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'bubble') animations = getBubbleSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'selection') animations = getSelectionSortAnimations(unsortedArray);
 
-  const transitionSpeed = animationSpeed / 1000;
+  const transitionSpeed = animationsSpeed / 1000;
   // better implementation
   let shouldColourSwap = true;
 
@@ -33,7 +33,7 @@ export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) 
       barTwoStyle.backgroundColor = colour;
       barOneStyle.transitionDuration = `${transitionSpeed}s`;
       barTwoStyle.transitionDuration = `${transitionSpeed}s`;
-      }, i * animationSpeed);
+      }, i * animationsSpeed);
       shouldColourSwap = !shouldColourSwap;
     } else {
       setTimeout(() => {
@@ -47,7 +47,7 @@ export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) 
         const heightTwoText = barHeights[barTwoIndex];
         heightOneText.textContent = `${barOneHeight}`;
         heightTwoText.textContent = `${barTwoHeight}`;
-      }, i * animationSpeed);
+      }, i * animationsSpeed);
     }
   }
   setTimeout(() => {
@@ -59,11 +59,11 @@ export function runAnimations(selectedAlgorithm, unsortedArray, animationSpeed) 
   }
     const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
     sortButtonStyle.textContent = 'Reset';
-  }, animations.length * animationSpeed);
+  }, animations.length * animationsSpeed);
 }
 
-export function clearAnimations(arrayLength, animationSpeed) {
-  let timeoutIDs = arrayLength * animationSpeed;
+export function clearAnimations(arrayLength, animationsSpeed) {
+  let timeoutIDs = arrayLength * animationsSpeed;
   while (timeoutIDs--) {
     window.clearTimeout(timeoutIDs);
   }

@@ -22,7 +22,7 @@ export default class InfoButton extends React.Component {
             className="info-button"
             onClick={this.handleInfoButton} 
             alt="Information Button"
-            disabled={this.props.animationRunning}>
+            disabled={this.props.animationsRunning}>
             ?
           </button>
         </section>

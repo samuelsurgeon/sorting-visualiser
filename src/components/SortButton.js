@@ -14,7 +14,7 @@ export default class SortButton extends React.Component {
 
   render() {
     const className = ['sort-button', this.props.selectedAlgorithm];
-    const sortButtonText = this.props.animationRunning ? 'Reset' : 'Sort';
+    const sortButtonText = this.props.animationsRunning ? 'Reset' : 'Sort';
 
     return (
       <section className="component-sort-button">

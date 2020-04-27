@@ -17,8 +17,8 @@ export default class App extends React.Component {
     this.state = {
       array: [],
       selectedAlgorithm: null,
-      animationSpeed: 250,
-      animationRunning: false,
+      animationsSpeed: 250,
+      animationsRunning: false,
       infoPopUpHidden: true
     };
 
@@ -52,18 +52,18 @@ export default class App extends React.Component {
   }
 
   handleRangeChange(rangeValue) {
-    this.setState({ animationSpeed: rangeValue });
+    this.setState({ animationsSpeed: rangeValue });
   }
 
   handleSortButton() {
-    if (!this.state.animationRunning && this.state.selectedAlgorithm !== null) {
-      this.setState({ animationRunning: !this.state.animationRunning }, () => {
-        runAnimations(this.state.selectedAlgorithm, this.state.array, this.state.animationSpeed);
+    if (!this.state.animationsRunning && this.state.selectedAlgorithm !== null) {
+      this.setState({ animationsRunning: !this.state.animationsRunning }, () => {
+        runAnimations(this.state.selectedAlgorithm, this.state.array, this.state.animationsSpeed);
       });
     }
-    if (this.state.animationRunning) {
-      this.setState({ animationRunning: !this.state.animationRunning }, () => {
-        clearAnimations(this.state.array.length, this.state.animationSpeed);
+    if (this.state.animationsRunning) {
+      this.setState({ animationsRunning: !this.state.animationsRunning }, () => {
+        clearAnimations(this.state.array.length, this.state.animationsSpeed);
         this.setState({ array: generateArray() });
       });
     }
@@ -84,23 +84,23 @@ export default class App extends React.Component {
           <section className="sidebar-bottom">
             <AlgorithmPanel 
               selectedAlgorithm={this.state.selectedAlgorithm}
-              animationRunning={this.state.animationRunning}
+              animationsRunning={this.state.animationsRunning}
               onAlgorithmButtonClick={this.handleAlgorithmButton} />
             <SpeedPanel
-              animationSpeed={this.state.animationSpeed}
+              animationsSpeed={this.state.animationsSpeed}
               selectedAlgorithm={this.state.selectedAlgorithm}
-              animationRunning={this.state.animationRunning}
+              animationsRunning={this.state.animationsRunning}
               onRangeChange={this.handleRangeChange} />
             <SortButton
               selectedAlgorithm={this.state.selectedAlgorithm}
-              animationRunning={this.state.animationRunning}
+              animationsRunning={this.state.animationsRunning}
               onSortButtonClick={this.handleSortButton} />
           </section>
         </section>
         <section className={classNameVisualiser.join(' ').trim()}>
           <InfoButton 
             infoPopUpHidden={this.state.infoPopUpHidden}
-            animationRunning={this.state.animationRunning}
+            animationsRunning={this.state.animationsRunning}
             onInfoButtonClick={this.handleInfoButton} />
           <SortingVisualiser 
             array={this.state.array} />

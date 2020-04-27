@@ -14,7 +14,6 @@ export default class SpeedPanel extends React.Component {
 
   render() {
     const className = ['slider', this.props.selectedAlgorithm];
-    const animationSpeed = this.props.animationSpeed;
 
     return (
       <section className="component-speed-panel">
@@ -23,8 +22,8 @@ export default class SpeedPanel extends React.Component {
           className={className.join(' ').trim()}
           type="range"
           min="150" max="350" 
-          value={animationSpeed}
-          disabled={this.props.animationRunning}
+          value={this.props.animationsSpeed}
+          disabled={this.props.animationsRunning}
           onChange={this.handleRangeChange} />
       </section>
     );

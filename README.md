@@ -1,5 +1,5 @@
 # Sorting Algorithm Visualiser
-A visualiser for different types of sorting algorithms. In this project I've implemented three simple sorting algorithms that are sorted in ascending order.
+A visualiser for different types of sorting algorithms. In this project I've implemented three simple sorting algorithms that sort in ascending order.
 
 ## Why did I make this?
 I recently embarked on a journey to become a Front-end developer and after dabbling with some HTML & CSS here and there, I decided finally to take the plunge and make a fully fledged JavaScript app - my first proper web project!

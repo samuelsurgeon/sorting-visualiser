@@ -5,6 +5,12 @@
   --selection: #E6E6E6;
 }
 
+@media only screen and (min-width: 500px) {
+  html {
+    font-size: 20%;
+  }
+}
+
 @media only screen and (min-width: 800px) {
   html {
     font-size: 35%;
@@ -35,9 +41,27 @@
   }
 }
 
-@media only screen and (min-width: 2800px) {
+@media only screen and (min-width: 2000px) {
   html {
-    font-size: 150%;
+    font-size: 80%;
+  }
+}
+
+@media only screen and (min-width: 3000px) {
+  html {
+    font-size: 120%;
+  }
+}
+
+@media only screen and (min-width: 4000px) {
+  html {
+    font-size: 160%;
+  }
+}
+
+@media only screen and (min-width: 4600px) {
+  html {
+    font-size: 185%;
   }
 }
 

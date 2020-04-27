@@ -1,7 +1,7 @@
 # Sorting Algorithm Visualiser
 A visualiser for different types of sorting algorithms. In this project I've implemented three simple sorting algorithms that are sorted in ascending order.
 
-# Why did I make this?
+## Why did I make this?
 
 
 # Credit

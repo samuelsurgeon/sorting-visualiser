@@ -9,7 +9,7 @@ import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
 import generateArray from '../logic/generateArray';
-import { runAnimations, clearAnimations } from '../logic/runSortAnimation';
+import { runAnimations, clearAnimations } from '../logic/runAnimations';
 
 export default class App extends React.Component {
   constructor(props) {

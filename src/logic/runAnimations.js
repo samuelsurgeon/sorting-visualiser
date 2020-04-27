@@ -1,6 +1,6 @@
-import getInsertionSortAnimations from './algorithms/insertion';
-import getBubbleSortAnimations from './algorithms/bubble';
-import getSelectionSortAnimations from './algorithms/selection';
+import getInsertionSortAnimations from './insertionSort';
+import getBubbleSortAnimations from './bubbleSort';
+import getSelectionSortAnimations from './selectionSort';
 
 const PRIMARY_COLOUR = '#00000033';
 const SECONDARY_COLOUR = '#FFFFFF';

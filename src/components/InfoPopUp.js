@@ -26,7 +26,7 @@ export default class InfoPopUp extends React.Component {
         <p className="info-heading">What is the performance of these algorithms?</p>
         <p>Using Big-O notation each of these algorithms have an average time-complexity of O(n<sup>2</sup>).</p>
         <p className="info-heading">Who are you?</p>
-        <p>My name is Samuel Surgeon. I{'\''}m a developer from Sydney. Say hi to me <a href="http://samuelsurgeon.com/" target="_blank">here</a>.</p>
+        <p>My name is Samuel Surgeon and I{'\''}m a developer from Sydney. Say hi to me <a href="http://samuelsurgeon.com/" target="_blank">here</a>!</p>
         <button
           name="closePopUpButton"
           className="close-pop-up-button"

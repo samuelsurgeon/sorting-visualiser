@@ -9,19 +9,20 @@ import SortingVisualiser from './SortingVisualiser';
 import './App.css';
 
 import generateArray from '../logic/generateArray';
-import { runAnimations, clearAnimations } from '../logic/runSortAnimations';
+import handleAnimations from '../logic/animationHandler';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      array: generateArray(),
+      array: [],
       selectedAlgorithm: null,
       animationSpeed: 250,
-      animationRunning: true,
+      animationRunning: false,
       infoPopUpHidden: true
     };
 
+    this.generateArray = this.generateArray.bind(this);
     this.handleInfoButton = this.handleInfoButton.bind(this);
     this.handleClosePopUpButton = this.handleClosePopUpButton.bind(this);
     this.handleAlgorithmButton = this.handleAlgorithmButton.bind(this);
@@ -29,8 +30,13 @@ export default class App extends React.Component {
     this.handleSortButton = this.handleSortButton.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.generateArray();
     window.onload = () => document.body.classList.remove('preload');
+  }
+
+  generateArray() {
+    this.setState({ array: generateArray() });
   }
 
   handleInfoButton() {
@@ -50,14 +56,7 @@ export default class App extends React.Component {
   }
 
   handleSortButton() {
-    this.setState({ animationRunning: !this.state.animationRunning }, () => {
-      animationHandler(
-        this.state.animationRunning,
-        this.state.selectedAlgorithm,
-        this.state.array,
-        this.state.animationSpeed
-      );
-    });
+    this.setState(handleAnimations(this.state));
   }
 
   render() {

@@ -89,6 +89,7 @@ export default class App extends React.Component {
             <SpeedPanel
               animationSpeed={this.state.animationSpeed}
               selectedAlgorithm={this.state.selectedAlgorithm}
+              animationRunning={this.state.animationRunning}
               onRangeChange={this.handleRangeChange} />
             <SortButton
               selectedAlgorithm={this.state.selectedAlgorithm}
@@ -98,7 +99,8 @@ export default class App extends React.Component {
         </section>
         <section className={classNameVisualiser.join(' ').trim()}>
           <InfoButton 
-            infoPopUpHidden={this.state.infoPopUpHidden} 
+            infoPopUpHidden={this.state.infoPopUpHidden}
+            animationRunning={this.state.animationRunning}
             onInfoButtonClick={this.handleInfoButton} />
           <SortingVisualiser 
             array={this.state.array} />

@@ -24,6 +24,7 @@ export default class SpeedPanel extends React.Component {
           type="range"
           min="150" max="350" 
           value={animationSpeed}
+          disabled={this.props.animationRunning}
           onChange={this.handleRangeChange} />
       </section>
     );

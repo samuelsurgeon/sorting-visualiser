@@ -1,8 +1,8 @@
 :root {
-  --bg: #806E4E;
-  --insertion: #CCB07C;
-  --bubble: #FFE5B5;
-  --selection: #B39A6D;
+  --bg: #808080;
+  --insertion: #999999;
+  --bubble: #B3B3B3;
+  --selection: #CCCCCC;
 }
 
 html {

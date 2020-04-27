@@ -1,8 +1,8 @@
 :root {
-  --darkBg: #66573E;
-  --darkInsertion: #9C865F;
-  --darkBubble: #D1BC94;
-  --darkSelection: #917E59;
+  --darkBg: #595959;
+  --darkInsertion: #737373;
+  --darkBubble: #8C8C8C;
+  --darkSelection: #A6A6A6;
 }
 
 .component-speed-panel {

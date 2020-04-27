@@ -83,7 +83,8 @@ export default class App extends React.Component {
           <Heading />
           <section className="sidebar-bottom">
             <AlgorithmPanel 
-              selectedAlgorithm={this.state.selectedAlgorithm} 
+              selectedAlgorithm={this.state.selectedAlgorithm}
+              animationRunning={this.state.animationRunning}
               onAlgorithmButtonClick={this.handleAlgorithmButton} />
             <SpeedPanel
               animationSpeed={this.state.animationSpeed}

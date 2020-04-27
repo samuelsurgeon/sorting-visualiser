@@ -24,14 +24,17 @@ export default class AlgorithmPanel extends React.Component {
           <AlgorithmButton
             name="insertion"
             selectedAlgorithm={this.props.selectedAlgorithm}
+            animationRunning={this.props.animationRunning}
             onAlgorithmButtonClick={this.handleAlgorithmButton} />
           <AlgorithmButton 
             name="bubble"
             selectedAlgorithm={this.props.selectedAlgorithm}
+            animationRunning={this.props.animationRunning}
             onAlgorithmButtonClick={this.handleAlgorithmButton} />
           <AlgorithmButton
             name="selection"
             selectedAlgorithm={this.props.selectedAlgorithm}
+            animationRunning={this.props.animationRunning}
             onAlgorithmButtonClick={this.handleAlgorithmButton} />
         </section>
       </section>

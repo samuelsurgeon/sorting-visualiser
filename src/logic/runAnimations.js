@@ -7,23 +7,20 @@ const SECONDARY_COLOUR = '#FFFFFF';
 const FINISHED_COLOUR = '#FFFFFFB3';
 
 export default function runAnimations(selectedAlgorithm, unsortedArray, animationsSpeed) {
+  const transitionSpeed = animationsSpeed / 1000;
+  let shouldColourSwap = true;
   let animations = [];
 
   if (selectedAlgorithm === 'insertion') animations = getInsertionSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'bubble') animations = getBubbleSortAnimations(unsortedArray);
   if (selectedAlgorithm === 'selection') animations = getSelectionSortAnimations(unsortedArray);
-
-  const transitionSpeed = animationsSpeed / 1000;
-  // better implementation
-  let shouldColourSwap = true;
-
+  
   for (let i = 0; i < animations.length; i += 1) {
     const arrayBars = document.querySelectorAll('.array-bar');
     const barHeights = document.querySelectorAll('.bar-height');
     const animateHighlight = typeof animations[i][0] === 'object' ? false : true;
 
     if (animateHighlight) {
-      // maybe pack all this up into a function?
       const [barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -41,10 +38,10 @@ export default function runAnimations(selectedAlgorithm, unsortedArray, animatio
         const [barTwoIndex, barTwoHeight] = animations[i][1];
         const barOneStyle = arrayBars[barOneIndex].style;
         const barTwoStyle = arrayBars[barTwoIndex].style;
-        barOneStyle.height = `${barOneHeight}px`;
-        barTwoStyle.height = `${barTwoHeight}px`;
         const heightOneText = barHeights[barOneIndex];
         const heightTwoText = barHeights[barTwoIndex];
+        barOneStyle.height = `${barOneHeight}px`;
+        barTwoStyle.height = `${barTwoHeight}px`;
         heightOneText.textContent = `${barOneHeight}`;
         heightTwoText.textContent = `${barTwoHeight}`;
       }, i * animationsSpeed);
@@ -56,8 +53,6 @@ export default function runAnimations(selectedAlgorithm, unsortedArray, animatio
     for (let i = 0; i < max; i += 1) {
       arrayBars[i].style.transitionDuration = `${transitionSpeed}s`;
       arrayBars[i].style.backgroundColor = FINISHED_COLOUR;
-  }
-    const sortButtonStyle = document.querySelector(`button[class*='sort-button']`);
-    sortButtonStyle.textContent = 'Reset';
+    }
   }, animations.length * animationsSpeed);
 }

@@ -56,14 +56,17 @@ export default class App extends React.Component {
   }
 
   handleSortButton() {
-    this.setState({ animationRunning: !this.state.animationRunning }, () => {
-      if (this.state.animationRunning) {
+    if (!this.state.animationRunning && this.state.selectedAlgorithm !== null) {
+      this.setState({ animationRunning: !this.state.animationRunning }, () => {
         runAnimations(this.state.selectedAlgorithm, this.state.array, this.state.animationSpeed);
-      } else {
-        clearAnimations(this.state.array.length);
+      });
+    }
+    if (this.state.animationRunning) {
+      this.setState({ animationRunning: !this.state.animationRunning }, () => {
+        clearAnimations(this.state.array.length, this.state.animationSpeed);
         this.setState({ array: generateArray() });
-      }
-    });
+      });
+    }
   }
 
   render() {

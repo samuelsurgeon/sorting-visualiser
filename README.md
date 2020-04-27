@@ -4,7 +4,7 @@ A visualiser for different types of sorting algorithms. In this project I've imp
 ## Why did I make this?
 I recently began my journey to become a Front-end developer and after dabbling with some HTML & CSS here and there, I decided finally to take the plunge and make a proper JavaScript app!
 
-The goal of the project was for me to understand the fundamentals of JavaScript and React. So I've only used those to pieces of tech and avoided using Redux or any other addons for the animations.
+The goal of the project was for me to understand the fundamentals of JavaScript and React, so I've only used those pieces of tech. I avoided using Redux or any other addons for the animations.
 
 Since its my first project please let me know if there are any blaringly obvious mistakes or anti-patterns. I struggled quite a bit with figuring out where the logic for the animations should go and I definitely need to read up on React design patterns more. I've used setTimeouts for the animations but might switch them out for requestAnimationFrame to make the code cleaner.
 

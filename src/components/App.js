@@ -6,11 +6,10 @@ import SpeedPanel from './SpeedPanel';
 import SortButton from './SortButton';
 import InfoButton from './InfoButton';
 import SortingVisualiser from './SortingVisualiser';
-import './App.css';
-
 import generateArray from '../logic/generateArray';
 import runAnimations from '../logic/runAnimations';
 import clearAnimations from '../logic/clearAnimations';
+import './App.css';
 
 export default class App extends React.Component {
   constructor(props) {

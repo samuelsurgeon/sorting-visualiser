@@ -15,8 +15,7 @@ export default class SortingVisualiser extends React.Component {
             key={index}
             style={{height: `${height}px`}}>
               <h1 className="bar-height">{`${height}`}</h1>
-          </section>))
-        }
+          </section>))}
       </section>
     );
   }

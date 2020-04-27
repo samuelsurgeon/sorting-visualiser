@@ -15,7 +15,6 @@ function insertionSort(unsortedArray, animationsArray) {
     }
     if (j > 0 && unsortedArray[j] >= unsortedArray[j - 1]) animate(j - 1, j, unsortedArray, animationsArray);
   }
-  //return array; (I don't actually need to return this lol. Because I use the 'magical behaviour' thing haha)
 }
 
 function swap(i, j, unsortedArray) {

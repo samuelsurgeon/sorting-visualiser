@@ -21,7 +21,6 @@ function bubbleSort(unsortedArray, animationsArray) {
     }
     counter += 1;
   }
-  // return array. magical behaviour babey
 }
 
 function swap(i, j, unsortedArray) {

@@ -19,7 +19,6 @@ function selectionSort(unsortedArray, animationsArray) {
     animateSwap(currentIndex, smallestIndex, unsortedArray, animationsArray);
     currentIndex += 1;
   }
-  // return array;
 }
 
 function swap(i, j, unsortedArray) {

@@ -5,8 +5,43 @@
   --selection: #E6E6E6;
 }
 
+@media only screen and (min-width: 800px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  html {
+    font-size: 58%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  html {
+    font-size: 62.5%
+  }
+}
+
+@media only screen and (min-width: 2800px) {
+  html {
+    font-size: 150%;
+  }
+}
+
 html {
-  font-size: 62.5%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

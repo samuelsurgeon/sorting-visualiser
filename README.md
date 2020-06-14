@@ -18,7 +18,7 @@ Please note: The app is desktop only! It should work for any desktop screen size
 
 ## Browsers
 
-For best experience use Chrome!
+For best experience use Chrome.
 
 ## Credit
 This project was inspired by and based off: https://github.com/clementmihailescu/Sorting-Visualizer-Tutorial
